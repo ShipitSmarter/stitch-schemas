@@ -204,7 +204,7 @@
           "$ref": "#/definitions/Headers"
         },
         "StatusCode": {
-          "type": "number"
+          "type": ["number", "string"]
         }
       },
       "required": [
