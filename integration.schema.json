@@ -73,6 +73,9 @@
           },
           {
             "$ref": "#/definitions/SftpStep"
+          },
+          {
+            "$ref": "#/definitions/RenderTemplateStep"
           }
         ]
       },
@@ -192,6 +195,46 @@
         "Username",
         "Password",
         "Filename"
+      ]
+    },
+    "RenderTemplateStep": {
+      "type": "object",
+      "default": {
+        "$type": "Core.Entities.Configs.Steps.RenderTemplateConfiguration, Core",
+        "Id": "",
+        "Template": "",
+        "AdditionalFiles": []
+      },
+      "description": "Render a template",
+      "properties": {
+        "$type": {
+          "enum": [
+            "Core.Entities.Configs.Steps.RenderTemplateConfiguration, Core"
+          ]
+        },
+        "Id": {
+          "type": "string"
+        },
+        "Template": {
+          "type": "string"
+        },
+        "SuccessCondition": {
+          "type": "string"
+        },
+        "StartCondition": {
+          "type": "string"
+        },
+        "AdditionalFiles": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "$type",
+        "Id",
+        "Template"
       ]
     },
     "Response": {
