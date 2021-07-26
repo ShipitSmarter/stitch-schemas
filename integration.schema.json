@@ -5,6 +5,9 @@
     "Imports": {
       "$ref": "#/definitions/Imports"
     },
+    "Translations": {
+      "$ref": "#/definitions/Translations"
+    },
     "Request": {
       "$ref": "#/definitions/Request"
     },
@@ -25,7 +28,15 @@
       "type": "array",
       "items": {
         "type": "string"
-      }
+      },
+      "uniqueItems": true
+    },
+    "Translations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
     },
     "Request": {
       "type": "object",
