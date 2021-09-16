@@ -87,6 +87,9 @@
           },
           {
             "$ref": "#/definitions/RenderTemplateStep"
+          },
+          {
+            "$ref": "#/definitions/EmailStep"
           }
         ]
       },
@@ -245,6 +248,54 @@
       "required": [
         "$type",
         "Id",
+        "Template"
+      ]
+    },
+    "EmailStep": {
+      "type": "object",
+      "default": {
+        "$type": "Core.Entities.Configs.Steps.MailConfiguration, Core",
+        "Id": "",
+        "From": "",
+        "To": "",
+        "Subject": "",
+        "Template": ""
+      },
+      "description": "Send an e-mail",
+      "properties": {
+        "$type": {
+          "enum": [
+            "Core.Entities.Configs.Steps.MailConfiguration, Core"
+          ]
+        },
+        "Id": {
+          "type": "string"
+        },
+        "From": {
+          "type": "string"
+        },
+        "To": {
+          "type": "string"
+        },
+        "Subject": {
+          "type": "string"
+        },
+        "Template": {
+          "type": "string"
+        },
+        "SuccessCondition": {
+          "type": "string"
+        },
+        "StartCondition": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "$type",
+        "Id",
+        "From",
+        "To",
+        "Subject",
         "Template"
       ]
     },
