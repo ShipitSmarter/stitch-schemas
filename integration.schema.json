@@ -58,6 +58,11 @@
     },
     "AuthenticationMethod": {
       "type": "object",
+      "default": {
+        "Id": "",
+        "Key": "",
+        "Description": ""
+      },
       "properties": {
         "Id": {
           "type": "string"
