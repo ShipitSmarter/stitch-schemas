@@ -329,6 +329,9 @@
     },
     "Headers": {
       "type": "object",
+      "default": {
+        "HEADER_NAME": "VALUE"
+      },
       "additionalProperties": {
         "type": "string"
       }
