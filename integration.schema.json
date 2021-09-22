@@ -308,6 +308,9 @@
     },
     "Response": {
       "type": "object",
+      "default": {
+        "Body": "{}"
+      },
       "properties": {
         "Body": {
           "type": "string"
