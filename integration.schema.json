@@ -49,7 +49,9 @@
         }
       },
       "additionalProperties": false,
-      "default": [],
+      "default": {
+        "AuthenticationMethods": []
+      },
       "required": [
         "AuthenticationMethods"
       ]
