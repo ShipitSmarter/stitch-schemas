@@ -49,13 +49,20 @@
         }
       },
       "additionalProperties": false,
-      "default": [],
+      "default": {
+        "AuthenticationMethods": []
+      },
       "required": [
         "AuthenticationMethods"
       ]
     },
     "AuthenticationMethod": {
       "type": "object",
+      "default": {
+        "Id": "",
+        "Key": "",
+        "Description": ""
+      },
       "properties": {
         "Id": {
           "type": "string"
@@ -301,6 +308,9 @@
     },
     "Response": {
       "type": "object",
+      "default": {
+        "Body": "{}"
+      },
       "properties": {
         "Body": {
           "type": "string"
@@ -319,6 +329,9 @@
     },
     "Headers": {
       "type": "object",
+      "default": {
+        "HEADER_NAME": "VALUE"
+      },
       "additionalProperties": {
         "type": "string"
       }
