@@ -264,7 +264,7 @@
         "$type": "Core.Entities.Configs.Steps.MailConfiguration, Core",
         "Id": "",
         "From": "",
-        "To": "",
+        "To": [],
         "Subject": "",
         "Template": ""
       },
@@ -282,7 +282,10 @@
           "type": "string"
         },
         "To": {
-          "type": "string"
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
         },
         "Subject": {
           "type": "string"
