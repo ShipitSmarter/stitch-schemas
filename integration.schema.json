@@ -20,7 +20,6 @@
   },
   "required": [
     "Request",
-    "Steps",
     "Response"
   ],
   "definitions": {
@@ -100,7 +99,7 @@
           }
         ]
       },
-      "minItems": 1
+      "minItems": 0
     },
     "HttpStep": {
       "type": "object",
