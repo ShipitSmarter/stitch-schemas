@@ -39,6 +39,12 @@
     "Request": {
       "type": "object",
       "properties": {
+        "Method": {
+          "enum": [
+            "POST",
+            "GET"
+          ]
+        },
         "AuthenticationMethods": {
           "type": "array",
           "items": {
@@ -48,6 +54,7 @@
       },
       "additionalProperties": false,
       "default": {
+        "Method": "POST",
         "AuthenticationMethods": []
       },
       "required": [
