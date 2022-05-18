@@ -102,6 +102,12 @@
           },
           {
             "$ref": "#/definitions/EmailStep"
+          },
+          {
+            "$ref": "#/definitions/CacheStoreStep"
+          },
+          {
+            "$ref": "#/definitions/CacheLoadStep"
           }
         ]
       },
@@ -312,6 +318,81 @@
         "To",
         "Subject",
         "Template"
+      ]
+    },
+    "CacheStoreStep": {
+      "type": "object",
+      "default": {
+        "$type": "Core.Entities.Configs.Steps.CacheStoreConfiguration, Core",
+        "Id": "",
+        "Key": "",
+        "AllowOverwrite": "",
+        "Template": ""
+      },
+      "description": "Store a model / response in the cache",
+      "properties": {
+        "$type": {
+          "enum": [
+            "Core.Entities.Configs.Steps.CacheStoreConfiguration, Core"
+          ]
+        },
+        "Id": {
+          "type": "string"
+        },
+        "Key": {
+          "type": "string"
+        },
+        "AllowOverwrite": {
+          "type": "boolean"
+        },
+        "Template": {
+          "type": "string"
+        },
+        "SuccessCondition": {
+          "type": "string"
+        },
+        "StartCondition": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "$type",
+        "Id",
+        "Key",
+        "Template"
+      ]
+    },
+    "CacheLoadStep": {
+      "type": "object",
+      "default": {
+        "$type": "Core.Entities.Configs.Steps.CacheLoadConfiguration, Core",
+        "Id": "",
+        "Key": ""
+      },
+      "description": "Load a model / response from the cache",
+      "properties": {
+        "$type": {
+          "enum": [
+            "Core.Entities.Configs.Steps.CacheLoadConfiguration, Core"
+          ]
+        },
+        "Id": {
+          "type": "string"
+        },
+        "Key": {
+          "type": "string"
+        },
+        "SuccessCondition": {
+          "type": "string"
+        },
+        "StartCondition": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "$type",
+        "Id",
+        "Key"
       ]
     },
     "Response": {
