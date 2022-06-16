@@ -409,6 +409,9 @@
         },
         "StatusCode": {
           "type": ["number", "string"]
+        },
+        "OutputType": {
+          "$ref": "#/definitions/OutputType"
         }
       },
       "required": [
@@ -424,6 +427,17 @@
       "additionalProperties": {
         "type": "string"
       }
+    },
+    "OutputType": {
+      "type": "string",
+      "description": "The output type of the response. This adds the appropriate header automatically, but can be overridden.",
+      "default": "Json",
+      "enum": [
+        "Json",
+        "Xml",
+        "PlainText",
+        "BinaryFromBase64"
+      ]
     }
   }
 }
