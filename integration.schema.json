@@ -436,7 +436,7 @@
         "Json",
         "Xml",
         "PlainText",
-        "BinaryFromBase64"
+        "BinaryAsBase64"
       ]
     }
   }
