@@ -1,0 +1,50 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "description": "TextDelimitedReport Configuration",
+    "$comment": "Generated using https://dotnetfiddle.net/F6MveE ",
+    "type": "object",
+    "properties": {
+        "Delimiter": {
+            "type": "string"
+        },
+        "RowDefinitions": {
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/TextDelimitedRowDefinition"
+            },
+            "uniqueItems": true
+        }
+    },
+    "required": [
+        "Delimiter",
+        "RowDefinitions"
+    ],
+    "definitions": {
+        "TextDelimitedRowDefinition": {
+            "type": "object",
+            "properties": {
+                "RowIdentifier": {
+                    "type": "string"
+                },
+                "Columns": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "uniqueItems": true
+                },
+                "ModelPropertyName": {
+                    "type": "string"
+                },
+                "SkipFirstRow": {
+                    "type": "boolean"
+                }
+            },
+            "required": [
+                "RowIdentifier",
+                "Columns",
+                "ModelPropertyName"
+            ]
+        }
+    }
+}
