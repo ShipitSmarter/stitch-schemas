@@ -50,6 +50,10 @@
           "items": {
             "$ref": "#/definitions/AuthenticationMethod"
           }
+        }, 
+        "PreParser": {
+          "type": "object",
+          "$ref": "#/definitions/PreParser"
         }
       },
       "additionalProperties": false,
@@ -85,6 +89,23 @@
         "Description"
       ],
       "additionalProperties": false
+    },
+    "PreParser": {
+      "type": "object",
+      "properties": {
+        "TypeName": {
+          "enum": [
+            "TextDelimitedReport"
+          ]
+        },
+        "ConfigFilePath": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "TypeName",
+        "ConfigFilePath"
+      ]
     },
     "Steps": {
       "type": "array",
