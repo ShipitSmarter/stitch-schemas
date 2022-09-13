@@ -95,7 +95,8 @@
       "properties": {
         "TypeName": {
           "enum": [
-            "TextDelimitedReport"
+            "TextDelimitedReport",
+            "Csv"
           ]
         },
         "ConfigurationFilePath": {
