@@ -96,7 +96,8 @@
         "TypeName": {
           "enum": [
             "TextDelimitedReport",
-            "Csv"
+            "Csv",
+            "JsonWithSchema"
           ]
         },
         "ConfigurationFilePath": {
