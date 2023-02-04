@@ -1,0 +1,65 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "description": "WidthDelimitedReport Configuration",
+    "$comment": "Generated using https://dotnetfiddle.net/o3Svkg",
+    "type": "object",
+    "properties": {
+        "SkipFirstRow": {
+            "type": "boolean"
+        },
+        "SkipLastRow": {
+            "type": "boolean"
+        },
+        "RowDefinitions": {
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/WidthDelimitedRowDefinition"
+            }
+        }
+    },
+    "required": [
+        "RowDefinitions"
+    ],
+    "definitions": {
+        "WidthDelimitedRowDefinition": {
+            "type": "object",
+            "properties": {
+                "RowIdentifier": {
+                    "type": "string"
+                },
+                "ParentRowIdentifier": {
+                    "type": "string"
+                },
+                "ModelPropertyName": {
+                    "type":"string"
+                },
+                "Columns": {
+                    "type":"array",
+                    "items": {
+                        "$ref": "#/definitions/WidthDelimitedColumnDefinition"
+                    }
+                }
+            },
+            "required": [
+                "RowIdentifier",
+                "ModelPropertyName",
+                "Columns"
+            ]
+        },
+        "WidthDelimitedColumnDefinition": {
+            "type": "object",
+            "properties": {
+                "Name": {
+                    "type": "string"
+                },
+                "Width": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "Name",
+                "Width"
+            ]
+        }
+    }
+}
