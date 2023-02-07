@@ -13,6 +13,12 @@
         "SkipLastRow": {
             "type": "boolean"
         },
+        "SkipRowsWithIdentifiers": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
         "RowDefinitions": {
             "type": "array",
             "items": {
