@@ -4,22 +4,33 @@
     "$comment": "Generated using https://dotnetfiddle.net/o3Svkg",
     "type": "object",
     "properties": {
+        "$schema": {
+            "type": "string"
+        },
         "SkipFirstRow": {
             "type": "boolean"
         },
         "SkipLastRow": {
             "type": "boolean"
         },
+        "SkipRowsWithIdentifiers": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
         "RowDefinitions": {
             "type": "array",
             "items": {
                 "$ref": "#/definitions/WidthDelimitedRowDefinition"
-            }
+            },
+            "minItems": 1
         }
     },
     "required": [
         "RowDefinitions"
     ],
+    "additionalProperties": false,
     "definitions": {
         "WidthDelimitedRowDefinition": {
             "type": "object",
@@ -37,14 +48,16 @@
                     "type":"array",
                     "items": {
                         "$ref": "#/definitions/WidthDelimitedColumnDefinition"
-                    }
+                    },
+                    "minItems": 1
                 }
             },
             "required": [
                 "RowIdentifier",
                 "ModelPropertyName",
                 "Columns"
-            ]
+            ],
+            "additionalProperties": false
         },
         "WidthDelimitedColumnDefinition": {
             "type": "object",
@@ -59,7 +72,8 @@
             "required": [
                 "Name",
                 "Width"
-            ]
+            ],
+            "additionalProperties": false
         }
     }
 }
