@@ -23,7 +23,8 @@
             "type": "array",
             "items": {
                 "$ref": "#/definitions/WidthDelimitedRowDefinition"
-            }
+            },
+            "minItems": 1
         }
     },
     "required": [
@@ -47,7 +48,8 @@
                     "type":"array",
                     "items": {
                         "$ref": "#/definitions/WidthDelimitedColumnDefinition"
-                    }
+                    },
+                    "minItems": 1
                 }
             },
             "required": [
