@@ -4,6 +4,9 @@
     "$comment": "Generated using https://dotnetfiddle.net/o3Svkg",
     "type": "object",
     "properties": {
+        "$schema": {
+            "type": "string"
+        },
         "SkipFirstRow": {
             "type": "boolean"
         },
@@ -20,6 +23,7 @@
     "required": [
         "RowDefinitions"
     ],
+    "additionalProperties": false,
     "definitions": {
         "WidthDelimitedRowDefinition": {
             "type": "object",
@@ -44,7 +48,8 @@
                 "RowIdentifier",
                 "ModelPropertyName",
                 "Columns"
-            ]
+            ],
+            "additionalProperties": false
         },
         "WidthDelimitedColumnDefinition": {
             "type": "object",
@@ -59,7 +64,8 @@
             "required": [
                 "Name",
                 "Width"
-            ]
+            ],
+            "additionalProperties": false
         }
     }
 }
