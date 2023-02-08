@@ -1,7 +1,7 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
-    "description": "WidthDelimitedReport Configuration",
-    "$comment": "Generated using https://dotnetfiddle.net/o3Svkg",
+    "description": "FixedWidthReport Configuration",
+    "$comment": "Generated using https://dotnetfiddle.net/7JSsyx",
     "type": "object",
     "properties": {
         "$schema": {
@@ -19,47 +19,57 @@
                 "type": "string"
             }
         },
+        "IfNoParent": {
+            "type": "string",
+            "enum": [
+              "Error",
+              "Root",
+              "Skip"
+            ]
+          },
         "RowDefinitions": {
-            "type": "array",
-            "items": {
-                "$ref": "#/definitions/WidthDelimitedRowDefinition"
-            },
-            "minItems": 1
+            "type": "object",
+            "additionalProperties": {
+                "$ref": "#/definitions/FixedWidthRowDefinition"
+            }
         }
     },
     "required": [
-        "RowDefinitions"
+        "RowDefinitions",
+        "IfNoParent"
     ],
     "additionalProperties": false,
     "definitions": {
-        "WidthDelimitedRowDefinition": {
+        "FixedWidthRowDefinition": {
             "type": "object",
             "properties": {
                 "RowIdentifier": {
                     "type": "string"
                 },
-                "ParentRowIdentifier": {
-                    "type": "string"
-                },
-                "ModelPropertyName": {
-                    "type":"string"
-                },
                 "Columns": {
                     "type":"array",
                     "items": {
-                        "$ref": "#/definitions/WidthDelimitedColumnDefinition"
+                        "$ref": "#/definitions/FixedWidthColumnDefinition"
                     },
                     "minItems": 1
+                },
+                "Children": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "additionalProperties": {
+                        "$ref": "#/definitions/FixedWidthRowDefinition"
+                    }
                 }
             },
             "required": [
                 "RowIdentifier",
-                "ModelPropertyName",
                 "Columns"
             ],
             "additionalProperties": false
         },
-        "WidthDelimitedColumnDefinition": {
+        "FixedWidthColumnDefinition": {
             "type": "object",
             "properties": {
                 "Name": {
