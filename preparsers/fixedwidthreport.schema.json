@@ -1,6 +1,6 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
-    "description": "WidthDelimitedReport Configuration",
+    "description": "FixedWidthReport Configuration",
     "$comment": "Generated using https://dotnetfiddle.net/7JSsyx",
     "type": "object",
     "properties": {
@@ -30,7 +30,7 @@
         "RowDefinitions": {
             "type": "object",
             "additionalProperties": {
-                "$ref": "#/definitions/WidthDelimitedRowDefinition"
+                "$ref": "#/definitions/FixedWidthRowDefinition"
             }
         }
     },
@@ -40,7 +40,7 @@
     ],
     "additionalProperties": false,
     "definitions": {
-        "WidthDelimitedRowDefinition": {
+        "FixedWidthRowDefinition": {
             "type": "object",
             "properties": {
                 "RowIdentifier": {
@@ -49,7 +49,7 @@
                 "Columns": {
                     "type":"array",
                     "items": {
-                        "$ref": "#/definitions/WidthDelimitedColumnDefinition"
+                        "$ref": "#/definitions/FixedWidthColumnDefinition"
                     },
                     "minItems": 1
                 },
@@ -59,7 +59,7 @@
                         "null"
                     ],
                     "additionalProperties": {
-                        "$ref": "#/definitions/WidthDelimitedRowDefinition"
+                        "$ref": "#/definitions/FixedWidthRowDefinition"
                     }
                 }
             },
@@ -69,7 +69,7 @@
             ],
             "additionalProperties": false
         },
-        "WidthDelimitedColumnDefinition": {
+        "FixedWidthColumnDefinition": {
             "type": "object",
             "properties": {
                 "Name": {
