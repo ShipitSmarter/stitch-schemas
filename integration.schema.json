@@ -95,7 +95,7 @@
       "properties": {
         "TypeName": {
           "enum": [
-            "WidthDelimitedReport",
+            "FixedWidthReport",
             "TextDelimitedReport",
             "Csv",
             "JsonWithSchema"
