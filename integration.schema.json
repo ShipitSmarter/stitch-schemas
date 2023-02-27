@@ -337,9 +337,6 @@
         "Template": {
           "type": "string"
         },
-        "EncodingName": {
-          "$ref": "#/definitions/EncodingName"
-        },
         "SuccessCondition": {
           "type": "string"
         },
@@ -383,9 +380,6 @@
         },
         "Template": {
           "type": "string"
-        },
-        "EncodingName": {
-          "$ref": "#/definitions/EncodingName"
         },
         "SuccessCondition": {
           "type": "string"
