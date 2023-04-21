@@ -119,6 +119,9 @@
             "$ref": "#/definitions/HttpStep"
           },
           {
+            "$ref": "#/definitions/HttpMultipartStep"
+          },
+          {
             "$ref": "#/definitions/SftpStep"
           },
           {
@@ -193,6 +196,111 @@
         "Template",
         "Method",
         "Url"
+      ]
+    },
+    "HttpMultipartStep": {
+      "type": "object",
+      "default": {
+        "$type": "Core.Entities.Configs.Steps.HttpMultipartConfiguration, Core",
+        "Id": "",
+        "Method": "POST",
+        "Url": "",
+        "Parts": [
+          {
+            "Template": ""
+          }          
+        ]
+      },
+      "description": "Make a web-request using multipart/form-data",
+      "properties": {
+        "$type": {
+          "enum": [
+            "Core.Entities.Configs.Steps.HttpMultipartConfiguration, Core"
+          ]
+        },
+        "Id": {
+          "type": "string"
+        },
+        "SuccessCondition": {
+          "type": "string"
+        },
+        "StartCondition": {
+          "type": "string"
+        },
+        "Method": {
+          "enum": [
+            "GET",
+            "POST",
+            "PUT",
+            "DELETE",
+            "PATCH",
+            "HEAD",
+            "OPTIONS",
+            "TRACE"
+          ]
+        },
+        "Headers": {
+          "$ref": "#/definitions/Headers"
+        },
+        "Url": {
+          "type": "string"
+        },
+        "Parts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MultipartContentItem"
+          },
+          "uniqueItems": true,
+          "minItems": 1          
+        }
+      },
+      "required": [
+        "$type",
+        "Id",
+        "Method",
+        "Url",
+        "Parts"
+      ]
+    },
+    "MultipartContentItem": {
+      "type": "object",
+      "default": {
+        "Template": ""        
+      },
+      "examples": [
+        {
+          "Template": "my-name",
+          "Headers": {
+            "Content-Disposition": "form-data; name=\"username\""
+          }
+        },
+        {
+          "Template": "base64content",
+          "Headers": {
+            "Content-Disposition": "attachment; filename=\"somefile.pdf\"",
+            "Content-Type": "application/pdf"
+          },
+          "OutputBase64AsBinary": true
+        }
+      ],
+      "properties": {
+        "Template": {
+          "type": "string"
+        },
+        "Headers": {
+          "$ref": "#/definitions/Headers",
+          "description": "Use Content-Disposition header to set FormData, https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Disposition"
+        },
+        "EncodingName": {
+          "$ref": "#/definitions/EncodingName"
+        },
+        "OutputBase64AsBinary": {
+          "type": "boolean",
+          "description": "When the Template is a Base64 string and you want to output binary (example PDF)"
+        }
+      },
+      "required": [
+        "Template"
       ]
     },
     "SftpStep": {
