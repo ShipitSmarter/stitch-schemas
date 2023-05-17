@@ -1,0 +1,730 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "imports": {
+      "$ref": "#/definitions/imports"
+    },
+    "translations": {
+      "$ref": "#/definitions/translations"
+    },
+    "request": {
+      "$ref": "#/definitions/request"
+    },
+    "steps": {
+      "$ref": "#/definitions/steps"
+    },
+    "response": {
+      "$ref": "#/definitions/response"
+    }
+  },
+  "required": [
+    "response"
+  ],
+  "definitions": {
+    "imports": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "translations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "request": {
+      "type": "object",
+      "properties": {
+        "method": {
+          "enum": [
+            "POST",
+            "GET"
+          ]
+        },
+        "authenticationMethods": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/authenticationMethod"
+          }
+        }, 
+        "preParser": {
+          "type": "object",
+          "$ref": "#/definitions/preParser"
+        }
+      },
+      "additionalProperties": false,
+      "default": {
+        "method": "POST",
+        "authenticationMethods": []
+      },
+      "required": [
+        "authenticationMethods"
+      ]
+    },
+    "authenticationMethod": {
+      "type": "object",
+      "default": {
+        "id": "",
+        "key": "",
+        "description": ""
+      },
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "key": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "key",
+        "description"
+      ],
+      "additionalProperties": false
+    },
+    "preParser": {
+      "type": "object",
+      "properties": {
+        "typeName": {
+          "enum": [
+            "fixedWidthReport",
+            "textDelimitedReport",
+            "csv",
+            "jsonWithSchema"
+          ]
+        },
+        "configurationFilePath": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "typeName",
+        "configurationFilePath"
+      ]
+    },
+    "steps": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "anyOf": [
+          {
+            "$ref": "#/definitions/httpStep"
+          },
+          {
+            "$ref": "#/definitions/httpMultipartStep"
+          },
+          {
+            "$ref": "#/definitions/sftpStep"
+          },
+          {
+            "$ref": "#/definitions/renderTemplateStep"
+          },
+          {
+            "$ref": "#/definitions/emailStep"
+          },
+          {
+            "$ref": "#/definitions/cacheStoreStep"
+          },
+          {
+            "$ref": "#/definitions/cacheLoadStep"
+          }
+        ]
+      },
+      "minItems": 0
+    },
+    "httpStep": {
+      "type": "object",
+      "default": {
+        "$type": "Core.Entities.Configs.Steps.HttpConfiguration, Core",
+        "id": "",
+        "template": "",
+        "method": "POST",
+        "url": ""
+      },
+      "description": "Make a web-request",
+      "properties": {
+        "$type": {
+          "enum": [
+            "Core.Entities.Configs.Steps.HttpConfiguration, Core"
+          ]
+        },
+        "id": {
+          "type": "string"
+        },
+        "template": {
+          "type": "string"
+        },
+        "encodingName": {
+          "$ref": "#/definitions/encodingName"
+        },
+        "successCondition": {
+          "type": "string"
+        },
+        "startCondition": {
+          "type": "string"
+        },
+        "method": {
+          "enum": [
+            "GET",
+            "POST",
+            "PUT",
+            "DELETE",
+            "PATCH",
+            "HEAD",
+            "OPTIONS",
+            "TRACE"
+          ]
+        },
+        "headers": {
+          "$ref": "#/definitions/headers"
+        },
+        "url": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "$type",
+        "id",
+        "template",
+        "method",
+        "url"
+      ]
+    },
+    "httpMultipartStep": {
+      "type": "object",
+      "default": {
+        "$type": "Core.Entities.Configs.Steps.HttpMultipartConfiguration, Core",
+        "id": "",
+        "method": "POST",
+        "url": "",
+        "parts": [
+          {
+            "template": ""
+          }          
+        ]
+      },
+      "description": "Make a web-request using multipart/form-data",
+      "properties": {
+        "$type": {
+          "enum": [
+            "Core.Entities.Configs.Steps.HttpMultipartConfiguration, Core"
+          ]
+        },
+        "id": {
+          "type": "string"
+        },
+        "successCondition": {
+          "type": "string"
+        },
+        "startCondition": {
+          "type": "string"
+        },
+        "method": {
+          "enum": [
+            "GET",
+            "POST",
+            "PUT",
+            "DELETE",
+            "PATCH",
+            "HEAD",
+            "OPTIONS",
+            "TRACE"
+          ]
+        },
+        "headers": {
+          "$ref": "#/definitions/headers"
+        },
+        "url": {
+          "type": "string"
+        },
+        "parts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/multipartContentItem"
+          },
+          "uniqueItems": true,
+          "minItems": 1          
+        }
+      },
+      "required": [
+        "$type",
+        "id",
+        "method",
+        "url",
+        "parts"
+      ]
+    },
+    "multipartContentItem": {
+      "type": "object",
+      "default": {
+        "template": ""        
+      },
+      "examples": [
+        {
+          "template": "my-name",
+          "headers": {
+            "content-Disposition": "form-data; name=\"username\""
+          }
+        },
+        {
+          "template": "base64content",
+          "headers": {
+            "content-Disposition": "attachment; filename=\"somefile.pdf\"",
+            "content-Type": "application/pdf"
+          },
+          "outputBase64AsBinary": true
+        }
+      ],
+      "properties": {
+        "template": {
+          "type": "string"
+        },
+        "headers": {
+          "$ref": "#/definitions/headers",
+          "description": "Use Content-Disposition header to set FormData, https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Disposition"
+        },
+        "encodingName": {
+          "$ref": "#/definitions/encodingName"
+        },
+        "outputBase64AsBinary": {
+          "type": "boolean",
+          "description": "When the Template is a Base64 string and you want to output binary (example PDF)"
+        }
+      },
+      "required": [
+        "template"
+      ]
+    },
+    "sftpStep": {
+      "type": "object",
+      "default": {
+        "$type": "Core.Entities.Configs.Steps.SftpConfiguration, Core",
+        "id": "",
+        "template": "",
+        "host": "",
+        "port": 21,
+        "username": "",
+        "password": "",
+        "filename": ""
+      },
+      "description": "Put file on FTP location",
+      "properties": {
+        "$type": {
+          "enum": [
+            "Core.Entities.Configs.Steps.SftpConfiguration, Core"
+          ]
+        },
+        "id": {
+          "type": "string"
+        },
+        "template": {
+          "type": "string"
+        },
+        "encodingName": {
+          "$ref": "#/definitions/encodingName"
+        },
+        "successCondition": {
+          "type": "string"
+        },
+        "startCondition": {
+          "type": "string"
+        },
+        "host": {
+          "type": "string"
+        },
+        "port": {
+          "type": "number"
+        },
+        "username": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "path": {
+          "type": "string"
+        },
+        "filename": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "$type",
+        "id",
+        "template",
+        "host",
+        "port",
+        "username",
+        "password",
+        "filename"
+      ]
+    },
+    "renderTemplateStep": {
+      "type": "object",
+      "default": {
+        "$type": "Core.Entities.Configs.Steps.RenderTemplateConfiguration, Core",
+        "id": "",
+        "template": "",
+        "additionalFiles": []
+      },
+      "description": "Render a template",
+      "properties": {
+        "$type": {
+          "enum": [
+            "Core.Entities.Configs.Steps.RenderTemplateConfiguration, Core"
+          ]
+        },
+        "id": {
+          "type": "string"
+        },
+        "template": {
+          "type": "string"
+        },
+        "encodingName": {
+          "$ref": "#/definitions/encodingName"
+        },
+        "successCondition": {
+          "type": "string"
+        },
+        "startCondition": {
+          "type": "string"
+        },
+        "additionalFiles": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "$type",
+        "id",
+        "template"
+      ]
+    },
+    "emailStep": {
+      "type": "object",
+      "default": {
+        "$type": "Core.Entities.Configs.Steps.MailConfiguration, Core",
+        "id": "",
+        "from": "",
+        "to": [],
+        "subject": "",
+        "template": ""
+      },
+      "description": "Send an e-mail",
+      "properties": {
+        "$type": {
+          "enum": [
+            "Core.Entities.Configs.Steps.MailConfiguration, Core"
+          ]
+        },
+        "id": {
+          "type": "string"
+        },
+        "from": {
+          "type": "string"
+        },
+        "to": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "subject": {
+          "type": "string"
+        },
+        "template": {
+          "type": "string"
+        },
+        "successCondition": {
+          "type": "string"
+        },
+        "startCondition": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "$type",
+        "id",
+        "from",
+        "to",
+        "subject",
+        "template"
+      ]
+    },
+    "cacheStoreStep": {
+      "type": "object",
+      "default": {
+        "$type": "Core.Entities.Configs.Steps.CacheStoreConfiguration, Core",
+        "id": "",
+        "key": "",
+        "allowOverwrite": "",
+        "template": ""
+      },
+      "description": "Store a model / response in the cache",
+      "properties": {
+        "$type": {
+          "enum": [
+            "Core.Entities.Configs.Steps.CacheStoreConfiguration, Core"
+          ]
+        },
+        "id": {
+          "type": "string"
+        },
+        "key": {
+          "type": "string"
+        },
+        "allowOverwrite": {
+          "type": "boolean"
+        },
+        "template": {
+          "type": "string"
+        },
+        "successCondition": {
+          "type": "string"
+        },
+        "startCondition": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "$type",
+        "id",
+        "key",
+        "template"
+      ]
+    },
+    "cacheLoadStep": {
+      "type": "object",
+      "default": {
+        "$type": "Core.Entities.Configs.Steps.CacheLoadConfiguration, Core",
+        "id": "",
+        "key": ""
+      },
+      "description": "Load a model / response from the cache",
+      "properties": {
+        "$type": {
+          "enum": [
+            "Core.Entities.Configs.Steps.CacheLoadConfiguration, Core"
+          ]
+        },
+        "id": {
+          "type": "string"
+        },
+        "key": {
+          "type": "string"
+        },
+        "successCondition": {
+          "type": "string"
+        },
+        "startCondition": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "$type",
+        "id",
+        "key"
+      ]
+    },
+    "response": {
+      "type": "object",
+      "default": {
+        "body": "{}"
+      },
+      "properties": {
+        "body": {
+          "type": "string"
+        },
+        "headers": {
+          "$ref": "#/definitions/headers"
+        },
+        "statusCode": {
+          "type": ["number", "string"]
+        },
+        "outputType": {
+          "$ref": "#/definitions/outputType"
+        }
+      },
+      "required": [
+        "body"
+      ],
+      "additionalProperties": false
+    },
+    "headers": {
+      "type": "object",
+      "default": {
+        "HEADER_NAME": "VALUE"
+      },
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "outputType": {
+      "type": "string",
+      "description": "The output type of the response. This adds the appropriate header automatically, but can be overridden.",
+      "default": "Json",
+      "enum": [
+        "Json",
+        "Xml",
+        "PlainText",
+        "BinaryAsBase64"
+      ]
+    },
+    "encodingName": {
+      "type:": "string",
+      "description": "The output encoding name to use. Based on https://learn.microsoft.com/en-us/dotnet/api/system.text.encodinginfo.getencoding?view=net-7.0",
+      "default": "utf-8",
+      "enum": [
+        "IBM037",
+        "IBM437",
+        "IBM500",
+        "ASMO-708",
+        "DOS-720",
+        "ibm737",
+        "ibm775",
+        "ibm850",
+        "ibm852",
+        "IBM855",
+        "ibm857",
+        "IBM00858",
+        "IBM860",
+        "ibm861",
+        "DOS-862",
+        "IBM863",
+        "IBM864",
+        "IBM865",
+        "cp866",
+        "ibm869",
+        "IBM870",
+        "windows-874",
+        "cp875",
+        "shift_jis",
+        "gb2312",
+        "ks_c_5601-1987",
+        "big5",
+        "IBM1026",
+        "IBM01047",
+        "IBM01140",
+        "IBM01141",
+        "IBM01142",
+        "IBM01143",
+        "IBM01144",
+        "IBM01145",
+        "IBM01146",
+        "IBM01147",
+        "IBM01148",
+        "IBM01149",
+        "utf-16",
+        "utf-16BE",
+        "windows-1250",
+        "windows-1251",
+        "Windows-1252",
+        "windows-1253",
+        "windows-1254",
+        "windows-1255",
+        "windows-1256",
+        "windows-1257",
+        "windows-1258",
+        "Johab",
+        "macintosh",
+        "x-mac-japanese",
+        "x-mac-chinesetrad",
+        "x-mac-korean",
+        "x-mac-arabic",
+        "x-mac-hebrew",
+        "x-mac-greek",
+        "x-mac-cyrillic",
+        "x-mac-chinesesimp",
+        "x-mac-romanian",
+        "x-mac-ukrainian",
+        "x-mac-thai",
+        "x-mac-ce",
+        "x-mac-icelandic",
+        "x-mac-turkish",
+        "x-mac-croatian",
+        "utf-32",
+        "utf-32BE",
+        "x-Chinese-CNS",
+        "x-cp20001",
+        "x-Chinese-Eten",
+        "x-cp20003",
+        "x-cp20004",
+        "x-cp20005",
+        "x-IA5",
+        "x-IA5-German",
+        "x-IA5-Swedish",
+        "x-IA5-Norwegian",
+        "us-ascii",
+        "x-cp20261",
+        "x-cp20269",
+        "IBM273",
+        "IBM277",
+        "IBM278",
+        "IBM280",
+        "IBM284",
+        "IBM285",
+        "IBM290",
+        "IBM297",
+        "IBM420",
+        "IBM423",
+        "IBM424",
+        "x-EBCDIC-KoreanExtended",
+        "IBM-Thai",
+        "koi8-r",
+        "IBM871",
+        "IBM880",
+        "IBM905",
+        "IBM00924",
+        "EUC-JP",
+        "x-cp20936",
+        "x-cp20949",
+        "cp1025",
+        "koi8-u",
+        "iso-8859-1",
+        "iso-8859-2",
+        "iso-8859-3",
+        "iso-8859-4",
+        "iso-8859-5",
+        "iso-8859-6",
+        "iso-8859-7",
+        "iso-8859-8",
+        "iso-8859-9",
+        "iso-8859-13",
+        "iso-8859-15",
+        "x-Europa",
+        "iso-8859-8-i",
+        "csISO2022JP",
+        "iso-2022-jp",
+        "iso-2022-kr",
+        "x-cp50227",
+        "euc-jp",
+        "EUC-CN",
+        "euc-kr",
+        "hz-gb-2312",
+        "GB18030",
+        "x-iscii-de",
+        "x-iscii-be",
+        "x-iscii-ta",
+        "x-iscii-te",
+        "x-iscii-as",
+        "x-iscii-or",
+        "x-iscii-ka",
+        "x-iscii-ma",
+        "x-iscii-gu",
+        "x-iscii-pa",
+        "utf-7",
+        "utf-8"
+      ]
+    }
+  }
+}
