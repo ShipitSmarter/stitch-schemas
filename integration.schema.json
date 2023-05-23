@@ -135,10 +135,77 @@
           },
           {
             "$ref": "#/definitions/CacheLoadStep"
+          },
+          {
+            "$ref": "#/definitions/LoopStep"
           }
         ]
       },
       "minItems": 0
+    },
+    "LoopStep": {
+      "type": "object",
+      "default": {
+        "$type": "Core.Entities.Configs.Steps.LoopConfiguration, Core",
+        "Id": "",
+        "IterationCount": "2",
+        "Step": {}
+      },
+      "description": "Loop a certain amount of times",
+      "properties": {
+        "$type": {
+          "enum": [
+            "Core.Entities.Configs.Steps.LoopConfiguration, Core"
+          ]
+        },
+        "Id": {
+          "type": "string"
+        },
+        "IterationCount": {
+          "type": "string"
+        },
+        "ContinueOnError": {
+          "type": "boolean"
+        },
+        "Step": {
+          "type": "object",
+          "oneOf": [
+            {
+              "$ref": "#/definitions/HttpStep"
+            },
+            {
+              "$ref": "#/definitions/HttpMultipartStep"
+            },
+            {
+              "$ref": "#/definitions/SftpStep"
+            },
+            {
+              "$ref": "#/definitions/RenderTemplateStep"
+            },
+            {
+              "$ref": "#/definitions/EmailStep"
+            },
+            {
+              "$ref": "#/definitions/CacheStoreStep"
+            },
+            {
+              "$ref": "#/definitions/CacheLoadStep"
+            }
+          ]
+        },
+        "SuccessCondition": {
+          "type": "string"
+        },
+        "StartCondition": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "$type",
+        "Id",
+        "IterationCount",
+        "Step"
+      ]
     },
     "HttpStep": {
       "type": "object",
