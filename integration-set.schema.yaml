@@ -1,0 +1,852 @@
+# yaml-language-server: $schema=http://json-schema.org/draft-04/schema
+type: object
+required: 
+  - reference
+  - carrier
+  - integrationPaths
+  - serviceLevels
+additionalProperties: false
+properties:
+  reference:
+    type: string
+  label:
+    type: string
+  description:
+    type: string
+  onboarding:
+    type: object
+    additionalProperties: false
+    properties:
+      helpText:
+        type: string
+  carrier:
+    type: object
+    required:
+     - reference
+     - description
+    additionalProperties: false
+    properties:
+      reference:  # use reference instead of name as reference is required to use in generating test shipments
+        type: string
+      description:
+        type: string
+      logo:
+        type: string
+  integrationPaths:
+    type: object
+    required:
+    - ordering
+    additionalProperties: false
+    properties:
+      ordering:
+        type: array
+        items:
+          type: object
+          required:
+            - path
+          additionalProperties: false
+          properties:
+            path:
+              type: string
+            validationPath:
+              type: string
+      pickup:
+        type: array
+        items:
+          type: object
+          required:
+            - path
+          additionalProperties: false
+          properties:
+            path:
+              type: string
+            validationPath:
+              type: string
+      pickupCancellation:
+        type: array
+        items:
+          type: object
+          required:
+            - path
+          additionalProperties: false
+          properties:
+            path:
+              type: string
+            validationPath:
+              type: string
+      tracking:
+        type: array
+        items:
+          type: object
+          required:
+            - path
+          additionalProperties: false
+          properties:
+            path:
+              type: string
+            validationPath:
+              type: string
+      trackingLink:
+        type: array
+        items:
+          type: object
+          required:
+            - path
+          additionalProperties: false
+          properties:
+            path:
+              type: string
+            validationPath:
+              type: string
+      orderingCancellation:
+        type: array
+        items:
+          type: object
+          required:
+            - path
+          additionalProperties: false
+          properties:
+            path:
+              type: string
+            validationPath:
+              type: string
+      pricing:
+        type: array
+        items:
+          type: object
+          required:
+            - path
+          additionalProperties: false
+          properties:
+            path:
+              type: string
+            validationPath:
+              type: string
+      manifesting:
+        type: array
+        items:
+          type: object
+          required:
+            - path
+          additionalProperties: false
+          properties:
+            path:
+              type: string
+            validationPath:
+              type: string
+  serviceLevels:
+    type: array    
+    items:
+      type: object
+      additionalProperties: false
+      required:
+        - reference
+        - label
+        - definition
+      properties:
+        reference:
+          type: string
+        label: 
+          type: string        
+        definition: # order in which objects and enums within objects are placed, determine sequence in which they will be displayed in the UI
+          type: object
+          additionalProperties: false
+          properties:
+            general:
+              type: array
+              items:
+                type: object
+                additionalProperties: false
+                properties:
+                  reference:
+                    type: string
+                    enum:
+                    - cashOnDelivery
+                    - constructionSite
+                    - customClearance
+                    - deliveryInside
+                    - allowDeliveryToNeighbour
+                    - appointmentForDelivery
+                    - dryIceAudit
+                    - fragile
+                    - holdForPickup
+                    - containsLithiumBatteries
+                    - neutralDelivery
+                    - insuredValue
+                    - returns
+                    - liftGate
+                    - lockerDelivery
+                    - photoAtDelivery
+                    - residentialDelivery
+                    - scannedPodRequested
+                    - saturdayDelivery
+                    - smallVehicle
+                    - splitDutiesFromVat
+                    - signatureForDelivery
+                  lanes:
+                    type: array
+                required:
+                - reference
+            transitTimes:
+              type: array
+              items:
+                type: object
+                additionalProperties: false
+                properties:
+                  reference:
+                    type: string
+                    enum:
+                    - nextDay
+                    - todayBramsSpecialOption
+                    - sameDay
+                    - 1-5Days
+                    - 2-3Days
+                    - pre-0800
+                    - pre-0900
+                    - pre-1000
+                    - pre-1030
+                    - pre-1200
+                    - pre-1600
+                    - pre-1800
+                    - fixedday
+                    - fixedTimeWindow
+                    - fixed-0800
+                    - fixed-1000
+                    - fixed-1200
+                  lanes:
+                    type: array
+                required:
+                - reference
+            modeOfTransport:
+              type: array
+              items:
+                type: object
+                additionalProperties: false
+                properties:
+                  reference:
+                    type: string
+                    enum:
+                    - express
+                    - road
+                    - air
+                    - ocean
+                    - rail
+                  lanes:
+                    type: array
+                required:
+                - reference
+            dangerousGoods:
+              items:
+                type: object
+                additionalProperties: false
+                properties:
+                  reference:
+                    type: string
+                    enum:
+                    - limitedQuantities
+                    - exceptedQuantities
+                    - lithiumBatteries
+                    - dryIce
+                    - fullyRegulated
+                    - radioActiveMaterial
+                  lanes:
+                    type: array
+                required:
+                - reference
+            paperless:
+              items:
+                type: object
+                additionalProperties: false
+                properties:
+                  reference:
+                    type: string
+                    enum:
+                    - pdfUpload
+                    - usingData
+                  lanes:
+                    type: array
+                required:
+                - reference
+            preAdviceDelivery:
+              items:
+                type: object
+                additionalProperties: false
+                properties:
+                  reference:
+                    type: string
+                    enum:
+                    - email
+                    - sms
+                    - phoneCallByPlanner
+                    - phoneCallByDriver
+                  lanes:
+                    type: array
+                required:
+                - reference
+            temperatureControlled:
+              items:
+                type: object
+                additionalProperties: false
+                properties:
+                  reference: 
+                    type: string
+                    enum: # see EU Pharma in https://www.gmp-compliance.org/gmp-news/ambient-room-temperature-cold-what-is-what#:~:text=Cool%3A%20Store%20between%208%C2%B0,significant%20variation%20in%20ambient%20temperatures.
+                    - ambient
+                    - cooled
+                    - frozen
+                  lanes:
+                    type: array
+                required:
+                - reference
+        lanes:
+          type: array
+          items:
+            type: string
+  laneDefinitions:
+    type: array
+    items:
+      type: object
+      required:
+        - reference
+        - fromRegion
+        - toRegion
+      additionalProperties: false
+      properties:
+        reference: 
+          type: string
+        fromRegion:
+          type: array
+          items:
+            type: object
+            required:
+              - country
+            additionalProperties: false
+            properties:
+              country: 
+                type: string
+                enum: 
+                - AD
+                - AE
+                - AF
+                - AG
+                - AI
+                - AL
+                - AM
+                - AN
+                - AO
+                - AQ
+                - AR
+                - AS
+                - AT
+                - AU
+                - AW
+                - AX
+                - AZ
+                - BA
+                - BB
+                - BD
+                - BE
+                - BF
+                - BG
+                - BH
+                - BI
+                - BJ
+                - BL
+                - BM
+                - BN
+                - BO
+                - BQ
+                - BR
+                - BS
+                - BT
+                - BV
+                - BW
+                - BY
+                - BZ
+                - CA
+                - CC
+                - CD
+                - CF
+                - CG
+                - CH
+                - CI
+                - CK
+                - CL
+                - CM
+                - CN
+                - CO
+                - CR
+                - CS
+                - CU
+                - CV
+                - CW
+                - CX
+                - CY
+                - CZ
+                - DE
+                - DJ
+                - DK
+                - DM
+                - DO
+                - DZ
+                - EC
+                - EE
+                - EG
+                - EH
+                - ER
+                - ES
+                - ET
+                - FI
+                - FJ
+                - FK
+                - FM
+                - FO
+                - FR
+                - GA
+                - GB
+                - GD
+                - GE
+                - GF
+                - GG
+                - GH
+                - GI
+                - GL
+                - GM
+                - GN
+                - GP
+                - GQ
+                - GR
+                - GS
+                - GT
+                - GU
+                - GW
+                - GY
+                - HK
+                - HM
+                - HN
+                - HR
+                - HT
+                - HU
+                - ID
+                - IE
+                - IL
+                - IM
+                - IN
+                - IO
+                - IQ
+                - IR
+                - IS
+                - IT
+                - JE
+                - JM
+                - JO
+                - JP
+                - KE
+                - KG
+                - KH
+                - KI
+                - KM
+                - KN
+                - KP
+                - KR
+                - KW
+                - KY
+                - KZ
+                - LA
+                - LB
+                - LC
+                - LI
+                - LK
+                - LR
+                - LS
+                - LT
+                - LU
+                - LV
+                - LY
+                - MA
+                - MC
+                - MD
+                - ME
+                - MF
+                - MG
+                - MH
+                - MK
+                - ML
+                - MM
+                - MN
+                - MO
+                - MP
+                - MQ
+                - MR
+                - MS
+                - MT
+                - MU
+                - MV
+                - MW
+                - MX
+                - MY
+                - MZ
+                - NA
+                - NC
+                - NE
+                - NF
+                - NG
+                - NI
+                - NL
+                - NO
+                - NP
+                - NR
+                - NU
+                - NZ
+                - OM
+                - PA
+                - PE
+                - PF
+                - PG
+                - PH
+                - PK
+                - PL
+                - PM
+                - PN
+                - PR
+                - PS
+                - PT
+                - PW
+                - PY
+                - QA
+                - RE
+                - RO
+                - RS
+                - RU
+                - RW
+                - SA
+                - SB
+                - SC
+                - SD
+                - SE
+                - SG
+                - SH
+                - SI
+                - SJ
+                - SK
+                - SL
+                - SM
+                - SN
+                - SO
+                - SR
+                - SS
+                - ST
+                - SV
+                - SX
+                - SY
+                - SZ
+                - TC
+                - TD
+                - TF
+                - TG
+                - TH
+                - TJ
+                - TK
+                - TL
+                - TM
+                - TN
+                - TO
+                - TP
+                - TR
+                - TT
+                - TV
+                - TW
+                - TZ
+                - UA
+                - UG
+                - UM
+                - US
+                - UY
+                - UZ
+                - VA
+                - VC
+                - VE
+                - VG
+                - VI
+                - VN
+                - VU
+                - WF
+                - WS
+                - YE
+                - YT
+                - YU
+                - ZA
+                - ZM
+                - ZW
+              postcodeStart:
+                type: string
+              postcodeEnd:
+                type: string
+        toRegion:
+          type: array
+          items:
+            type: object
+            required:
+              - country
+            additionalProperties: false
+            properties:
+              country: 
+                type: string
+                enum:
+                - AD
+                - AE
+                - AF
+                - AG
+                - AI
+                - AL
+                - AM
+                - AN
+                - AO
+                - AQ
+                - AR
+                - AS
+                - AT
+                - AU
+                - AW
+                - AX
+                - AZ
+                - BA
+                - BB
+                - BD
+                - BE
+                - BF
+                - BG
+                - BH
+                - BI
+                - BJ
+                - BL
+                - BM
+                - BN
+                - BO
+                - BQ
+                - BR
+                - BS
+                - BT
+                - BV
+                - BW
+                - BY
+                - BZ
+                - CA
+                - CC
+                - CD
+                - CF
+                - CG
+                - CH
+                - CI
+                - CK
+                - CL
+                - CM
+                - CN
+                - CO
+                - CR
+                - CS
+                - CU
+                - CV
+                - CW
+                - CX
+                - CY
+                - CZ
+                - DE
+                - DJ
+                - DK
+                - DM
+                - DO
+                - DZ
+                - EC
+                - EE
+                - EG
+                - EH
+                - ER
+                - ES
+                - ET
+                - FI
+                - FJ
+                - FK
+                - FM
+                - FO
+                - FR
+                - GA
+                - GB
+                - GD
+                - GE
+                - GF
+                - GG
+                - GH
+                - GI
+                - GL
+                - GM
+                - GN
+                - GP
+                - GQ
+                - GR
+                - GS
+                - GT
+                - GU
+                - GW
+                - GY
+                - HK
+                - HM
+                - HN
+                - HR
+                - HT
+                - HU
+                - ID
+                - IE
+                - IL
+                - IM
+                - IN
+                - IO
+                - IQ
+                - IR
+                - IS
+                - IT
+                - JE
+                - JM
+                - JO
+                - JP
+                - KE
+                - KG
+                - KH
+                - KI
+                - KM
+                - KN
+                - KP
+                - KR
+                - KW
+                - KY
+                - KZ
+                - LA
+                - LB
+                - LC
+                - LI
+                - LK
+                - LR
+                - LS
+                - LT
+                - LU
+                - LV
+                - LY
+                - MA
+                - MC
+                - MD
+                - ME
+                - MF
+                - MG
+                - MH
+                - MK
+                - ML
+                - MM
+                - MN
+                - MO
+                - MP
+                - MQ
+                - MR
+                - MS
+                - MT
+                - MU
+                - MV
+                - MW
+                - MX
+                - MY
+                - MZ
+                - NA
+                - NC
+                - NE
+                - NF
+                - NG
+                - NI
+                - NL
+                - "NO"
+                - NP
+                - NR
+                - NU
+                - NZ
+                - OM
+                - PA
+                - PE
+                - PF
+                - PG
+                - PH
+                - PK
+                - PL
+                - PM
+                - PN
+                - PR
+                - PS
+                - PT
+                - PW
+                - PY
+                - QA
+                - RE
+                - RO
+                - RS
+                - RU
+                - RW
+                - SA
+                - SB
+                - SC
+                - SD
+                - SE
+                - SG
+                - SH
+                - SI
+                - SJ
+                - SK
+                - SL
+                - SM
+                - SN
+                - SO
+                - SR
+                - SS
+                - ST
+                - SV
+                - SX
+                - SY
+                - SZ
+                - TC
+                - TD
+                - TF
+                - TG
+                - TH
+                - TJ
+                - TK
+                - TL
+                - TM
+                - TN
+                - TO
+                - TP
+                - TR
+                - TT
+                - TV
+                - TW
+                - TZ
+                - UA
+                - UG
+                - UM
+                - US
+                - UY
+                - UZ
+                - VA
+                - VC
+                - VE
+                - VG
+                - VI
+                - VN
+                - VU
+                - WF
+                - WS
+                - YE
+                - YT
+                - YU
+                - ZA
+                - ZM
+                - ZW
+              postcodeStart:
+                type: string
+              postcodeEnd:
+                type: string
