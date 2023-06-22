@@ -1,0 +1,183 @@
+  - reference: nextDay
+    label: Next Day
+    description: Next business day delivery
+  - reference: 1-5Days
+    label: 1-5 Days
+    description: Between 1 and 5 days delivery
+  - reference: 2-3Days
+    label: 2-3 Days
+    description: Between 2 and 3 days delivery
+  - reference: pre-0900
+    label: Pre 0900
+    description: Delivery before 0900
+  - reference: pre-1000
+    label: Pre 1000
+    description: Delivery before 1000
+  - reference: pre-1030
+    label: Pre 1030
+    description: Delivery before 1030
+  - reference: pre-1200
+    label: Pre 1200
+    description: Delivery before 1200
+  - reference: pre-1800
+    label: Pre 1800
+    description: Delivery before 1800
+  - reference: fixedday
+    label: Fixed day
+    description: Delivery on a fixed day
+  - reference: fixedTimeWindow
+    label: Fixed time window
+    description: Delivery within a fixed time window
+  - reference: Sameday
+    label: Same day
+    description: Delivery on the same day
+  
+
+# Mode of transport
+  - reference: express
+    label: Express
+    description: Express delivery
+  - reference: road
+    label: Road
+    description: Road transport
+  - reference: air
+    label: Air
+    description: Air tranport
+  - reference: ocean
+    label: Ocean
+    description: Ocean transport
+  - reference: rail
+    label: Rail
+    description: Rail transport
+
+# Service options
+  - reference: allowDeliveryToNeighbour
+    label: Allow delivery to neighbour
+    description: The driver is allowed to delivery the goods to the neigbours in case no response at the receiver address.
+  - reference: appointmentForDelivery
+    label: Appointment for delivery
+    description: Carrier has to contact the Receiver to make an appointment for delivering the shipment.
+  - reference: cashOnDelivery
+    label: Cash on delivery
+    description: Receiver to pay the transportation company for the goods upon delivery.
+  - reference: constructionSite
+    label: Construction site
+    description: Ship to address is a construction site.
+  - reference: customClearance
+    label: Customs clearance
+    description: If shipments are shipped within the EU from a bonded warehouse, this field can be provided to indicate the shipment is dutiable.
+  - reference: deliveryInside
+    label: Delivery inside
+    description: Shipment has to be delivered inside a building to a specific room.
+  - reference: dryIceAudit
+    label: Dry-ice audit
+    description: Carrier is expected to verify if Dry Ice is in correct shape during the transportation process.
+  - reference: fragile
+    label: Fragile
+    description: Indicates if the shipment contains Fragile goods. 
+  - reference: holdForPickup
+    label: Hold for pickup
+    description: The shipment is delivered at a depot or service point for the receiver to pickup. 
+  - reference: containsLithiumBatteries
+    label: Contains lithium batteries
+    description: Shipment includes products that contain lithium batteries.
+  - reference: neutralDelivery
+    label: Neutral delivery
+    description: Carrier to remove invoice from package before delivery to customer.
+  - reference: insurance
+    label: Insurance
+    description: Specific insurance is required for the shipped goods besides the general CMR conventions.
+  - reference: returns
+    label: Returns
+    description: Specific return services where shipper can request returns to be collected from its customers.    
+  - reference: liftGate
+    label: Lift-gate
+    description: Indicates if a liftGate/taillift is required for pickup or delivery.
+  - reference: lockerDelivery
+    label: Locker delivery
+    description: Carrier should deliver into a locker that the receiver will collect from later.
+  - reference: photoAtDelivery
+    label: Photo at delivery
+    description: Carrier is requested to make a photo of the handling units upon delivery.
+  - reference: residentialDelivery
+    label: Residential delivery
+    description: The shipment is shipped to a residential address, used by B2C services.
+  - reference: scannedPodRequested
+    label: Scanned proof-of-delivery requested
+    description: Carrier is requested to provide a scanned image of a signed POD.        
+  - reference: saturdayDelivery
+    label: Saturday delivery
+    description: Carrier is requested to deliver on a Saturday. 
+  - reference: smallVehicle
+    label: Small vehicle
+    description: Carrier should use a small vehicle for delivery.
+  - reference: splitDutiesFromVat
+    label: Split duties from VAT
+    description: Carrier to split the Duties and the VAT over different accounts.
+  - reference: signatureForDelivery
+    label: Signature for delivery
+    description: Carrier should only deliver the goods upon receiving a signature.
+  
+# Complex service options
+  - reference: dangerousGoods
+    label: Dangerous goods
+    description: Specific dangerous goods regulations apply to the goods being shipped.
+  - reference: limitedQuantities
+    label: Limited Quantity
+    description: null
+  - reference: exceptedQuantities
+    label: Excepted quantity
+    description: null
+  - reference: lithiumBatteries
+    label: Lithium batteries
+    description: null
+  - reference: dryIce
+    label: Dry-ice
+    description: null
+  - reference: fullyRegulated
+    label: Fully regulated
+    description: goods are subject to full ADR/IATA or IMO regulations without exemption.
+  - reference: radioActiveMaterial
+    label: Radio-active
+    description: null
+  
+  - reference: paperless
+    label: Paperless
+    description: Carrier supports electronic transmission of the customs paperwork to avoid paperwork on the handling units. This can include an invoice but also certificate-of-origins, eur1 etc.. 
+  - reference: pdfUpload
+    label: PDF upload
+    description: PDF document representation of the customs documents are uploaded with the shipment.
+  - reference: usingData
+    label: Using data
+    description: Data elements for the respective customs documents are communicated to the carrier, where the carrier can directly communicate these to the customs systems or generate documents on behalf of the shipper.
+  
+  - reference: preAdviceDelivery
+    label: Pre-advice delivery
+    description: Carrier to contact the receiver about the shipment being delivered.
+  - reference: email
+    label: Email
+    description: Carrier sends an email message to receiver's email.
+  - reference: sms
+    label: SMS
+    description: Carrier sends SMS message to phone number of receiver.
+  - reference: phoneCallByPlanner
+    label: Phone call by planner
+    description: Carrier planner calls receiver via phone prior to delivery.
+  - reference: phoneCallByDriver
+    label: Phone call by driver
+    description: Carrier driver calls receiver via phone prior to delivery.
+  
+  - reference: temperatureControlled
+    label: Temperature controlled
+    description: Goods should be transported under specific temperature conditions.
+  - reference: ambient
+    label: ambient +15 to +25 Celsius
+    description: null
+  - reference: cooled
+    label: cooled +2 to +8 Celsius
+    description: null
+  - reference: frozen
+    label: frozen -18 Celsius
+    description: null
+
+
