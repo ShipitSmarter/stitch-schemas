@@ -40,34 +40,50 @@ properties:
     additionalProperties: false
     properties:
       ordering:
+        title: Some general ordering title
+        description: This is the ordering description
         type: array
         items:
           $ref: "#/definitions/integrationPath"
       pickup:
+        title: Some general pickup title
+        description: This is the pickup description
         type: array
         items:
           $ref: "#/definitions/integrationPath"
       pickupCancellation:
+        title: Some general pickupCancellation title
+        description: This is the pickupCancellation description
         type: array
         items:
           $ref: "#/definitions/integrationPath"
       tracking:
+        title: Some general tracking title
+        description: This is the tracking description
         type: array
         items:
           $ref: "#/definitions/integrationPath"
       trackingLink:
+        title: Some general trackingLink title
+        description: This is the trackingLink description
         type: array
         items:
           $ref: "#/definitions/integrationPath"
       orderingCancellation:
+        title: Some general orderingCancellation title
+        description: This is the orderingCancellation description
         type: array
         items:
           $ref: "#/definitions/integrationPath"
       pricing:
+        title: Some general pricing title
+        description: This is the pricing description
         type: array
         items:
           $ref: "#/definitions/integrationPath"
       manifesting:
+        title: Some general manifesting title
+        description: This is the manifesting description
         type: array
         items:
           $ref: "#/definitions/integrationPath"
