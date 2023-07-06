@@ -42,99 +42,35 @@ properties:
       ordering:
         type: array
         items:
-          type: object
-          required:
-            - path
-          additionalProperties: false
-          properties:
-            path:
-              type: string
-            validationPath:
-              type: string
+          $ref: "#/definitions/integrationPath"
       pickup:
         type: array
         items:
-          type: object
-          required:
-            - path
-          additionalProperties: false
-          properties:
-            path:
-              type: string
-            validationPath:
-              type: string
+          $ref: "#/definitions/integrationPath"
       pickupCancellation:
         type: array
         items:
-          type: object
-          required:
-            - path
-          additionalProperties: false
-          properties:
-            path:
-              type: string
-            validationPath:
-              type: string
+          $ref: "#/definitions/integrationPath"
       tracking:
         type: array
         items:
-          type: object
-          required:
-            - path
-          additionalProperties: false
-          properties:
-            path:
-              type: string
-            validationPath:
-              type: string
+          $ref: "#/definitions/integrationPath"
       trackingLink:
         type: array
         items:
-          type: object
-          required:
-            - path
-          additionalProperties: false
-          properties:
-            path:
-              type: string
-            validationPath:
-              type: string
+          $ref: "#/definitions/integrationPath"
       orderingCancellation:
         type: array
         items:
-          type: object
-          required:
-            - path
-          additionalProperties: false
-          properties:
-            path:
-              type: string
-            validationPath:
-              type: string
+          $ref: "#/definitions/integrationPath"
       pricing:
         type: array
         items:
-          type: object
-          required:
-            - path
-          additionalProperties: false
-          properties:
-            path:
-              type: string
-            validationPath:
-              type: string
+          $ref: "#/definitions/integrationPath"
       manifesting:
         type: array
         items:
-          type: object
-          required:
-            - path
-          additionalProperties: false
-          properties:
-            path:
-              type: string
-            validationPath:
-              type: string
+          $ref: "#/definitions/integrationPath"
   serviceLevels:
     type: array    
     items:
@@ -851,3 +787,18 @@ properties:
                 type: string
               postcodeEnd:
                 type: string
+definitions:
+  integrationPath:
+    type: object
+    required:
+      - path
+    additionalProperties: false
+    properties:
+      path:
+        type: string
+      validationPath:
+        type: string
+      label:
+        type: string
+      description:
+        type: string
