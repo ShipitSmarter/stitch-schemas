@@ -40,50 +40,50 @@ properties:
     additionalProperties: false
     properties:
       ordering:
-        title: Some general ordering title
-        description: This is the ordering description
+        title: Ordering
+        description: The process to generate tracking reference and shipping label.
         type: array
         items:
           $ref: "#/definitions/integrationPath"
       pickup:
-        title: Some general pickup title
-        description: This is the pickup description
+        title: Pickup
+        description: Request a pickup by the carrier at a specific location. 
         type: array
         items:
           $ref: "#/definitions/integrationPath"
       pickupCancellation:
-        title: Some general pickupCancellation title
-        description: This is the pickupCancellation description
+        title: Cancel Pickup
+        description: Cancel a pickup at the carrier for a pickup request made before.
         type: array
         items:
           $ref: "#/definitions/integrationPath"
       tracking:
-        title: Some general tracking title
-        description: This is the tracking description
+        title: Tracking
+        description: Tracking events provided by the carrier, translated to a standard set of event types.
         type: array
         items:
           $ref: "#/definitions/integrationPath"
       trackingLink:
-        title: Some general trackingLink title
-        description: This is the trackingLink description
+        title: Tracking link
+        description: Request a tracking link which guides the user directly to the tracking website of the carrier with a deeplink to the latest shipment status.
         type: array
         items:
           $ref: "#/definitions/integrationPath"
       orderingCancellation:
-        title: Some general orderingCancellation title
-        description: This is the orderingCancellation description
+        title: Cancel order
+        description: Cancel a previously ordered shipment.
         type: array
         items:
           $ref: "#/definitions/integrationPath"
       pricing:
-        title: Some general pricing title
-        description: This is the pricing description
+        title: Pricing
+        description: Request price and transit-time information from a carrier.
         type: array
         items:
           $ref: "#/definitions/integrationPath"
       manifesting:
-        title: Some general manifesting title
-        description: This is the manifesting description
+        title: Manifesting
+        description: Batch process that communicates shipment(s) to the carrier.
         type: array
         items:
           $ref: "#/definitions/integrationPath"
