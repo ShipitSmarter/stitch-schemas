@@ -5,6 +5,7 @@ required:
   - carrier
   - integrationPaths
   - serviceLevels
+  - version
 additionalProperties: false
 properties:
   reference:
@@ -13,6 +14,8 @@ properties:
   label:
     type: string
   description:
+    type: string
+  version:
     type: string
   onboarding:
     type: object
