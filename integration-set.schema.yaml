@@ -105,6 +105,8 @@ properties:
         reference:
           type: string
         label: 
+          type: string
+        description: 
           type: string        
         definition: # order in which objects and enums within objects are placed, determine sequence in which they will be displayed in the UI
           type: object
