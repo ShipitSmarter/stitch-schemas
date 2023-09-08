@@ -45,8 +45,10 @@ properties:
           - content
           - contentType
         properties:
-          content: string
-          contentType: string  #html content-type of the logo, eg svg+xml, png, jpeg, gif etc..
+          content: 
+            type: string
+          contentType: 
+            type: string  #html content-type of the logo, eg svg+xml, png, jpeg, gif etc..
   integrationPaths:
     type: object
     required:
