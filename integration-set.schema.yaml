@@ -8,6 +8,8 @@ required:
   - version
 additionalProperties: false
 properties:
+  preview:
+    type: boolean # Set to true if the integration-set is only visible for preview purposes. It should not display for the available integrations in the public website
   reference:
     type: string
     pattern: "^[\\w_-]+$"
@@ -44,7 +46,7 @@ properties:
           - contentType
         properties:
           content: string
-          contentType: string
+          contentType: string  #html content-type of the logo, eg svg+xml, png, jpeg, gif etc..
   integrationPaths:
     type: object
     required:
