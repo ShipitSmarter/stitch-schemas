@@ -5,14 +5,19 @@ required:
   - carrier
   - integrationPaths
   - serviceLevels
+  - version
 additionalProperties: false
 properties:
+  preview:
+    type: boolean # Set to true if the integration-set is only visible for preview purposes. It should not display for the available integrations in the public website
   reference:
     type: string
     pattern: "^[\\w_-]+$"
   label:
     type: string
   description:
+    type: string
+  version:
     type: string
   onboarding:
     type: object
@@ -27,6 +32,7 @@ properties:
     required:
      - reference
      - description
+     - logo
     additionalProperties: false
     properties:
       reference:  # use reference instead of name as reference is required to use in generating test shipments
@@ -34,7 +40,15 @@ properties:
       description:
         type: string
       logo:
-        type: string
+        type: object
+        required: 
+          - content
+          - contentType
+        properties:
+          content: 
+            type: string
+          contentType: 
+            type: string  #html content-type of the logo, eg svg+xml, png, jpeg, gif etc..
   integrationPaths:
     type: object
     required:
@@ -102,6 +116,8 @@ properties:
         reference:
           type: string
         label: 
+          type: string
+        description: 
           type: string        
         definition: # order in which objects and enums within objects are placed, determine sequence in which they will be displayed in the UI
           type: object
