@@ -30,6 +30,7 @@ properties:
     required:
      - reference
      - description
+     - logo
     additionalProperties: false
     properties:
       reference:  # use reference instead of name as reference is required to use in generating test shipments
@@ -37,7 +38,13 @@ properties:
       description:
         type: string
       logo:
-        type: string
+        type: object
+        required: 
+          - content
+          - contentType
+        properties:
+          content: string
+          contentType: string
   integrationPaths:
     type: object
     required:
