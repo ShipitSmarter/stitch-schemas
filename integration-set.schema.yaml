@@ -170,6 +170,12 @@ properties:
                     - nextDay
                     - todayBramsSpecialOption
                     - sameDay
+                    - 2Days
+                    - 3Days
+                    - 4Days
+                    - 5Days
+                    - 6Days
+                    - 7Days
                     - 1-5Days
                     - 2-3Days
                     - pre-0800
