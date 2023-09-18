@@ -7,6 +7,9 @@
   - reference: 2-3Days
     label: 2-3 Days
     description: Between 2 and 3 days delivery
+  - reference: pre-0830
+    label: Pre 0830
+    description: Delivery before 0830
   - reference: pre-0900
     label: Pre 0900
     description: Delivery before 0900
