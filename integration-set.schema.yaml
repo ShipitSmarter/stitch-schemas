@@ -168,7 +168,6 @@ properties:
                     type: string
                     enum:
                     - nextDay
-                    - todayBramsSpecialOption
                     - sameDay
                     - 2Days
                     - 3Days
@@ -179,6 +178,8 @@ properties:
                     - 1-5Days
                     - 2-3Days
                     - 2-5Days
+                    - 2-6Days
+                    - 2-7Days
                     - 3-5Days
                     - 3-6Days
                     - 3-7Days
@@ -189,7 +190,9 @@ properties:
                     - pre-0900
                     - pre-1000
                     - pre-1030
+                    - pre-1130
                     - pre-1200
+                    - pre-1500
                     - pre-1600
                     - pre-1800
                     - fixedday
