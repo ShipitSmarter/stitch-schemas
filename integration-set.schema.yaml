@@ -215,6 +215,9 @@ properties:
                     - 5Days
                     - 6Days
                     - 7Days
+                    - 1-2Days
+                    - 1-3Days
+                    - 1-4Days
                     - 1-5Days
                     - 2-3Days
                     - 2-4Days
@@ -907,6 +910,7 @@ definitions:
         reference:
           type: string
           enum:
+          - brokerSelect
           - cashOnDelivery
           - constructionSite
           - customClearance

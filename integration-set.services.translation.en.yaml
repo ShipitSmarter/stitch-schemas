@@ -66,6 +66,9 @@
     description: Rail transport
 
 # Service options
+  - reference: brokerSelect
+    label: Broker select
+    description: Indicate to the carrier a specific broker to use for customs clearance process
   - reference: allowDeliveryToNeighbour
     label: Allow delivery to neighbour
     description: The driver is allowed to delivery the goods to the neigbours in case no response at the receiver address.
