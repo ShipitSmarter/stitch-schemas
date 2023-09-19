@@ -70,7 +70,7 @@ properties:
             supportsPdf:
               type: boolean
       link: 
-        $ref: "#/definitions/weblink"
+        $ref: "#/definitions/webLink"
   integrationPaths:
     type: object
     required:
@@ -81,7 +81,7 @@ properties:
         title: Ordering
         description: The process to generate tracking reference and shipping label.
         link: 
-          $ref: "#/definitions/weblink"
+          $ref: "#/definitions/webLink"
         type: array
         items:
           $ref: "#/definitions/integrationPath"
@@ -89,7 +89,7 @@ properties:
         title: Pickup
         description: Request a pickup by the carrier at a specific location. 
         link: 
-          $ref: "#/definitions/weblink"
+          $ref: "#/definitions/webLink"
         type: array
         items:
           $ref: "#/definitions/integrationPath"
@@ -97,7 +97,7 @@ properties:
         title: Cancel Pickup
         description: Cancel a pickup at the carrier for a pickup request made before.
         link: 
-          $ref: "#/definitions/weblink"
+          $ref: "#/definitions/webLink"
         type: array
         items:
           $ref: "#/definitions/integrationPath"
@@ -105,7 +105,7 @@ properties:
         title: Tracking
         description: Tracking events provided by the carrier, translated to a standard set of event types.
         link: 
-          $ref: "#/definitions/weblink"
+          $ref: "#/definitions/webLink"
         type: array
         items:
           $ref: "#/definitions/integrationPath"
@@ -113,7 +113,7 @@ properties:
         title: Tracking link
         description: Request a tracking link which guides the user directly to the tracking website of the carrier with a deeplink to the latest shipment status.
         link: 
-          $ref: "#/definitions/weblink"
+          $ref: "#/definitions/webLink"
         type: array
         items:
           $ref: "#/definitions/integrationPath"
@@ -121,7 +121,7 @@ properties:
         title: Cancel order
         description: Cancel a previously ordered shipment.
         link: 
-          $ref: "#/definitions/weblink"
+          $ref: "#/definitions/webLink"
         type: array
         items:
           $ref: "#/definitions/integrationPath"
@@ -129,7 +129,7 @@ properties:
         title: Pricing
         description: Request price and transit-time information from a carrier.
         link: 
-          $ref: "#/definitions/weblink"
+          $ref: "#/definitions/webLink"
         type: array
         items:
           $ref: "#/definitions/integrationPath"
@@ -137,7 +137,7 @@ properties:
         title: Manifesting
         description: Batch process that communicates shipment(s) to the carrier.
         link: 
-          $ref: "#/definitions/weblink"
+          $ref: "#/definitions/webLink"
         type: array
         items:
           $ref: "#/definitions/integrationPath"
@@ -158,7 +158,7 @@ properties:
         description: 
           type: string
         link: 
-            $ref: "#/definitions/weblink"        
+            $ref: "#/definitions/webLink"        
         definition: # order in which objects and enums within objects are placed, determine sequence in which they will be displayed in the UI
           type: object
           additionalProperties: false
