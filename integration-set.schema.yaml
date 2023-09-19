@@ -49,6 +49,28 @@ properties:
             type: string
           contentType: 
             type: string  #html content-type of the logo, eg svg+xml, png, jpeg, gif etc..
+      serviceOptions:
+        $ref: "#/definitions/serviceOptions"
+      modeOfTransport:
+        $ref: "#/definitions/modeOfTransport"
+      dangerousGoods:
+        $ref: "#/definitions/dangerousGoods"
+      paperless:
+        $ref: "#/definitions/paperless"
+      preAdviceDelivery:
+        $ref: "#/definitions/preAdviceDelivery"
+      temperatureControlled:
+        $ref: "#/definitions/temperatureControlled"
+      labelOptions:
+          type: object
+          additionalProperties: false
+          properties:
+            supportsZpl: 
+              type: boolean
+            supportsPdf:
+              type: boolean
+      link: 
+        $ref: "#/definitions/weblink"
   integrationPaths:
     type: object
     required:
@@ -58,48 +80,64 @@ properties:
       ordering:
         title: Ordering
         description: The process to generate tracking reference and shipping label.
+        link: 
+          $ref: "#/definitions/weblink"
         type: array
         items:
           $ref: "#/definitions/integrationPath"
       pickup:
         title: Pickup
         description: Request a pickup by the carrier at a specific location. 
+        link: 
+          $ref: "#/definitions/weblink"
         type: array
         items:
           $ref: "#/definitions/integrationPath"
       pickupCancellation:
         title: Cancel Pickup
         description: Cancel a pickup at the carrier for a pickup request made before.
+        link: 
+          $ref: "#/definitions/weblink"
         type: array
         items:
           $ref: "#/definitions/integrationPath"
       tracking:
         title: Tracking
         description: Tracking events provided by the carrier, translated to a standard set of event types.
+        link: 
+          $ref: "#/definitions/weblink"
         type: array
         items:
           $ref: "#/definitions/integrationPath"
       trackingLink:
         title: Tracking link
         description: Request a tracking link which guides the user directly to the tracking website of the carrier with a deeplink to the latest shipment status.
+        link: 
+          $ref: "#/definitions/weblink"
         type: array
         items:
           $ref: "#/definitions/integrationPath"
       orderingCancellation:
         title: Cancel order
         description: Cancel a previously ordered shipment.
+        link: 
+          $ref: "#/definitions/weblink"
         type: array
         items:
           $ref: "#/definitions/integrationPath"
       pricing:
         title: Pricing
         description: Request price and transit-time information from a carrier.
+        link: 
+          $ref: "#/definitions/weblink"
         type: array
         items:
           $ref: "#/definitions/integrationPath"
       manifesting:
         title: Manifesting
         description: Batch process that communicates shipment(s) to the carrier.
+        link: 
+          $ref: "#/definitions/weblink"
         type: array
         items:
           $ref: "#/definitions/integrationPath"
@@ -118,46 +156,15 @@ properties:
         label: 
           type: string
         description: 
-          type: string        
+          type: string
+        link: 
+            $ref: "#/definitions/weblink"        
         definition: # order in which objects and enums within objects are placed, determine sequence in which they will be displayed in the UI
           type: object
           additionalProperties: false
           properties:
             general:
-              type: array
-              items:
-                type: object
-                additionalProperties: false
-                properties:
-                  reference:
-                    type: string
-                    enum:
-                    - cashOnDelivery
-                    - constructionSite
-                    - customClearance
-                    - deliveryInside
-                    - allowDeliveryToNeighbour
-                    - appointmentForDelivery
-                    - dryIceAudit
-                    - fragile
-                    - holdForPickup
-                    - containsLithiumBatteries
-                    - neutralDelivery
-                    - insuredValue
-                    - returns
-                    - liftGate
-                    - lockerDelivery
-                    - photoAtDelivery
-                    - residentialDelivery
-                    - scannedPodRequested
-                    - saturdayDelivery
-                    - smallVehicle
-                    - splitDutiesFromVat
-                    - signatureForDelivery
-                  lanes:
-                    type: array
-                required:
-                - reference
+              $ref: "#/definitions/serviceOptions"
             transitTimes:
               type: array
               items:
@@ -168,16 +175,35 @@ properties:
                     type: string
                     enum:
                     - nextDay
-                    - todayBramsSpecialOption
                     - sameDay
+                    - 2Days
+                    - 3Days
+                    - 4Days
+                    - 5Days
+                    - 6Days
+                    - 7Days
                     - 1-5Days
                     - 2-3Days
+                    - 2-4Days
+                    - 2-5Days
+                    - 2-6Days
+                    - 2-7Days
+                    - 3-5Days
+                    - 3-6Days
+                    - 3-7Days
+                    - 3-10Days
+                    - 4-5Days
+                    - 4-6Days
+                    - 4-7Days
+                    - 5-7Days
                     - pre-0800
                     - pre-0830
                     - pre-0900
                     - pre-1000
                     - pre-1030
+                    - pre-1130
                     - pre-1200
+                    - pre-1500
                     - pre-1600
                     - pre-1800
                     - fixedday
@@ -190,86 +216,15 @@ properties:
                 required:
                 - reference
             modeOfTransport:
-              type: array
-              items:
-                type: object
-                additionalProperties: false
-                properties:
-                  reference:
-                    type: string
-                    enum:
-                    - express
-                    - road
-                    - air
-                    - ocean
-                    - rail
-                  lanes:
-                    type: array
-                required:
-                - reference
+              $ref: "#/definitions/modeOfTransport"
             dangerousGoods:
-              items:
-                type: object
-                additionalProperties: false
-                properties:
-                  reference:
-                    type: string
-                    enum:
-                    - limitedQuantities
-                    - exceptedQuantities
-                    - lithiumBatteries
-                    - dryIce
-                    - fullyRegulated
-                    - radioActiveMaterial
-                  lanes:
-                    type: array
-                required:
-                - reference
+              $ref: "#/definitions/dangerousGoods"
             paperless:
-              items:
-                type: object
-                additionalProperties: false
-                properties:
-                  reference:
-                    type: string
-                    enum:
-                    - pdfUpload
-                    - usingData
-                  lanes:
-                    type: array
-                required:
-                - reference
+              $ref: "#/definitions/paperless"
             preAdviceDelivery:
-              items:
-                type: object
-                additionalProperties: false
-                properties:
-                  reference:
-                    type: string
-                    enum:
-                    - email
-                    - sms
-                    - phoneCallByPlanner
-                    - phoneCallByDriver
-                  lanes:
-                    type: array
-                required:
-                - reference
+              $ref: "#/definitions/preAdviceDelivery"
             temperatureControlled:
-              items:
-                type: object
-                additionalProperties: false
-                properties:
-                  reference: 
-                    type: string
-                    enum: # see EU Pharma in https://www.gmp-compliance.org/gmp-news/ambient-room-temperature-cold-what-is-what#:~:text=Cool%3A%20Store%20between%208%C2%B0,significant%20variation%20in%20ambient%20temperatures.
-                    - ambient
-                    - cooled
-                    - frozen
-                  lanes:
-                    type: array
-                required:
-                - reference
+              $ref: "#/definitions/temperatureControlled"
         lanes:
           type: array
           items:
@@ -285,6 +240,8 @@ properties:
       additionalProperties: false
       properties:
         reference: 
+          type: string
+        label: 
           type: string
         fromRegion:
           type: array
@@ -837,3 +794,121 @@ definitions:
         type: string
       description:
         type: string
+  serviceOptions:
+    type: array
+    items:
+      type: object
+      additionalProperties: false
+      properties:
+        reference:
+          type: string
+          enum:
+          - cashOnDelivery
+          - constructionSite
+          - customClearance
+          - deliveryInside
+          - allowDeliveryToNeighbour
+          - appointmentForDelivery
+          - dryIceAudit
+          - fragile
+          - holdForPickup
+          - containsLithiumBatteries
+          - neutralDelivery
+          - insuredValue
+          - returns
+          - liftGate
+          - lockerDelivery
+          - photoAtDelivery
+          - residentialDelivery
+          - scannedPodRequested
+          - saturdayDelivery
+          - smallVehicle
+          - splitDutiesFromVat
+          - signatureForDelivery
+        lanes:
+          type: array
+      required:
+      - reference 
+  modeOfTransport:
+    type: array
+    items:
+      type: object
+      additionalProperties: false
+      properties:
+        reference:
+          type: string
+          enum:
+          - express
+          - road
+          - air
+          - ocean
+          - rail
+        lanes:
+          type: array
+      required:
+      - reference
+  dangerousGoods:
+    items:
+      type: object
+      additionalProperties: false
+      properties:
+        reference:
+          type: string
+          enum:
+          - limitedQuantities
+          - exceptedQuantities
+          - lithiumBatteries
+          - dryIce
+          - fullyRegulated
+          - radioActiveMaterial
+        lanes:
+          type: array
+      required:
+      - reference
+  paperless:
+    items:
+      type: object
+      additionalProperties: false
+      properties:
+        reference:
+          type: string
+          enum:
+          - pdfUpload
+          - usingData
+        lanes:
+          type: array
+      required:
+      - reference
+  preAdviceDelivery:
+    items:
+      type: object
+      additionalProperties: false
+      properties:
+        reference:
+          type: string
+          enum:
+          - email
+          - sms
+          - phoneCallByPlanner
+          - phoneCallByDriver
+        lanes:
+          type: array
+      required:
+      - reference
+  temperatureControlled:
+    items:
+      type: object
+      additionalProperties: false
+      properties:
+        reference: 
+          type: string
+          enum: # see EU Pharma in https://www.gmp-compliance.org/gmp-news/ambient-room-temperature-cold-what-is-what#:~:text=Cool%3A%20Store%20between%208%C2%B0,significant%20variation%20in%20ambient%20temperatures.
+          - ambient
+          - cooled
+          - frozen
+        lanes:
+          type: array
+      required:
+      - reference
+  webLink:
+    type: string

@@ -7,6 +7,15 @@
   - reference: 2-3Days
     label: 2-3 Days
     description: Between 2 and 3 days delivery
+  - reference: 2-4Days
+    label: 2-4 Days
+    description: Between 2 and 4 days delivery
+  - reference: 2-7Days
+    label: 2-7 Days
+    description: Between 2 and 7 days delivery
+  - reference: 5-7Days
+    label: 5-7 Days
+    description: Between 5 and 7 days delivery
   - reference: pre-0830
     label: Pre 0830
     description: Delivery before 0830
@@ -22,6 +31,9 @@
   - reference: pre-1200
     label: Pre 1200
     description: Delivery before 1200
+  - reference: pre-1500
+    label: Pre 1500
+    description: Delivery before 1500
   - reference: pre-1800
     label: Pre 1800
     description: Delivery before 1800
