@@ -16,6 +16,9 @@
   - reference: 5-7Days
     label: 5-7 Days
     description: Between 5 and 7 days delivery
+  - reference: pre-0830
+    label: Pre 0830
+    description: Delivery before 0830
   - reference: pre-0900
     label: Pre 0900
     description: Delivery before 0900
