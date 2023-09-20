@@ -164,40 +164,7 @@ properties:
           additionalProperties: false
           properties:
             general:
-              type: array
-              items:
-                type: object
-                additionalProperties: false
-                properties:
-                  reference:
-                    type: string
-                    enum:
-                    - cashOnDelivery
-                    - constructionSite
-                    - customClearance
-                    - deliveryInside
-                    - allowDeliveryToNeighbour
-                    - appointmentForDelivery
-                    - dryIceAudit
-                    - fragile
-                    - holdForPickup
-                    - containsLithiumBatteries
-                    - neutralDelivery
-                    - insuredValue
-                    - returns
-                    - liftGate
-                    - lockerDelivery
-                    - photoAtDelivery
-                    - residentialDelivery
-                    - scannedPodRequested
-                    - saturdayDelivery
-                    - smallVehicle
-                    - splitDutiesFromVat
-                    - signatureForDelivery
-                  lanes:
-                    type: array
-                required:
-                - reference 
+              $ref: "#/definitions/serviceOptions"
             transitTimes:
               type: array
               items:
@@ -252,86 +219,15 @@ properties:
                 required:
                 - reference
             modeOfTransport:
-              type: array
-              items:
-                type: object
-                additionalProperties: false
-                properties:
-                  reference:
-                    type: string
-                    enum:
-                    - express
-                    - road
-                    - air
-                    - ocean
-                    - rail
-                  lanes:
-                    type: array
-                required:
-                - reference
+              $ref: "#/definitions/modeOfTransport"
             dangerousGoods:
-              items:
-                type: object
-                additionalProperties: false
-                properties:
-                  reference:
-                    type: string
-                    enum:
-                    - limitedQuantities
-                    - exceptedQuantities
-                    - lithiumBatteries
-                    - dryIce
-                    - fullyRegulated
-                    - radioActiveMaterial
-                  lanes:
-                    type: array
-                required:
-                - reference
+              $ref: "#/definitions/dangerousGoods"
             paperless:
-              items:
-                type: object
-                additionalProperties: false
-                properties:
-                  reference:
-                    type: string
-                    enum:
-                    - pdfUpload
-                    - usingData
-                  lanes:
-                    type: array
-                required:
-                - reference
+              $ref: "#/definitions/paperless"
             preAdviceDelivery:
-              items:
-                type: object
-                additionalProperties: false
-                properties:
-                  reference:
-                    type: string
-                    enum:
-                    - email
-                    - sms
-                    - phoneCallByPlanner
-                    - phoneCallByDriver
-                  lanes:
-                    type: array
-                required:
-                - reference
+              $ref: "#/definitions/preAdviceDelivery"
             temperatureControlled:
-              items:
-                type: object
-                additionalProperties: false
-                properties:
-                  reference: 
-                    type: string
-                    enum: # see EU Pharma in https://www.gmp-compliance.org/gmp-news/ambient-room-temperature-cold-what-is-what#:~:text=Cool%3A%20Store%20between%208%C2%B0,significant%20variation%20in%20ambient%20temperatures.
-                    - ambient
-                    - cooled
-                    - frozen
-                  lanes:
-                    type: array
-                required:
-                - reference
+              $ref: "#/definitions/temperatureControlled"
         lanes:
           type: array
           items:
