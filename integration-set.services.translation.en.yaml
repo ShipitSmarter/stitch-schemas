@@ -13,6 +13,9 @@
   - reference: 2-7Days
     label: 2-7 Days
     description: Between 2 and 7 days delivery
+  - reference: 2-12Days
+    label: 2-12 Days
+    description: Between 2 and 12 days delivery
   - reference: 5-7Days
     label: 5-7 Days
     description: Between 5 and 7 days delivery
