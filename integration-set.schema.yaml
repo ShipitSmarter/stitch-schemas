@@ -200,6 +200,11 @@ properties:
                     - 4-6Days
                     - 4-7Days
                     - 5-7Days
+                    - 5-8Days
+                    - 5-9Days
+                    - 5-10Days
+                    - 5-11Days
+                    - 5-12Days
                     - pre-0800
                     - pre-0830
                     - pre-0900
@@ -207,6 +212,7 @@ properties:
                     - pre-1030
                     - pre-1130
                     - pre-1200
+                    - pre-1400
                     - pre-1500
                     - pre-1600
                     - pre-1800
