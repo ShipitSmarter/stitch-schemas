@@ -10,6 +10,8 @@ additionalProperties: false
 properties:
   preview:
     type: boolean # Set to true if the integration-set is only visible for preview purposes. It should not display for the available integrations in the public website
+  comingSoon:
+    type: boolean # Set to true if the integration-set is not yet live but should be visible in the viya.me website under 'coming soon integrations'
   reference:
     type: string
     pattern: "^[\\w_-]+$"
