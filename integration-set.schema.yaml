@@ -9,9 +9,13 @@ required:
 additionalProperties: false
 properties:
   preview:
+    type: boolean #Will be removed:replaced by hideFromPublicWebsite
+  hideFromPublicWebsite:
     type: boolean # Set to true if the integration-set is only visible for preview purposes. It should not display for the available integrations in the public website
   comingSoon:
-    type: boolean # Set to true if the integration-set is not yet live but should be visible in the viya.me website under 'coming soon integrations'
+    type: boolean # Set to true if the integration-set is not yet live but should be visible in the viya.me website under 'coming soon integrations'. 
+  hideFromApi:
+    type: boolean # Set to true if the integration-set shold NOT be visible for configuration by the user. By setting this to 'true' it will never be visible in an API call from api/v1/configs/integrationsets or cannot be used when running 
   reference:
     type: string
     pattern: "^[\\w_-]+$"
