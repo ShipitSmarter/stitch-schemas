@@ -33,6 +33,8 @@ properties:
         type: string
       integrationPath:
         type: string
+      custom:
+        type: string
   carrier:
     type: object
     required:
