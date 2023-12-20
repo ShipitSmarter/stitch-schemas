@@ -109,9 +109,9 @@ properties:
         type: array
         items:
           $ref: "#/definitions/integrationPath"
-      tracking:
-        title: Tracking
-        description: Tracking events provided by the carrier, translated to a standard set of event types.
+      trackingCollection:
+        title: Tracking collection
+        description: Tracking events collected from the carrier, translated to a standard set of event types.
         link: 
           $ref: "#/definitions/webLink"
         type: array
