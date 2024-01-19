@@ -149,6 +149,14 @@ properties:
         type: array
         items:
           $ref: "#/definitions/integrationPath"
+      cmr:
+        title: Cmr
+        description: Generate a CMR document for a single or batch of shipments.
+        link:
+          $ref: "#/definitions/webLink"
+        type: array
+        items:
+          $ref: "#/definitions/integrationPath"
   serviceLevels:
     type: array    
     items:
