@@ -138,6 +138,9 @@
           },
           {
             "$ref": "#/definitions/LoopStep"
+          },
+          {
+            "$ref": "#/definitions/Base64EncodeStep"
           }
         ]
       },
@@ -190,6 +193,9 @@
             },
             {
               "$ref": "#/definitions/CacheLoadStep"
+            },
+            {
+              "$ref": "#/definitions/Base64EncodeStep"
             }
           ]
         },
@@ -601,6 +607,39 @@
         "$type",
         "Id",
         "Key"
+      ]
+    },
+    "Base64EncodeStep": {
+      "type": "object",
+      "default": {
+        "$type": "Core.Entities.Configs.Steps.Base64EncodeConfiguration, Core",
+        "Id": "",
+        "Template": ""
+      },
+      "description": "Encode a string to Base64",
+      "properties": {
+        "$type": {
+          "enum": [
+            "Core.Entities.Configs.Steps.Base64EncodeConfiguration, Core"
+          ]
+        },
+        "Id": {
+          "type": "string"
+        },
+        "Template": {
+          "type": "string"
+        },
+        "SuccessCondition": {
+          "type": "string"
+        },
+        "StartCondition": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "$type",
+        "Id",
+        "Template"
       ]
     },
     "Response": {
