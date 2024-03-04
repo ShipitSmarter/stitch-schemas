@@ -629,6 +629,9 @@
         "Template": {
           "type": "string"
         },
+        "EncodingName": {
+          "$ref": "#/definitions/EncodingName"
+        },
         "SuccessCondition": {
           "type": "string"
         },
@@ -640,7 +643,8 @@
         "$type",
         "Id",
         "Template"
-      ]
+      ],
+      "additionalProperties": false
     },
     "Response": {
       "type": "object",
