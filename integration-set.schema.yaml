@@ -157,8 +157,8 @@ properties:
         type: array
         items:
           $ref: "#/definitions/integrationPath"
-      capabilities:
-        title: Capabilities
+      transportOptions:
+        title: Transport options
         description: Request service levels and options available for the carrier with the given shipment.
         link:
           $ref: "#/definitions/webLink"
