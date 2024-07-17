@@ -81,8 +81,7 @@ properties:
         $ref: "#/definitions/webLink"
   integrationPaths:
     type: object
-    required:
-    - ordering
+    required: []
     additionalProperties: false
     properties:
       ordering:
