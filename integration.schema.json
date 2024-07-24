@@ -261,6 +261,30 @@
         },
         "Url": {
           "type": "string"
+        },
+        "Retries":{
+          "type": "object",
+          "description": "Retry the request if `SuccessCondition` is not met",
+          "properties":{
+              "MaxRetries": {
+                "type": "number",
+                "description": "The maximum number of retries"
+              },
+              "DelayMs": {
+                "type": "number",
+                "description": "The delay in milliseconds between retries (default: 0)"
+              },
+              "DelaysMs": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                },
+                "description": "The delays in milliseconds between retries. If set, the number of items should be equal to `MaxRetries`."
+              }
+          },
+          "required": [
+            "MaxRetries"
+          ]
         }
       },
       "required": [
