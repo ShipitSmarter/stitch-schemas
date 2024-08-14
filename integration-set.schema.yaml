@@ -79,6 +79,36 @@ properties:
               type: boolean
       link: 
         $ref: "#/definitions/webLink"
+  accountConfiguration:
+    type: object
+    additionalProperties: false
+    properties:
+      sender:
+        type: object
+        additionalProperties: false
+        properties:
+          sender:
+            $ref: "#/definitions/accountDetails"
+      transport:
+        type: object
+        additionalProperties: false
+        properties:
+          sender:
+            $ref: "#/definitions/accountDetails"
+          receiver:
+            $ref: "#/definitions/accountDetails"
+          thirdParty:
+            $ref: "#/definitions/accountDetails"
+      dutiesTaxes:
+        type: object
+        additionalProperties: false
+        properties:
+          sender:
+            $ref: "#/definitions/accountDetails"
+          receiver:
+            $ref: "#/definitions/accountDetails"
+          thirdParty:
+            $ref: "#/definitions/accountDetails"
   integrationPaths:
     type: object
     required: []
@@ -813,6 +843,32 @@ properties:
               postcodeEnd:
                 type: string
 definitions:
+  accountDetails:
+    type: object
+    required:
+      - account
+      - postCode
+      - countryCode
+      - city
+      - addressLine1
+      - addressLine2
+      - addressLine3
+    additionalProperties: false
+    properties:
+      account:
+        type: boolean
+      postCode:
+        type: boolean
+      countryCode:
+        type: boolean
+      city:
+        type: boolean
+      addressLine1:
+        type: boolean
+      addressLine2:
+        type: boolean
+      addressLine3:
+        type: boolean
   integrationPath:
     type: object
     required:
