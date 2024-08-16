@@ -847,12 +847,6 @@ definitions:
     type: object
     required:
       - account
-      - postCode
-      - countryCode
-      - city
-      - addressLine1
-      - addressLine2
-      - addressLine3
     additionalProperties: false
     properties:
       account:
