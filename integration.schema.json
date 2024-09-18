@@ -140,11 +140,53 @@
             "$ref": "#/definitions/LoopStep"
           },
           {
+            "$ref": "#/definitions/QueueStep"
+          },
+          {
             "$ref": "#/definitions/Base64EncodeStep"
           }
         ]
       },
       "minItems": 0
+    },
+    "QueueStep": {
+      "type": "object",
+      "default": {
+        "$type": "Core.Entities.Configs.Steps.QueueConfiguration, Core",
+        "Id": "",
+        "Subject": "",
+        "Template": ""
+      },
+      "description": "Queue a message",
+      "properties": {
+        "$type": {
+          "enum": [
+            "Core.Entities.Configs.Steps.QueueConfiguration, Core"
+          ]
+        },
+        "Id": {
+          "type": "string"
+        },
+        "Template": {
+          "type": "string"
+        },
+        "Subject": {
+          "type": "string"
+        },
+        "SuccessCondition": {
+          "type": "string"
+        },
+        "StartCondition": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "$type",
+        "Id",
+        "Template",
+        "Subject"
+      ],
+      "additionalProperties": false
     },
     "LoopStep": {
       "type": "object",
@@ -193,6 +235,9 @@
             },
             {
               "$ref": "#/definitions/CacheLoadStep"
+            },
+            {
+              "$ref": "#/definitions/QueueStep"
             },
             {
               "$ref": "#/definitions/Base64EncodeStep"
