@@ -49,6 +49,7 @@ properties:
             type: string
           contentType: 
             type: string  #html content-type of the logo, eg svg+xml, png, jpeg, gif etc..
+      supportsPartialLabelling: boolean
   integrationPaths:
     type: object
     required:
