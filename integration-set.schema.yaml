@@ -77,7 +77,8 @@ properties:
               type: boolean
             supportsPdf:
               type: boolean
-      supportsPartialLabelling: boolean
+      supportsPartialLabelling: 
+        type: boolean
       link: 
         $ref: "#/definitions/webLink"
   accountConfiguration:
