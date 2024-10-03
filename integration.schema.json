@@ -138,10 +138,55 @@
           },
           {
             "$ref": "#/definitions/LoopStep"
+          },
+          {
+            "$ref": "#/definitions/QueueStep"
+          },
+          {
+            "$ref": "#/definitions/Base64EncodeStep"
           }
         ]
       },
       "minItems": 0
+    },
+    "QueueStep": {
+      "type": "object",
+      "default": {
+        "$type": "Core.Entities.Configs.Steps.QueueConfiguration, Core",
+        "Id": "",
+        "Subject": "",
+        "Template": ""
+      },
+      "description": "Queue a message",
+      "properties": {
+        "$type": {
+          "enum": [
+            "Core.Entities.Configs.Steps.QueueConfiguration, Core"
+          ]
+        },
+        "Id": {
+          "type": "string"
+        },
+        "Template": {
+          "type": "string"
+        },
+        "Subject": {
+          "type": "string"
+        },
+        "SuccessCondition": {
+          "type": "string"
+        },
+        "StartCondition": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "$type",
+        "Id",
+        "Template",
+        "Subject"
+      ],
+      "additionalProperties": false
     },
     "LoopStep": {
       "type": "object",
@@ -190,6 +235,12 @@
             },
             {
               "$ref": "#/definitions/CacheLoadStep"
+            },
+            {
+              "$ref": "#/definitions/QueueStep"
+            },
+            {
+              "$ref": "#/definitions/Base64EncodeStep"
             }
           ]
         },
@@ -255,6 +306,27 @@
         },
         "Url": {
           "type": "string"
+        },
+        "Retries":{
+          "type": "object",
+          "description": "Retry the request if `SuccessCondition` is not met",
+          "properties":{
+              "MaxRetries": {
+                "type": "number",
+                "description": "The maximum number of retries"
+              },
+              "DelaysMs": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                },
+                "description": "The delays in milliseconds between retries. If set, the number of items should be equal to `MaxRetries`."
+              }
+          },
+          "required": [
+            "MaxRetries"
+          ],
+          "additionalProperties": false
         }
       },
       "required": [
@@ -263,7 +335,8 @@
         "Template",
         "Method",
         "Url"
-      ]
+      ],
+      "additionalProperties": false
     },
     "HttpMultipartStep": {
       "type": "object",
@@ -602,6 +675,43 @@
         "Id",
         "Key"
       ]
+    },
+    "Base64EncodeStep": {
+      "type": "object",
+      "default": {
+        "$type": "Core.Entities.Configs.Steps.Base64EncodeConfiguration, Core",
+        "Id": "",
+        "Template": ""
+      },
+      "description": "Encode a string to Base64",
+      "properties": {
+        "$type": {
+          "enum": [
+            "Core.Entities.Configs.Steps.Base64EncodeConfiguration, Core"
+          ]
+        },
+        "Id": {
+          "type": "string"
+        },
+        "Template": {
+          "type": "string"
+        },
+        "EncodingName": {
+          "$ref": "#/definitions/EncodingName"
+        },
+        "SuccessCondition": {
+          "type": "string"
+        },
+        "StartCondition": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "$type",
+        "Id",
+        "Template"
+      ],
+      "additionalProperties": false
     },
     "Response": {
       "type": "object",

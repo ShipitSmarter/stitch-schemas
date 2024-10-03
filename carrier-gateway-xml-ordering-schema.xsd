@@ -1,0 +1,1922 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 01-aug-2024 Schema based on XML variant -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="additionalHandling" type="xs:boolean"/>
+	<xs:element name="addressLine1" type="xs:string"/>
+	<xs:element name="addressLine2" type="xs:string"/>
+	<xs:element name="addressLine3" type="xs:string"/>
+	<xs:element name="addresses">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="sender" type="addressWithAccount"/>
+				<xs:element name="receiver" type="addressWithAccount"/>
+				<xs:element name="dutiesTaxes" type="addressWithAccount" minOccurs="0"/>
+				<xs:element name="collection" type="address" minOccurs="0"/>
+				<xs:element name="thirdParty" type="addressWithAccount" minOccurs="0"/>
+				<xs:element name="buyer" type="address" minOccurs="0"/>
+				<xs:element name="seller" type="address" minOccurs="0"/>
+				<xs:element name="ultimate" type="address" minOccurs="0"/>
+				<xs:element name="broker" type="addressWithAccount" minOccurs="0"/>
+				<xs:element name="importerOfRecord" type="addressWithAccount" minOccurs="0"/>
+				<xs:element name="dropOff" type="dropOffAddress" minOccurs="0"/>
+				<xs:element name="return" type="address" minOccurs="0"/>
+				<xs:element name="carrierAgent" type="addressWithAccount" minOccurs="0"/>
+				<xs:element name="notify" type="address" minOccurs="0"/>
+				<xs:element name="shippingLocation" type="address" minOccurs="0"/>
+				<xs:element name="neutralSender" type="address" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="aircraftAccessibility">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="accessible"/>
+				<xs:enumeration value="inaccessible"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="airportFrom" type="xs:string"/>
+	<xs:element name="airportTo" type="xs:string"/>
+	<xs:element name="allowDeliveryToNeighbour" type="xs:boolean"/>
+	<xs:element name="amount" type="xs:decimal"/>
+	<xs:element name="appointmentForDelivery" type="xs:boolean"/>
+	<xs:element name="billOfLadingNumber" type="xs:string"/>
+	<xs:element name="bookingConfirmationNumber" type="xs:string"/>
+	<xs:element name="branch" type="xs:string"/>
+	<xs:element name="cargoArrangement">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="pickup"/>
+				<xs:enumeration value="selfDelivery"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="cargoClix" type="xs:boolean"/>
+	<xs:element name="carrierAccountReference" type="xs:string"/>
+	<xs:element name="carrierAssignedAddressId" type="xs:string"/>
+	<xs:element name="carrierInstructions">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="collection" type="xs:string" minOccurs="0"/>
+				<xs:element name="transport" type="xs:string" minOccurs="0"/>
+				<xs:element name="delivery" type="xs:string" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="carrierOriginDepot" type="xs:string"/>
+	<xs:element name="carrierRouteCode" type="xs:string"/>
+	<xs:element name="cashOnDelivery">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="amount"/>
+				<xs:element ref="currencyCode"/>
+				<xs:element ref="type"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="charges">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="freight" minOccurs="0"/>
+				<xs:element ref="insurance" minOccurs="0"/>
+				<xs:element ref="discount" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="city" type="xs:string"/>
+	<xs:element name="class" type="xs:byte"/>
+	<xs:element name="classificationCode" type="xs:string"/>
+	<xs:element name="commercialInvoice">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="invoiceNumber" minOccurs="0"/>
+				<xs:element ref="charges" minOccurs="0"/>
+				<xs:element ref="declarationStatement" minOccurs="0"/>
+				<xs:element ref="exportReason" minOccurs="0"/>
+				<xs:element ref="remarks" minOccurs="0"/>
+				<xs:element ref="lines"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="companyName" type="xs:string"/>
+	<xs:element name="complaintNumber" type="xs:string"/>
+	<xs:element name="constructionSite" type="xs:boolean"/>
+	<xs:element name="contactEmail" type="xs:string"/>
+	<xs:element name="contactName" type="xs:string"/>
+	<xs:element name="contactPhone" type="xs:string"/>
+	<xs:element name="containerNumber" type="xs:string"/>
+	<xs:element name="containsDangerousGoods" type="xs:boolean"/>
+	<xs:element name="containsLithiumBatteries" type="xs:boolean"/>
+	<xs:element name="containsPackingList" type="xs:boolean"/>
+	<xs:element name="countryCode">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="AD"/>
+				<xs:enumeration value="AE"/>
+				<xs:enumeration value="AF"/>
+				<xs:enumeration value="AG"/>
+				<xs:enumeration value="AI"/>
+				<xs:enumeration value="AL"/>
+				<xs:enumeration value="AM"/>
+				<xs:enumeration value="AO"/>
+				<xs:enumeration value="AQ"/>
+				<xs:enumeration value="AR"/>
+				<xs:enumeration value="AS"/>
+				<xs:enumeration value="AT"/>
+				<xs:enumeration value="AU"/>
+				<xs:enumeration value="AW"/>
+				<xs:enumeration value="AX"/>
+				<xs:enumeration value="AZ"/>
+				<xs:enumeration value="BA"/>
+				<xs:enumeration value="BB"/>
+				<xs:enumeration value="BD"/>
+				<xs:enumeration value="BE"/>
+				<xs:enumeration value="BF"/>
+				<xs:enumeration value="BG"/>
+				<xs:enumeration value="BH"/>
+				<xs:enumeration value="BI"/>
+				<xs:enumeration value="BJ"/>
+				<xs:enumeration value="BL"/>
+				<xs:enumeration value="BM"/>
+				<xs:enumeration value="BN"/>
+				<xs:enumeration value="BO"/>
+				<xs:enumeration value="BQ"/>
+				<xs:enumeration value="BR"/>
+				<xs:enumeration value="BS"/>
+				<xs:enumeration value="BT"/>
+				<xs:enumeration value="BV"/>
+				<xs:enumeration value="BW"/>
+				<xs:enumeration value="BY"/>
+				<xs:enumeration value="BZ"/>
+				<xs:enumeration value="CA"/>
+				<xs:enumeration value="CC"/>
+				<xs:enumeration value="CD"/>
+				<xs:enumeration value="CF"/>
+				<xs:enumeration value="CG"/>
+				<xs:enumeration value="CH"/>
+				<xs:enumeration value="CI"/>
+				<xs:enumeration value="CK"/>
+				<xs:enumeration value="CL"/>
+				<xs:enumeration value="CM"/>
+				<xs:enumeration value="CN"/>
+				<xs:enumeration value="CO"/>
+				<xs:enumeration value="CR"/>
+				<xs:enumeration value="CU"/>
+				<xs:enumeration value="CV"/>
+				<xs:enumeration value="CW"/>
+				<xs:enumeration value="CX"/>
+				<xs:enumeration value="CY"/>
+				<xs:enumeration value="CZ"/>
+				<xs:enumeration value="DE"/>
+				<xs:enumeration value="DJ"/>
+				<xs:enumeration value="DK"/>
+				<xs:enumeration value="DM"/>
+				<xs:enumeration value="DO"/>
+				<xs:enumeration value="DZ"/>
+				<xs:enumeration value="EC"/>
+				<xs:enumeration value="EE"/>
+				<xs:enumeration value="EG"/>
+				<xs:enumeration value="EH"/>
+				<xs:enumeration value="ER"/>
+				<xs:enumeration value="ES"/>
+				<xs:enumeration value="ET"/>
+				<xs:enumeration value="FI"/>
+				<xs:enumeration value="FJ"/>
+				<xs:enumeration value="FK"/>
+				<xs:enumeration value="FM"/>
+				<xs:enumeration value="FO"/>
+				<xs:enumeration value="FR"/>
+				<xs:enumeration value="GA"/>
+				<xs:enumeration value="GB"/>
+				<xs:enumeration value="GD"/>
+				<xs:enumeration value="GE"/>
+				<xs:enumeration value="GF"/>
+				<xs:enumeration value="GG"/>
+				<xs:enumeration value="GH"/>
+				<xs:enumeration value="GI"/>
+				<xs:enumeration value="GL"/>
+				<xs:enumeration value="GM"/>
+				<xs:enumeration value="GN"/>
+				<xs:enumeration value="GP"/>
+				<xs:enumeration value="GQ"/>
+				<xs:enumeration value="GR"/>
+				<xs:enumeration value="GS"/>
+				<xs:enumeration value="GT"/>
+				<xs:enumeration value="GU"/>
+				<xs:enumeration value="GW"/>
+				<xs:enumeration value="GY"/>
+				<xs:enumeration value="HK"/>
+				<xs:enumeration value="HM"/>
+				<xs:enumeration value="HN"/>
+				<xs:enumeration value="HR"/>
+				<xs:enumeration value="HT"/>
+				<xs:enumeration value="HU"/>
+				<xs:enumeration value="ID"/>
+				<xs:enumeration value="IE"/>
+				<xs:enumeration value="IL"/>
+				<xs:enumeration value="IM"/>
+				<xs:enumeration value="IN"/>
+				<xs:enumeration value="IO"/>
+				<xs:enumeration value="IQ"/>
+				<xs:enumeration value="IR"/>
+				<xs:enumeration value="IS"/>
+				<xs:enumeration value="IT"/>
+				<xs:enumeration value="JE"/>
+				<xs:enumeration value="JM"/>
+				<xs:enumeration value="JO"/>
+				<xs:enumeration value="JP"/>
+				<xs:enumeration value="KE"/>
+				<xs:enumeration value="KG"/>
+				<xs:enumeration value="KH"/>
+				<xs:enumeration value="KI"/>
+				<xs:enumeration value="KM"/>
+				<xs:enumeration value="KN"/>
+				<xs:enumeration value="KP"/>
+				<xs:enumeration value="KR"/>
+				<xs:enumeration value="KW"/>
+				<xs:enumeration value="KY"/>
+				<xs:enumeration value="KZ"/>
+				<xs:enumeration value="LA"/>
+				<xs:enumeration value="LB"/>
+				<xs:enumeration value="LC"/>
+				<xs:enumeration value="LI"/>
+				<xs:enumeration value="LK"/>
+				<xs:enumeration value="LR"/>
+				<xs:enumeration value="LS"/>
+				<xs:enumeration value="LT"/>
+				<xs:enumeration value="LU"/>
+				<xs:enumeration value="LV"/>
+				<xs:enumeration value="LY"/>
+				<xs:enumeration value="MA"/>
+				<xs:enumeration value="MC"/>
+				<xs:enumeration value="MD"/>
+				<xs:enumeration value="ME"/>
+				<xs:enumeration value="MF"/>
+				<xs:enumeration value="MG"/>
+				<xs:enumeration value="MH"/>
+				<xs:enumeration value="MK"/>
+				<xs:enumeration value="ML"/>
+				<xs:enumeration value="MM"/>
+				<xs:enumeration value="MN"/>
+				<xs:enumeration value="MO"/>
+				<xs:enumeration value="MP"/>
+				<xs:enumeration value="MQ"/>
+				<xs:enumeration value="MR"/>
+				<xs:enumeration value="MS"/>
+				<xs:enumeration value="MT"/>
+				<xs:enumeration value="MU"/>
+				<xs:enumeration value="MV"/>
+				<xs:enumeration value="MW"/>
+				<xs:enumeration value="MX"/>
+				<xs:enumeration value="MY"/>
+				<xs:enumeration value="MZ"/>
+				<xs:enumeration value="NA"/>
+				<xs:enumeration value="NC"/>
+				<xs:enumeration value="NE"/>
+				<xs:enumeration value="NF"/>
+				<xs:enumeration value="NG"/>
+				<xs:enumeration value="NI"/>
+				<xs:enumeration value="NL"/>
+				<xs:enumeration value="NO"/>
+				<xs:enumeration value="NP"/>
+				<xs:enumeration value="NR"/>
+				<xs:enumeration value="NU"/>
+				<xs:enumeration value="NZ"/>
+				<xs:enumeration value="OM"/>
+				<xs:enumeration value="PA"/>
+				<xs:enumeration value="PE"/>
+				<xs:enumeration value="PF"/>
+				<xs:enumeration value="PG"/>
+				<xs:enumeration value="PH"/>
+				<xs:enumeration value="PK"/>
+				<xs:enumeration value="PL"/>
+				<xs:enumeration value="PM"/>
+				<xs:enumeration value="PN"/>
+				<xs:enumeration value="PR"/>
+				<xs:enumeration value="PS"/>
+				<xs:enumeration value="PT"/>
+				<xs:enumeration value="PW"/>
+				<xs:enumeration value="PY"/>
+				<xs:enumeration value="QA"/>
+				<xs:enumeration value="RE"/>
+				<xs:enumeration value="RO"/>
+				<xs:enumeration value="RS"/>
+				<xs:enumeration value="RU"/>
+				<xs:enumeration value="RW"/>
+				<xs:enumeration value="SA"/>
+				<xs:enumeration value="SB"/>
+				<xs:enumeration value="SC"/>
+				<xs:enumeration value="SD"/>
+				<xs:enumeration value="SE"/>
+				<xs:enumeration value="SG"/>
+				<xs:enumeration value="SH"/>
+				<xs:enumeration value="SI"/>
+				<xs:enumeration value="SJ"/>
+				<xs:enumeration value="SK"/>
+				<xs:enumeration value="SL"/>
+				<xs:enumeration value="SM"/>
+				<xs:enumeration value="SN"/>
+				<xs:enumeration value="SO"/>
+				<xs:enumeration value="SR"/>
+				<xs:enumeration value="SS"/>
+				<xs:enumeration value="ST"/>
+				<xs:enumeration value="SV"/>
+				<xs:enumeration value="SX"/>
+				<xs:enumeration value="SY"/>
+				<xs:enumeration value="SZ"/>
+				<xs:enumeration value="TC"/>
+				<xs:enumeration value="TD"/>
+				<xs:enumeration value="TF"/>
+				<xs:enumeration value="TG"/>
+				<xs:enumeration value="TH"/>
+				<xs:enumeration value="TJ"/>
+				<xs:enumeration value="TK"/>
+				<xs:enumeration value="TL"/>
+				<xs:enumeration value="TM"/>
+				<xs:enumeration value="TN"/>
+				<xs:enumeration value="TO"/>
+				<xs:enumeration value="TR"/>
+				<xs:enumeration value="TT"/>
+				<xs:enumeration value="TV"/>
+				<xs:enumeration value="TW"/>
+				<xs:enumeration value="TZ"/>
+				<xs:enumeration value="UA"/>
+				<xs:enumeration value="UG"/>
+				<xs:enumeration value="UM"/>
+				<xs:enumeration value="US"/>
+				<xs:enumeration value="UY"/>
+				<xs:enumeration value="UZ"/>
+				<xs:enumeration value="VA"/>
+				<xs:enumeration value="VC"/>
+				<xs:enumeration value="VE"/>
+				<xs:enumeration value="VG"/>
+				<xs:enumeration value="VI"/>
+				<xs:enumeration value="VN"/>
+				<xs:enumeration value="VU"/>
+				<xs:enumeration value="WF"/>
+				<xs:enumeration value="WS"/>
+				<xs:enumeration value="YE"/>
+				<xs:enumeration value="YT"/>
+				<xs:enumeration value="ZA"/>
+				<xs:enumeration value="ZM"/>
+				<xs:enumeration value="ZW"/>
+				<xs:enumeration value="AC"/>
+				<xs:enumeration value="CP"/>
+				<xs:enumeration value="CQ"/>
+				<xs:enumeration value="DG"/>
+				<xs:enumeration value="EA"/>
+				<xs:enumeration value="EU"/>
+				<xs:enumeration value="EZ"/>
+				<xs:enumeration value="FX"/>
+				<xs:enumeration value="IC"/>
+				<xs:enumeration value="SU"/>
+				<xs:enumeration value="TA"/>
+				<xs:enumeration value="UK"/>
+				<xs:enumeration value="UN"/>
+				<xs:enumeration value="XK"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="countryOfOrigin">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="AD"/>
+				<xs:enumeration value="AE"/>
+				<xs:enumeration value="AF"/>
+				<xs:enumeration value="AG"/>
+				<xs:enumeration value="AI"/>
+				<xs:enumeration value="AL"/>
+				<xs:enumeration value="AM"/>
+				<xs:enumeration value="AO"/>
+				<xs:enumeration value="AQ"/>
+				<xs:enumeration value="AR"/>
+				<xs:enumeration value="AS"/>
+				<xs:enumeration value="AT"/>
+				<xs:enumeration value="AU"/>
+				<xs:enumeration value="AW"/>
+				<xs:enumeration value="AX"/>
+				<xs:enumeration value="AZ"/>
+				<xs:enumeration value="BA"/>
+				<xs:enumeration value="BB"/>
+				<xs:enumeration value="BD"/>
+				<xs:enumeration value="BE"/>
+				<xs:enumeration value="BF"/>
+				<xs:enumeration value="BG"/>
+				<xs:enumeration value="BH"/>
+				<xs:enumeration value="BI"/>
+				<xs:enumeration value="BJ"/>
+				<xs:enumeration value="BL"/>
+				<xs:enumeration value="BM"/>
+				<xs:enumeration value="BN"/>
+				<xs:enumeration value="BO"/>
+				<xs:enumeration value="BQ"/>
+				<xs:enumeration value="BR"/>
+				<xs:enumeration value="BS"/>
+				<xs:enumeration value="BT"/>
+				<xs:enumeration value="BV"/>
+				<xs:enumeration value="BW"/>
+				<xs:enumeration value="BY"/>
+				<xs:enumeration value="BZ"/>
+				<xs:enumeration value="CA"/>
+				<xs:enumeration value="CC"/>
+				<xs:enumeration value="CD"/>
+				<xs:enumeration value="CF"/>
+				<xs:enumeration value="CG"/>
+				<xs:enumeration value="CH"/>
+				<xs:enumeration value="CI"/>
+				<xs:enumeration value="CK"/>
+				<xs:enumeration value="CL"/>
+				<xs:enumeration value="CM"/>
+				<xs:enumeration value="CN"/>
+				<xs:enumeration value="CO"/>
+				<xs:enumeration value="CR"/>
+				<xs:enumeration value="CU"/>
+				<xs:enumeration value="CV"/>
+				<xs:enumeration value="CW"/>
+				<xs:enumeration value="CX"/>
+				<xs:enumeration value="CY"/>
+				<xs:enumeration value="CZ"/>
+				<xs:enumeration value="DE"/>
+				<xs:enumeration value="DJ"/>
+				<xs:enumeration value="DK"/>
+				<xs:enumeration value="DM"/>
+				<xs:enumeration value="DO"/>
+				<xs:enumeration value="DZ"/>
+				<xs:enumeration value="EC"/>
+				<xs:enumeration value="EE"/>
+				<xs:enumeration value="EG"/>
+				<xs:enumeration value="EH"/>
+				<xs:enumeration value="ER"/>
+				<xs:enumeration value="ES"/>
+				<xs:enumeration value="ET"/>
+				<xs:enumeration value="FI"/>
+				<xs:enumeration value="FJ"/>
+				<xs:enumeration value="FK"/>
+				<xs:enumeration value="FM"/>
+				<xs:enumeration value="FO"/>
+				<xs:enumeration value="FR"/>
+				<xs:enumeration value="GA"/>
+				<xs:enumeration value="GB"/>
+				<xs:enumeration value="GD"/>
+				<xs:enumeration value="GE"/>
+				<xs:enumeration value="GF"/>
+				<xs:enumeration value="GG"/>
+				<xs:enumeration value="GH"/>
+				<xs:enumeration value="GI"/>
+				<xs:enumeration value="GL"/>
+				<xs:enumeration value="GM"/>
+				<xs:enumeration value="GN"/>
+				<xs:enumeration value="GP"/>
+				<xs:enumeration value="GQ"/>
+				<xs:enumeration value="GR"/>
+				<xs:enumeration value="GS"/>
+				<xs:enumeration value="GT"/>
+				<xs:enumeration value="GU"/>
+				<xs:enumeration value="GW"/>
+				<xs:enumeration value="GY"/>
+				<xs:enumeration value="HK"/>
+				<xs:enumeration value="HM"/>
+				<xs:enumeration value="HN"/>
+				<xs:enumeration value="HR"/>
+				<xs:enumeration value="HT"/>
+				<xs:enumeration value="HU"/>
+				<xs:enumeration value="ID"/>
+				<xs:enumeration value="IE"/>
+				<xs:enumeration value="IL"/>
+				<xs:enumeration value="IM"/>
+				<xs:enumeration value="IN"/>
+				<xs:enumeration value="IO"/>
+				<xs:enumeration value="IQ"/>
+				<xs:enumeration value="IR"/>
+				<xs:enumeration value="IS"/>
+				<xs:enumeration value="IT"/>
+				<xs:enumeration value="JE"/>
+				<xs:enumeration value="JM"/>
+				<xs:enumeration value="JO"/>
+				<xs:enumeration value="JP"/>
+				<xs:enumeration value="KE"/>
+				<xs:enumeration value="KG"/>
+				<xs:enumeration value="KH"/>
+				<xs:enumeration value="KI"/>
+				<xs:enumeration value="KM"/>
+				<xs:enumeration value="KN"/>
+				<xs:enumeration value="KP"/>
+				<xs:enumeration value="KR"/>
+				<xs:enumeration value="KW"/>
+				<xs:enumeration value="KY"/>
+				<xs:enumeration value="KZ"/>
+				<xs:enumeration value="LA"/>
+				<xs:enumeration value="LB"/>
+				<xs:enumeration value="LC"/>
+				<xs:enumeration value="LI"/>
+				<xs:enumeration value="LK"/>
+				<xs:enumeration value="LR"/>
+				<xs:enumeration value="LS"/>
+				<xs:enumeration value="LT"/>
+				<xs:enumeration value="LU"/>
+				<xs:enumeration value="LV"/>
+				<xs:enumeration value="LY"/>
+				<xs:enumeration value="MA"/>
+				<xs:enumeration value="MC"/>
+				<xs:enumeration value="MD"/>
+				<xs:enumeration value="ME"/>
+				<xs:enumeration value="MF"/>
+				<xs:enumeration value="MG"/>
+				<xs:enumeration value="MH"/>
+				<xs:enumeration value="MK"/>
+				<xs:enumeration value="ML"/>
+				<xs:enumeration value="MM"/>
+				<xs:enumeration value="MN"/>
+				<xs:enumeration value="MO"/>
+				<xs:enumeration value="MP"/>
+				<xs:enumeration value="MQ"/>
+				<xs:enumeration value="MR"/>
+				<xs:enumeration value="MS"/>
+				<xs:enumeration value="MT"/>
+				<xs:enumeration value="MU"/>
+				<xs:enumeration value="MV"/>
+				<xs:enumeration value="MW"/>
+				<xs:enumeration value="MX"/>
+				<xs:enumeration value="MY"/>
+				<xs:enumeration value="MZ"/>
+				<xs:enumeration value="NA"/>
+				<xs:enumeration value="NC"/>
+				<xs:enumeration value="NE"/>
+				<xs:enumeration value="NF"/>
+				<xs:enumeration value="NG"/>
+				<xs:enumeration value="NI"/>
+				<xs:enumeration value="NL"/>
+				<xs:enumeration value="NO"/>
+				<xs:enumeration value="NP"/>
+				<xs:enumeration value="NR"/>
+				<xs:enumeration value="NU"/>
+				<xs:enumeration value="NZ"/>
+				<xs:enumeration value="OM"/>
+				<xs:enumeration value="PA"/>
+				<xs:enumeration value="PE"/>
+				<xs:enumeration value="PF"/>
+				<xs:enumeration value="PG"/>
+				<xs:enumeration value="PH"/>
+				<xs:enumeration value="PK"/>
+				<xs:enumeration value="PL"/>
+				<xs:enumeration value="PM"/>
+				<xs:enumeration value="PN"/>
+				<xs:enumeration value="PR"/>
+				<xs:enumeration value="PS"/>
+				<xs:enumeration value="PT"/>
+				<xs:enumeration value="PW"/>
+				<xs:enumeration value="PY"/>
+				<xs:enumeration value="QA"/>
+				<xs:enumeration value="RE"/>
+				<xs:enumeration value="RO"/>
+				<xs:enumeration value="RS"/>
+				<xs:enumeration value="RU"/>
+				<xs:enumeration value="RW"/>
+				<xs:enumeration value="SA"/>
+				<xs:enumeration value="SB"/>
+				<xs:enumeration value="SC"/>
+				<xs:enumeration value="SD"/>
+				<xs:enumeration value="SE"/>
+				<xs:enumeration value="SG"/>
+				<xs:enumeration value="SH"/>
+				<xs:enumeration value="SI"/>
+				<xs:enumeration value="SJ"/>
+				<xs:enumeration value="SK"/>
+				<xs:enumeration value="SL"/>
+				<xs:enumeration value="SM"/>
+				<xs:enumeration value="SN"/>
+				<xs:enumeration value="SO"/>
+				<xs:enumeration value="SR"/>
+				<xs:enumeration value="SS"/>
+				<xs:enumeration value="ST"/>
+				<xs:enumeration value="SV"/>
+				<xs:enumeration value="SX"/>
+				<xs:enumeration value="SY"/>
+				<xs:enumeration value="SZ"/>
+				<xs:enumeration value="TC"/>
+				<xs:enumeration value="TD"/>
+				<xs:enumeration value="TF"/>
+				<xs:enumeration value="TG"/>
+				<xs:enumeration value="TH"/>
+				<xs:enumeration value="TJ"/>
+				<xs:enumeration value="TK"/>
+				<xs:enumeration value="TL"/>
+				<xs:enumeration value="TM"/>
+				<xs:enumeration value="TN"/>
+				<xs:enumeration value="TO"/>
+				<xs:enumeration value="TR"/>
+				<xs:enumeration value="TT"/>
+				<xs:enumeration value="TV"/>
+				<xs:enumeration value="TW"/>
+				<xs:enumeration value="TZ"/>
+				<xs:enumeration value="UA"/>
+				<xs:enumeration value="UG"/>
+				<xs:enumeration value="UM"/>
+				<xs:enumeration value="US"/>
+				<xs:enumeration value="UY"/>
+				<xs:enumeration value="UZ"/>
+				<xs:enumeration value="VA"/>
+				<xs:enumeration value="VC"/>
+				<xs:enumeration value="VE"/>
+				<xs:enumeration value="VG"/>
+				<xs:enumeration value="VI"/>
+				<xs:enumeration value="VN"/>
+				<xs:enumeration value="VU"/>
+				<xs:enumeration value="WF"/>
+				<xs:enumeration value="WS"/>
+				<xs:enumeration value="YE"/>
+				<xs:enumeration value="YT"/>
+				<xs:enumeration value="ZA"/>
+				<xs:enumeration value="ZM"/>
+				<xs:enumeration value="ZW"/>
+				<xs:enumeration value="AC"/>
+				<xs:enumeration value="CP"/>
+				<xs:enumeration value="CQ"/>
+				<xs:enumeration value="DG"/>
+				<xs:enumeration value="EA"/>
+				<xs:enumeration value="EU"/>
+				<xs:enumeration value="EZ"/>
+				<xs:enumeration value="FX"/>
+				<xs:enumeration value="IC"/>
+				<xs:enumeration value="SU"/>
+				<xs:enumeration value="TA"/>
+				<xs:enumeration value="UK"/>
+				<xs:enumeration value="UN"/>
+				<xs:enumeration value="XK"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="currencyCode">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="AED"/>
+				<xs:enumeration value="AFN"/>
+				<xs:enumeration value="ALL"/>
+				<xs:enumeration value="AMD"/>
+				<xs:enumeration value="ANG"/>
+				<xs:enumeration value="AOA"/>
+				<xs:enumeration value="ARS"/>
+				<xs:enumeration value="AUD"/>
+				<xs:enumeration value="AWG"/>
+				<xs:enumeration value="AZN"/>
+				<xs:enumeration value="BAM"/>
+				<xs:enumeration value="BBD"/>
+				<xs:enumeration value="BDT"/>
+				<xs:enumeration value="BGN"/>
+				<xs:enumeration value="BHD"/>
+				<xs:enumeration value="BIF"/>
+				<xs:enumeration value="BMD"/>
+				<xs:enumeration value="BND"/>
+				<xs:enumeration value="BOB"/>
+				<xs:enumeration value="BOV"/>
+				<xs:enumeration value="BRL"/>
+				<xs:enumeration value="BSD"/>
+				<xs:enumeration value="BTN"/>
+				<xs:enumeration value="BWP"/>
+				<xs:enumeration value="BYN"/>
+				<xs:enumeration value="BZD"/>
+				<xs:enumeration value="CAD"/>
+				<xs:enumeration value="CDF"/>
+				<xs:enumeration value="CHE"/>
+				<xs:enumeration value="CHF"/>
+				<xs:enumeration value="CHW"/>
+				<xs:enumeration value="CLF"/>
+				<xs:enumeration value="CLP"/>
+				<xs:enumeration value="COP"/>
+				<xs:enumeration value="COU"/>
+				<xs:enumeration value="CRC"/>
+				<xs:enumeration value="CUC"/>
+				<xs:enumeration value="CUP"/>
+				<xs:enumeration value="CVE"/>
+				<xs:enumeration value="CZK"/>
+				<xs:enumeration value="DJF"/>
+				<xs:enumeration value="DKK"/>
+				<xs:enumeration value="DOP"/>
+				<xs:enumeration value="DZD"/>
+				<xs:enumeration value="EGP"/>
+				<xs:enumeration value="ERN"/>
+				<xs:enumeration value="ETB"/>
+				<xs:enumeration value="EUR"/>
+				<xs:enumeration value="FJD"/>
+				<xs:enumeration value="FKP"/>
+				<xs:enumeration value="GBP"/>
+				<xs:enumeration value="GEL"/>
+				<xs:enumeration value="GHS"/>
+				<xs:enumeration value="GIP"/>
+				<xs:enumeration value="GMD"/>
+				<xs:enumeration value="GNF"/>
+				<xs:enumeration value="GTQ"/>
+				<xs:enumeration value="GYD"/>
+				<xs:enumeration value="HKD"/>
+				<xs:enumeration value="HNL"/>
+				<xs:enumeration value="HTG"/>
+				<xs:enumeration value="HUF"/>
+				<xs:enumeration value="IDR"/>
+				<xs:enumeration value="ILS"/>
+				<xs:enumeration value="INR"/>
+				<xs:enumeration value="IQD"/>
+				<xs:enumeration value="IRR"/>
+				<xs:enumeration value="ISK"/>
+				<xs:enumeration value="JMD"/>
+				<xs:enumeration value="JOD"/>
+				<xs:enumeration value="JPY"/>
+				<xs:enumeration value="KES"/>
+				<xs:enumeration value="KGS"/>
+				<xs:enumeration value="KHR"/>
+				<xs:enumeration value="KMF"/>
+				<xs:enumeration value="KPW"/>
+				<xs:enumeration value="KRW"/>
+				<xs:enumeration value="KWD"/>
+				<xs:enumeration value="KYD"/>
+				<xs:enumeration value="KZT"/>
+				<xs:enumeration value="LAK"/>
+				<xs:enumeration value="LBP"/>
+				<xs:enumeration value="LKR"/>
+				<xs:enumeration value="LRD"/>
+				<xs:enumeration value="LSL"/>
+				<xs:enumeration value="LYD"/>
+				<xs:enumeration value="MAD"/>
+				<xs:enumeration value="MDL"/>
+				<xs:enumeration value="MGA"/>
+				<xs:enumeration value="MKD"/>
+				<xs:enumeration value="MMK"/>
+				<xs:enumeration value="MNT"/>
+				<xs:enumeration value="MOP"/>
+				<xs:enumeration value="MRU"/>
+				<xs:enumeration value="MUR"/>
+				<xs:enumeration value="MVR"/>
+				<xs:enumeration value="MWK"/>
+				<xs:enumeration value="MXN"/>
+				<xs:enumeration value="MXV"/>
+				<xs:enumeration value="MYR"/>
+				<xs:enumeration value="MZN"/>
+				<xs:enumeration value="NAD"/>
+				<xs:enumeration value="NGN"/>
+				<xs:enumeration value="NIO"/>
+				<xs:enumeration value="NOK"/>
+				<xs:enumeration value="NPR"/>
+				<xs:enumeration value="NZD"/>
+				<xs:enumeration value="OMR"/>
+				<xs:enumeration value="PAB"/>
+				<xs:enumeration value="PEN"/>
+				<xs:enumeration value="PGK"/>
+				<xs:enumeration value="PHP"/>
+				<xs:enumeration value="PKR"/>
+				<xs:enumeration value="PLN"/>
+				<xs:enumeration value="PYG"/>
+				<xs:enumeration value="QAR"/>
+				<xs:enumeration value="RON"/>
+				<xs:enumeration value="RSD"/>
+				<xs:enumeration value="CNY"/>
+				<xs:enumeration value="RUB"/>
+				<xs:enumeration value="RWF"/>
+				<xs:enumeration value="SAR"/>
+				<xs:enumeration value="SBD"/>
+				<xs:enumeration value="SCR"/>
+				<xs:enumeration value="SDG"/>
+				<xs:enumeration value="SEK"/>
+				<xs:enumeration value="SGD"/>
+				<xs:enumeration value="SHP"/>
+				<xs:enumeration value="SLE"/>
+				<xs:enumeration value="SLL"/>
+				<xs:enumeration value="SOS"/>
+				<xs:enumeration value="SRD"/>
+				<xs:enumeration value="SSP"/>
+				<xs:enumeration value="STN"/>
+				<xs:enumeration value="SVC"/>
+				<xs:enumeration value="SYP"/>
+				<xs:enumeration value="SZL"/>
+				<xs:enumeration value="THB"/>
+				<xs:enumeration value="TJS"/>
+				<xs:enumeration value="TMT"/>
+				<xs:enumeration value="TND"/>
+				<xs:enumeration value="TOP"/>
+				<xs:enumeration value="TRY"/>
+				<xs:enumeration value="TTD"/>
+				<xs:enumeration value="TWD"/>
+				<xs:enumeration value="TZS"/>
+				<xs:enumeration value="UAH"/>
+				<xs:enumeration value="UGX"/>
+				<xs:enumeration value="USD"/>
+				<xs:enumeration value="USN"/>
+				<xs:enumeration value="UYI"/>
+				<xs:enumeration value="UYU"/>
+				<xs:enumeration value="UYW"/>
+				<xs:enumeration value="UZS"/>
+				<xs:enumeration value="VED"/>
+				<xs:enumeration value="VES"/>
+				<xs:enumeration value="VND"/>
+				<xs:enumeration value="VUV"/>
+				<xs:enumeration value="WST"/>
+				<xs:enumeration value="XAF"/>
+				<xs:enumeration value="XAG"/>
+				<xs:enumeration value="XAU"/>
+				<xs:enumeration value="XBA"/>
+				<xs:enumeration value="XBB"/>
+				<xs:enumeration value="XBC"/>
+				<xs:enumeration value="XBD"/>
+				<xs:enumeration value="XCD"/>
+				<xs:enumeration value="XDR"/>
+				<xs:enumeration value="XOF"/>
+				<xs:enumeration value="XPD"/>
+				<xs:enumeration value="XPF"/>
+				<xs:enumeration value="XPT"/>
+				<xs:enumeration value="XSU"/>
+				<xs:enumeration value="XTS"/>
+				<xs:enumeration value="XUA"/>
+				<xs:enumeration value="XXX"/>
+				<xs:enumeration value="YER"/>
+				<xs:enumeration value="ZAR"/>
+				<xs:enumeration value="ZMW"/>
+				<xs:enumeration value="ZWL"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="customerPurchaseOrder" type="xs:string"/>
+	<xs:element name="customs">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="customsCode" minOccurs="0"/>
+				<xs:element ref="eccn" minOccurs="0"/>
+				<xs:element ref="scheduleB" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="customsClearance" type="xs:boolean"/>
+	<xs:element name="customsClearanceNumber" type="xs:string"/>
+	<xs:element name="customsCode" type="xs:decimal"/>
+	<xs:element name="dangerousGood">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="type">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="exceptedQuantity"/>
+							<xs:enumeration value="limitedQuantity"/>
+							<xs:enumeration value="lithiumBatteries"/>
+							<xs:enumeration value="dryIce"/>
+							<xs:enumeration value="passengerAircraftOk"/>
+							<xs:enumeration value="cargoAircraftOnly"/>
+							<xs:enumeration value="radioActiveMaterial"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element ref="unNumber" minOccurs="0"/>
+				<xs:element ref="class" minOccurs="0"/>
+				<xs:element ref="properShippingName" minOccurs="0"/>
+				<xs:element ref="technicalName" minOccurs="0"/>
+				<xs:element ref="packingGroup" minOccurs="0"/>
+				<xs:element name="quantity" type="quantityProduct" minOccurs="0"/>
+				<xs:element ref="packingInstructions" minOccurs="0"/>
+				<xs:element ref="packingCode" minOccurs="0"/>
+				<xs:element ref="packingDescription" minOccurs="0"/>
+				<xs:element ref="section" minOccurs="0"/>
+				<xs:element ref="subrisk" minOccurs="0"/>
+				<xs:element ref="classificationCode" minOccurs="0"/>
+				<xs:element ref="transportCategory" minOccurs="0"/>
+				<xs:element ref="tunnelRestrictionCode" minOccurs="0"/>
+				<xs:element ref="isEnvironmentallyHazardous" minOccurs="0"/>
+				<xs:element ref="aircraftAccessibility" minOccurs="0"/>
+				<xs:element ref="weight" minOccurs="0"/>
+				<xs:element ref="volume" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="dangerousGoods">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="dangerousGood"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="date" type="xs:dateTime"/>
+	<xs:element name="declarationStatement" type="xs:string"/>
+	<xs:element name="declaredValue">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="value"/>
+				<xs:element ref="currencyCode"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="delivery">
+		<xs:complexType mixed="true">
+			<xs:sequence minOccurs="0">
+				<xs:element ref="start"/>
+				<xs:element ref="end" minOccurs="0"/>
+				<xs:element ref="fixed" minOccurs="0"/>
+				<xs:element ref="onlySaturday" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="deliveryInside" type="xs:boolean"/>
+	<xs:element name="description" type="xs:string"/>
+	<xs:element name="dimensionUnit">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="cmt"/>
+				<xs:enumeration value="inh"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="discount">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="value"/>
+				<xs:element ref="currencyCode"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="dock">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="loading" minOccurs="0"/>
+				<xs:element ref="unloading" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="documentService">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="serviceCode"/>
+				<xs:element ref="date" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="dropOff">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="companyName" minOccurs="0"/>
+				<xs:element ref="addressLine1"/>
+				<xs:element ref="addressLine2" minOccurs="0"/>
+				<xs:element ref="addressLine3" minOccurs="0"/>
+				<xs:element ref="streetNumber" minOccurs="0"/>
+				<xs:element ref="city" minOccurs="0"/>
+				<xs:element ref="stateCode" minOccurs="0"/>
+				<xs:element ref="postCode" minOccurs="0"/>
+				<xs:element ref="countryCode"/>
+				<xs:element ref="vat" minOccurs="0"/>
+				<xs:element ref="eori" minOccurs="0"/>
+				<xs:element ref="contactName" minOccurs="0"/>
+				<xs:element ref="contactPhone" minOccurs="0"/>
+				<xs:element ref="contactEmail" minOccurs="0"/>
+				<xs:element ref="carrierAccountReference" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="dryIceAudit" type="xs:boolean"/>
+	<xs:element name="eccn"  type="xs:string"/>
+	<xs:element name="email" type="xs:string"/>
+	<xs:element name="end" type="xs:dateTime"/>
+	<xs:element name="entryCode"  type="xs:string"/>
+	<xs:element name="environment">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="playground"/>
+				<xs:enumeration value="production"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="eori" type="xs:string"/>
+	<xs:element name="equipmentTemperature">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="ambient"/>
+				<xs:enumeration value="cooled"/>
+				<xs:enumeration value="frozen"/>
+				<xs:enumeration value="dryIceReplenisment"/>
+				<xs:enumeration value="cryo"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="expirationDate" type="xs:dateTime"/>
+	<xs:element name="exportReason">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="reason" minOccurs="0"/>
+				<xs:element name="type">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="permanent"/>
+							<xs:enumeration value="temporary"/>
+							<xs:enumeration value="returnToOrigin"/>
+							<xs:enumeration value="return"/>
+							<xs:enumeration value="exhibition"/>
+							<xs:enumeration value="interCompany"/>
+							<xs:enumeration value="sale"/>
+							<xs:enumeration value="personalUse"/>
+							<xs:enumeration value="sample"/>
+							<xs:enumeration value="gift"/>
+							<xs:enumeration value="diplomatic"/>
+							<xs:enumeration value="defence"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="externalId" type="xs:string"/>
+	<xs:element name="fixed" type="xs:boolean"/>
+	<xs:element name="flightNumber" type="xs:string"/>
+	<xs:element name="fragile" type="xs:boolean"/>
+	<xs:element name="freight">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="value"/>
+				<xs:element ref="currencyCode"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="generalLedgerCode" type="xs:string"/>
+	<xs:element name="goodsItem">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="itemNumber"/>
+				<xs:element ref="description"/>
+				<xs:element ref="quantity" minOccurs="0"/>
+				<xs:element ref="purchaseOrder" minOccurs="0"/>
+				<xs:element ref="purchaseOrderLineNumber" minOccurs="0"/>
+				<xs:element ref="customerPurchaseOrder" minOccurs="0"/>
+				<xs:element ref="weight"/>
+				<xs:element ref="lotNumber" minOccurs="0"/>
+				<xs:element ref="expirationDate" minOccurs="0"/>
+				<xs:element ref="dangerousGoods" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="goodsItems">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="goodsItem" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="gross" type="xs:decimal"/>
+	<xs:element name="handlingUnit">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="sequence"/>
+				<xs:element name="weight" type="xs:decimal"/>
+				<xs:element ref="length"/>
+				<xs:element ref="width"/>
+				<xs:element ref="height"/>
+				<xs:element ref="packageTypeCode"/>
+				<xs:element ref="isDocument" minOccurs="0"/>
+				<xs:element ref="isStackable" minOccurs="0"/>
+				<xs:element name="references" type="referencesHandlingUnit" minOccurs="0"/>
+				<xs:element name="serviceOptions" type="serviceOptionsHandlingUnit"/>
+				<xs:element ref="goodsItems" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="handlingUnits">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="handlingUnit" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="height" type="xs:decimal"/>
+	<xs:element name="holdForPickup" type="xs:boolean"/>
+	<xs:element name="id" type="xs:integer"/>
+	<xs:element name="inbound" type="xs:boolean"/>
+	<xs:element name="incoterm">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="exw"/>
+				<xs:enumeration value="fca"/>
+				<xs:enumeration value="cpt"/>
+				<xs:enumeration value="dat"/>
+				<xs:enumeration value="dap"/>
+				<xs:enumeration value="ddp"/>
+				<xs:enumeration value="ddu"/>
+				<xs:enumeration value="cif"/>
+				<xs:enumeration value="fob"/>
+				<xs:enumeration value="dpu"/>
+				<xs:enumeration value="fas"/>
+				<xs:enumeration value="cfr"/>
+				<xs:enumeration value="ddp"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="incoterms">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="scope"/>
+				<xs:element ref="incoterm"/>
+				<xs:element ref="place" minOccurs="0"/>
+				<xs:element ref="version"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="instruction" type="xs:string"/>
+	<xs:element name="instructions">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="airportFrom" minOccurs="0"/>
+				<xs:element ref="airportTo" minOccurs="0"/>
+				<xs:element ref="branch" minOccurs="0"/>
+				<xs:element ref="carrierInstructions" minOccurs="0"/>
+				<xs:element ref="carrierOriginDepot" minOccurs="0"/>
+				<xs:element ref="carrierRouteCode" minOccurs="0"/>
+				<xs:element ref="containsPackingList" minOccurs="0"/>
+				<xs:element ref="dock" minOccurs="0"/>
+				<xs:element ref="justification" minOccurs="0"/>
+				<xs:element ref="latestCancelDate" minOccurs="0"/>
+				<xs:element ref="licensePlate" minOccurs="0"/>
+				<xs:element ref="loadMeter" minOccurs="0"/>
+				<xs:element ref="modeOfTransport" minOccurs="0"/>
+				<xs:element ref="multipleBol" minOccurs="0"/>
+				<xs:element ref="notifyEmails" minOccurs="0"/>
+				<xs:element ref="orderingCompany" minOccurs="0"/>
+				<xs:element ref="orderType" minOccurs="0"/>
+				<xs:element ref="paymentType" minOccurs="0"/>
+				<xs:element ref="piecesOnPallets" minOccurs="0"/>
+				<xs:element ref="placeDocumentCollection" minOccurs="0"/>
+				<xs:element ref="portFrom" minOccurs="0"/>
+				<xs:element ref="portTo" minOccurs="0"/>
+				<xs:element ref="purchaseOrderCancelDate" minOccurs="0"/>
+				<xs:element ref="purchaseOrderStartDate" minOccurs="0"/>
+				<xs:element ref="reasonForReturn" minOccurs="0"/>
+				<xs:element ref="replenishment" minOccurs="0"/>
+				<xs:element ref="rmaDate" minOccurs="0"/>
+				<xs:element ref="vesselName" minOccurs="0"/>
+				<xs:element ref="woodDeclaration" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="insurance">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="value"/>
+				<xs:element ref="currencyCode"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="insuredValue">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="value"/>
+				<xs:element ref="currencyCode"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="invoiceNumber" type="xs:int"/>
+	<xs:element name="isDocument" type="xs:boolean"/>
+	<xs:element name="isDomestic" type="xs:boolean"/>
+	<xs:element name="isDutiable" type="xs:boolean"/>
+	<xs:element name="isEnvironmentallyHazardous" type="xs:boolean"/>
+	<xs:element name="isStackable" type="xs:boolean"/>
+	<xs:element name="itemNumber" type="xs:string"/>
+	<xs:element name="justification" type="xs:string"/>
+	<xs:element name="latestCancelDate" type="xs:dateTime"/>
+	<xs:element name="length" type="xs:decimal"/>
+	<xs:element name="licensePlate" type="xs:string"/>
+	<xs:element name="liftGate">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="collection" type="xs:boolean" minOccurs="0"/>
+				<xs:element name="delivery" type="xs:boolean" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="line">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="id"/>
+				<xs:element ref="externalId" minOccurs="0"/>
+				<xs:element ref="description"/>
+				<xs:element name="quantity" type="quantityProduct"/>
+				<xs:element ref="unitCustomsValue"/>
+				<xs:element ref="countryOfOrigin" minOccurs="0"/>
+				<xs:element ref="itemNumber"/>
+				<xs:element ref="purchaseOrder" minOccurs="0"/>
+				<xs:element ref="purchaseOrderLineNumber" minOccurs="0"/>
+				<xs:element ref="customerPurchaseOrder" minOccurs="0"/>
+				<xs:element ref="weight" minOccurs="0"/>
+				<xs:element ref="temperatureLoggerReference" minOccurs="0"/>
+				<xs:element ref="expirationDate" minOccurs="0"/>
+				<xs:element ref="customs"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="lines">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="line" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="loadMeter" type="xs:decimal"/>
+	<xs:element name="loadNumber" type="xs:string"/>
+	<xs:element name="loading" type="xs:byte"/>
+	<xs:element name="locationCode" type="xs:int"/>
+	<xs:element name="lockerDelivery">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="locationCode" minOccurs="0"/>
+				<xs:element ref="lockerReference"/>
+				<xs:element ref="entryCode" minOccurs="0"/>
+				<xs:element ref="providerName" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="lockerReference" type="xs:string"/>
+	<xs:element name="lotNumber" type="xs:string"/>
+	<xs:element name="modeOfTransport">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="road"/>
+				<xs:enumeration value="express"/>
+				<xs:enumeration value="air"/>
+				<xs:enumeration value="ocean"/>
+				<xs:enumeration value="none"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="multipleBol" type="xs:boolean"/>
+	<xs:element name="nett" type="xs:decimal"/>
+	<xs:element name="neutralDelivery" type="xs:boolean"/>
+	<xs:element name="notifyEmails">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="email" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="onlySaturday" type="xs:boolean"/>
+	<xs:element name="orderType" type="xs:string"/>
+	<xs:element name="orderingCompany" type="xs:string"/>
+	<xs:element name="packageTypeCode">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="box"/>
+				<xs:enumeration value="cage-roll"/>
+				<xs:enumeration value="crate"/>
+				<xs:enumeration value="envelope"/>
+				<xs:enumeration value="pallet-100x120-euro"/>
+				<xs:enumeration value="pallet-80x120-euro"/>
+				<xs:enumeration value="pallet-80x60-euro"/>
+				<xs:enumeration value="pallet-60x40-euro"/>
+				<xs:enumeration value="pallet-40x30-euro"/>
+				<xs:enumeration value="pallet-100x120-oneway"/>
+				<xs:enumeration value="pallet-80x120-oneway"/>
+				<xs:enumeration value="pallet-80x60-oneway"/>
+				<xs:enumeration value="pallet-box"/>
+				<xs:enumeration value="unpacked"/>
+				<xs:enumeration value="carrier-envelope"/>
+				<xs:enumeration value="carrier-10kg-box"/>
+				<xs:enumeration value="carrier-25kg-box"/>
+				<xs:enumeration value="carrier-large-box"/>
+				<xs:enumeration value="carrier-medium-box"/>
+				<xs:enumeration value="carrier-pak"/>
+				<xs:enumeration value="carrier-small-box"/>
+				<xs:enumeration value="carrier-tube"/>
+				<xs:enumeration value="bag"/>
+				<xs:enumeration value="bag-flexi"/>
+				<xs:enumeration value="bag-gunny"/>
+				<xs:enumeration value="bag-jute"/>
+				<xs:enumeration value="bag-large"/>
+				<xs:enumeration value="bag-multi-wall"/>
+				<xs:enumeration value="bag-paper"/>
+				<xs:enumeration value="bag-paper-multi-wall"/>
+				<xs:enumeration value="bag-paper-multi-wall-water-resistant"/>
+				<xs:enumeration value="bag-plastic"/>
+				<xs:enumeration value="bag-plastics-film"/>
+				<xs:enumeration value="bag-poly"/>
+				<xs:enumeration value="bag-textile"/>
+				<xs:enumeration value="bag-textile-sift-proof"/>
+				<xs:enumeration value="bag-textile-water-resistant"/>
+				<xs:enumeration value="bag-textile-without-coat-liner"/>
+				<xs:enumeration value="bag-woven-plastic"/>
+				<xs:enumeration value="bag-woven-plastic-sift-proof"/>
+				<xs:enumeration value="bag-woven-plastic-water-resistant"/>
+				<xs:enumeration value="bag-woven-plastic-without-coat-liner"/>
+				<xs:enumeration value="bale-compressed"/>
+				<xs:enumeration value="bale-non-compressed"/>
+				<xs:enumeration value="barrel"/>
+				<xs:enumeration value="barrel-wooden"/>
+				<xs:enumeration value="barrel-wooden-bung-type"/>
+				<xs:enumeration value="barrel-wooden-removable-head"/>
+				<xs:enumeration value="basket"/>
+				<xs:enumeration value="basket-cardboard"/>
+				<xs:enumeration value="basket-plastic"/>
+				<xs:enumeration value="basket-wooden"/>
+				<xs:enumeration value="bin"/>
+				<xs:enumeration value="bottle-gas"/>
+				<xs:enumeration value="box-aluminium"/>
+				<xs:enumeration value="box-chep"/>
+				<xs:enumeration value="box-fibreboard"/>
+				<xs:enumeration value="box-for-liquids"/>
+				<xs:enumeration value="box-natural-wood"/>
+				<xs:enumeration value="box-natural-wood-ordinary"/>
+				<xs:enumeration value="box-natural-wood-sift-proof"/>
+				<xs:enumeration value="box-plastic"/>
+				<xs:enumeration value="box-plastic-expanded"/>
+				<xs:enumeration value="box-plastic-solid"/>
+				<xs:enumeration value="box-plywood"/>
+				<xs:enumeration value="box-reconstructed-wood"/>
+				<xs:enumeration value="box-steel"/>
+				<xs:enumeration value="box-wooden"/>
+				<xs:enumeration value="bucket"/>
+				<xs:enumeration value="bulk-gas"/>
+				<xs:enumeration value="bulk-liquefied-gas"/>
+				<xs:enumeration value="bulk-liquid"/>
+				<xs:enumeration value="bulk-scrap-metal"/>
+				<xs:enumeration value="bulk-solid"/>
+				<xs:enumeration value="bulk-solid-grains"/>
+				<xs:enumeration value="bulk-solid-powders"/>
+				<xs:enumeration value="bundle"/>
+				<xs:enumeration value="cage"/>
+				<xs:enumeration value="cage-chep"/>
+				<xs:enumeration value="cage-wheels-900x770x1513"/>
+				<xs:enumeration value="can"/>
+				<xs:enumeration value="can-rectangular"/>
+				<xs:enumeration value="carboy-non-protected"/>
+				<xs:enumeration value="carboy-protected"/>
+				<xs:enumeration value="case"/>
+				<xs:enumeration value="case-isothermic"/>
+				<xs:enumeration value="case-skeleton"/>
+				<xs:enumeration value="case-steel"/>
+				<xs:enumeration value="case-wooden"/>
+				<xs:enumeration value="chest"/>
+				<xs:enumeration value="chest-sea"/>
+				<xs:enumeration value="churn"/>
+				<xs:enumeration value="coffin"/>
+				<xs:enumeration value="coil"/>
+				<xs:enumeration value="container-metal"/>
+				<xs:enumeration value="crate-beer"/>
+				<xs:enumeration value="crate-bottlerack"/>
+				<xs:enumeration value="crate-bulk-cardboard"/>
+				<xs:enumeration value="crate-bulk-plastic"/>
+				<xs:enumeration value="crate-bulk-wooden"/>
+				<xs:enumeration value="crate-framed"/>
+				<xs:enumeration value="crate-fruit"/>
+				<xs:enumeration value="crate-metal"/>
+				<xs:enumeration value="crate-milk"/>
+				<xs:enumeration value="crate-multi-layer-cardboard"/>
+				<xs:enumeration value="crate-multi-layer-plastic"/>
+				<xs:enumeration value="crate-multi-layer-wooden"/>
+				<xs:enumeration value="crate-shallow"/>
+				<xs:enumeration value="crate-wooden"/>
+				<xs:enumeration value="cylinder"/>
+				<xs:enumeration value="drum"/>
+				<xs:enumeration value="drum-aluminium"/>
+				<xs:enumeration value="drum-aluminium-non-removable-head"/>
+				<xs:enumeration value="drum-aluminium-removable-head"/>
+				<xs:enumeration value="drum-fibreboard"/>
+				<xs:enumeration value="drum-iron"/>
+				<xs:enumeration value="drum-plastic"/>
+				<xs:enumeration value="drum-plastic-non-removable-head"/>
+				<xs:enumeration value="drum-plastic-removable-head"/>
+				<xs:enumeration value="drum-plywood"/>
+				<xs:enumeration value="drum-steel"/>
+				<xs:enumeration value="drum-steel-removable-head"/>
+				<xs:enumeration value="drum-wooden"/>
+				<xs:enumeration value="drum-steel-non-removable-head"/>
+				<xs:enumeration value="envelope-steel"/>
+				<xs:enumeration value="firkin"/>
+				<xs:enumeration value="foodtainer"/>
+				<xs:enumeration value="frame"/>
+				<xs:enumeration value="hamper-wickerwork"/>
+				<xs:enumeration value="hanger"/>
+				<xs:enumeration value="hogshead"/>
+				<xs:enumeration value="ibc-aluminium"/>
+				<xs:enumeration value="ibc-aluminium-liquid"/>
+				<xs:enumeration value="ibc-aluminium-pressurized-above-10kpa"/>
+				<xs:enumeration value="ibc-bag-flexible"/>
+				<xs:enumeration value="ibc-bag-jumbo"/>
+				<xs:enumeration value="ibc-bag-pallet-sized"/>
+				<xs:enumeration value="ibc-composite"/>
+				<xs:enumeration value="ibc-composite-flexible-plastic-liquids"/>
+				<xs:enumeration value="ibc-composite-flexible-plastic-pressurised"/>
+				<xs:enumeration value="ibc-composite-flexible-plastic-solids"/>
+				<xs:enumeration value="ibc-composite-rigid-plastic-liquids"/>
+				<xs:enumeration value="ibc-composite-rigid-plastic-pressurised"/>
+				<xs:enumeration value="ibc-composite-rigid-plastic-solids"/>
+				<xs:enumeration value="ibc-fibreboard"/>
+				<xs:enumeration value="ibc-flexible"/>
+				<xs:enumeration value="ibc-metal"/>
+				<xs:enumeration value="ibc-metal-no-steal"/>
+				<xs:enumeration value="ibc-metal-liquid"/>
+				<xs:enumeration value="ibc-metal-pressurized-10kpa"/>
+				<xs:enumeration value="ibc-natural-wood"/>
+				<xs:enumeration value="ibc-natural-wood-inner-liner"/>
+				<xs:enumeration value="ibc-paper-multi-wall"/>
+				<xs:enumeration value="ibc-paper-multi-wall-water-resistant"/>
+				<xs:enumeration value="ibc-plastic-film"/>
+				<xs:enumeration value="ibc-plywood"/>
+				<xs:enumeration value="ibc-plywood-inner-liner"/>
+				<xs:enumeration value="ibc-reconstituted-wood"/>
+				<xs:enumeration value="ibc-reconstituted-wood-inner-liner"/>
+				<xs:enumeration value="ibc-rigid-plastic"/>
+				<xs:enumeration value="ibc-rigid-plastic-freestanding-liquids"/>
+				<xs:enumeration value="ibc-rigid-plastic-freestanding-pressurised"/>
+				<xs:enumeration value="ibc-rigid-plastic-freestanding-solids"/>
+				<xs:enumeration value="ibc-rigid-plastic-structural-equipment-liquids"/>
+				<xs:enumeration value="ibc-rigid-plastic-structural-equipment-pressurised"/>
+				<xs:enumeration value="ibc-rigid-plastic-structural-equipment-solids"/>
+				<xs:enumeration value="ibc-steel"/>
+				<xs:enumeration value="ibc-steel-liquid"/>
+				<xs:enumeration value="ibc-steel-pressurized-above-10kpa"/>
+				<xs:enumeration value="ibc-textile-coated"/>
+				<xs:enumeration value="ibc-textile-coated-and-liner"/>
+				<xs:enumeration value="ibc-textile-liner"/>
+				<xs:enumeration value="ibc-textile-out-coat-liner"/>
+				<xs:enumeration value="ibc-woven-plastic-coated"/>
+				<xs:enumeration value="ibc-woven-plastic-coated-and-liner"/>
+				<xs:enumeration value="ibc-woven-plastic-with-liner"/>
+				<xs:enumeration value="ibc-woven-plastic-without-coat-liner"/>
+				<xs:enumeration value="jar"/>
+				<xs:enumeration value="jerrycan-cylindrical"/>
+				<xs:enumeration value="jerrycan-plastic"/>
+				<xs:enumeration value="jerrycan-plastic-non-removable-head"/>
+				<xs:enumeration value="jerrycan-plastic-removable-head"/>
+				<xs:enumeration value="jerrycan-rectangular"/>
+				<xs:enumeration value="jerrycan-steel"/>
+				<xs:enumeration value="jerrycan-steel-non-removable-head"/>
+				<xs:enumeration value="jerrycan-steel-removable-head"/>
+				<xs:enumeration value="jug"/>
+				<xs:enumeration value="keg"/>
+				<xs:enumeration value="liftvan"/>
+				<xs:enumeration value="net"/>
+				<xs:enumeration value="net-red"/>
+				<xs:enumeration value="net-tube-plastic"/>
+				<xs:enumeration value="net-tube-textile"/>
+				<xs:enumeration value="package-cardboard-bottle"/>
+				<xs:enumeration value="pack-plastic-expandable"/>
+				<xs:enumeration value="pack-plastic-solid"/>
+				<xs:enumeration value="pail"/>
+				<xs:enumeration value="pallet"/>
+				<xs:enumeration value="pallet-oneway"/>
+				<xs:enumeration value="pallet-100x120-chep"/>
+				<xs:enumeration value="pallet-110x110-iso-t11"/>
+				<xs:enumeration value="pallet-116.5x116.5-as"/>
+				<xs:enumeration value="pallet-40x60-chep"/>
+				<xs:enumeration value="pallet-60x100"/>
+				<xs:enumeration value="pallet-60x80-chep"/>
+				<xs:enumeration value="pallet-60x80-lpr"/>
+				<xs:enumeration value="pallet-80x100"/>
+				<xs:enumeration value="pallet-80x120-chep"/>
+				<xs:enumeration value="pallet-80x120-lpr"/>
+				<xs:enumeration value="pallet-80x60"/>
+				<xs:enumeration value="pallet-case"/>
+				<xs:enumeration value="pallet-case-cardboard"/>
+				<xs:enumeration value="pallet-case-metal"/>
+				<xs:enumeration value="pallet-case-plastic"/>
+				<xs:enumeration value="pallet-case-wooden"/>
+				<xs:enumeration value="pallet-exceptional"/>
+				<xs:enumeration value="pallet-modular-80x100"/>
+				<xs:enumeration value="pallet-modular-80x120"/>
+				<xs:enumeration value="pallet-octabin"/>
+				<xs:enumeration value="pallet-plastic-60x80-srs"/>
+				<xs:enumeration value="pallet-plastic-80x120-srs"/>
+				<xs:enumeration value="pallet-platform"/>
+				<xs:enumeration value="pallet-returnable"/>
+				<xs:enumeration value="pallet-synthentic-100x120"/>
+				<xs:enumeration value="pallet-synthentic-80x120"/>
+				<xs:enumeration value="pallet-triwall"/>
+				<xs:enumeration value="pallet-wheeled-81x60x16"/>
+				<xs:enumeration value="pallet-wheeled-81x67x135"/>
+				<xs:enumeration value="pallet-wheeled-81x72x135"/>
+				<xs:enumeration value="pallet-wholesaler"/>
+				<xs:enumeration value="pallet-wooden"/>
+				<xs:enumeration value="pallet-wooden-40x80"/>
+				<xs:enumeration value="paper-wrapped"/>
+				<xs:enumeration value="rack"/>
+				<xs:enumeration value="rack-clothing-hanger"/>
+				<xs:enumeration value="receptacle-fibre"/>
+				<xs:enumeration value="receptacle-glass"/>
+				<xs:enumeration value="receptacle-metal"/>
+				<xs:enumeration value="receptacle-paper"/>
+				<xs:enumeration value="receptacle-plastic-wrapped"/>
+				<xs:enumeration value="receptacle-plastic"/>
+				<xs:enumeration value="receptacle-wooden"/>
+				<xs:enumeration value="reel"/>
+				<xs:enumeration value="roll"/>
+				<xs:enumeration value="sack"/>
+				<xs:enumeration value="skid"/>
+				<xs:enumeration value="spool"/>
+				<xs:enumeration value="suitcase"/>
+				<xs:enumeration value="tank"/>
+				<xs:enumeration value="tank-cylindrical"/>
+				<xs:enumeration value="tank-plastic-flexi"/>
+				<xs:enumeration value="tank-rectangular"/>
+				<xs:enumeration value="tierce"/>
+				<xs:enumeration value="tray"/>
+				<xs:enumeration value="trolly"/>
+				<xs:enumeration value="trunk"/>
+				<xs:enumeration value="tub"/>
+				<xs:enumeration value="tube"/>
+				<xs:enumeration value="tube-collapsible"/>
+				<xs:enumeration value="tub-with-lid"/>
+				<xs:enumeration value="vat"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="packingCode" type="xs:string"/>
+	<xs:element name="packingDescription" type="xs:string"/>
+	<xs:element name="packingGroup" type="xs:string"/>
+	<xs:element name="packingInstructions">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="instruction"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="paymentType">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="creditCard"/>
+				<xs:enumeration value="cashOnDelivery"/>
+				<xs:enumeration value="accountsReceivable"/>
+				<xs:enumeration value="accountsReceivableIntercompany"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="photoAtDelivery" type="xs:boolean"/>
+	<xs:element name="pickup">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="start"/>
+				<xs:element ref="end" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="piecesOnPallets" type="xs:integer"/>
+	<xs:element name="place" type="xs:string"/>
+	<xs:element name="placeDocumentCollection" type="xs:string"/>
+	<xs:element name="portFrom" type="xs:string"/>
+	<xs:element name="portTo" type="xs:string"/>
+	<xs:element name="postCode" type="xs:string"/>
+	<xs:element name="preAdviceDelivery">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="useEmail" minOccurs="0"/>
+				<xs:element ref="useSms" minOccurs="0"/>
+				<xs:element ref="usePhone" minOccurs="0"/>
+				<xs:element ref="useDriverPhone" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="properShippingName" type="xs:string"/>
+	<xs:element name="providerName" type="xs:string"/>
+	<xs:element name="purchaseOrder" type="xs:string"/>
+	<xs:element name="purchaseOrderCancelDate" type="xs:dateTime"/>
+	<xs:element name="purchaseOrderLineNumber" type="xs:byte"/>
+	<xs:element name="purchaseOrderStartDate" type="xs:dateTime"/>
+	<xs:element name="quantity" type="quantityProduct"/>
+	<xs:element name="reason" type="xs:string"/>
+	<xs:element name="reasonForReturn" type="xs:string"/>
+	<xs:element name="reference" type="xs:string" nillable="false"/>
+	<xs:element name="references" type="referencesShipment"/>
+	<xs:element name="remarks" type="xs:string"/>
+	<xs:element name="replenishment" type="xs:boolean"/>
+	<xs:element name="residentialDelivery" type="xs:boolean"/>
+	<xs:element name="rmaDate" type="xs:dateTime"/>
+	<xs:element name="rmaNumber" type="xs:string"/>
+	<xs:element name="sapDelivery" type="xs:string"/>
+	<xs:element name="sapSalesOrder" type="xs:string"/>
+	<xs:element name="scannedPodRequested" type="xs:boolean"/>
+	<xs:element name="scheduleB" type="xs:int"/>
+	<xs:element name="scope">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="doorToDoor"/>
+				<xs:enumeration value="doorToPort"/>
+				<xs:enumeration value="portToDoor"/>
+				<xs:enumeration value="portToPort"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="section" type="xs:string"/>
+	<xs:element name="sequence" type="xs:integer"/>
+	<xs:element name="serviceCode">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="original"/>
+				<xs:enumeration value="house"/>
+				<xs:enumeration value="telex"/>
+				<xs:enumeration value="forwardsCargoReceipt"/>
+				<xs:enumeration value="pickup"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="serviceLevelReference" type="xs:string"/>
+	<xs:element name="serviceOptions" type="serviceOptionsShipment"/>
+	<xs:element name="shipment">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="environment"/>
+				<xs:element ref="trackingReference"/>
+				<xs:element ref="reference"/>
+				<xs:element ref="addresses"/>
+				<xs:element ref="description" minOccurs="0"/>
+				<xs:element ref="declaredValue" minOccurs="0"/>
+				<xs:element ref="timeWindows"/>
+				<xs:element ref="incoterms" minOccurs="0"/>
+				<xs:element ref="weightUnit"/>
+				<xs:element ref="dimensionUnit"/>
+				<xs:element ref="inbound" minOccurs="0"/>
+				<xs:element ref="serviceLevelReference" minOccurs="0"/>
+				<xs:element ref="serviceOptions" minOccurs="0"/>
+				<xs:element ref="references" minOccurs="0"/>
+				<xs:element ref="instructions" minOccurs="0"/>
+				<xs:element ref="commercialInvoice" minOccurs="0"/>
+				<xs:element ref="handlingUnits"/>
+				<xs:element name="accounts" type="accounts" minOccurs="0"/>
+				<xs:element ref="isDomestic" minOccurs="0"/>
+				<xs:element ref="isDutiable" minOccurs="0"/>
+				<xs:element ref="containsDangerousGoods" minOccurs="0"/>
+				<xs:element name="documents" type="documents" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="shipmentNumber" type="xs:string"/>
+	<xs:element name="signatureForDelivery">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="none"/>
+				<xs:enumeration value="consigneeOnly"/>
+				<xs:enumeration value="indirect"/>
+				<xs:enumeration value="adult"/>
+				<xs:enumeration value="noSignatureRequired"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="smallVehicle" type="xs:boolean"/>
+	<xs:element name="splitDutiesFromVat" type="xs:boolean"/>
+	<xs:element name="start" type="xs:dateTime"/>
+	<xs:element name="stateCode">
+		<xs:complexType/>
+	</xs:element>
+	<xs:element name="streetNumber" type="xs:byte"/>
+	<xs:element name="subrisk" type="xs:decimal"/>
+	<xs:element name="technicalName" type="xs:string"/>
+	<xs:element name="temperatureLoggerReference" type="xs:string"/>
+	<xs:element name="timeWindows">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="pickup"/>
+				<xs:element ref="delivery"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="trackingReference" type="xs:string" nillable="false"/>
+	<xs:element name="transport" type="xs:string"/>
+	<xs:element name="transportCategory" type="xs:string"/>
+	<xs:element name="tunnelRestrictionCode" type="xs:string"/>
+	<xs:element name="type">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="cash"/>
+				<xs:enumeration value="cheque"/>
+				<xs:enumeration value="draft"/>
+				<xs:enumeration value="moneyOrder"/>
+				<xs:enumeration value="cashierCheque"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="unNumber" type="xs:string"/>
+	<xs:element name="unitCustomsValue">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="value"/>
+				<xs:element ref="currencyCode"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="unitOfMeasure">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="ea"/>
+				<xs:enumeration value="ltr"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="unloading" type="xs:string"/>
+	<xs:element name="useDriverPhone" type="xs:boolean"/>
+	<xs:element name="useEmail" type="xs:boolean"/>
+	<xs:element name="usePhone" type="xs:boolean"/>
+	<xs:element name="useSms" type="xs:boolean"/>
+	<xs:element name="value" type="xs:decimal"/>
+	<xs:element name="vat" type="xs:string"/>
+	<xs:element name="version">
+		<xs:simpleType>
+			<xs:restriction base="xs:short">
+				<xs:pattern value="2000"/>
+				<xs:pattern value="2010"/>
+				<xs:pattern value="2020"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="vesselName" type="xs:string"/>
+	<xs:element name="volume">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="gross" minOccurs="0"/>
+				<xs:element ref="nett" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="voyage" type="xs:string"/>
+	<xs:element name="weight">
+		<xs:complexType mixed="true">
+			<xs:sequence minOccurs="0">
+				<xs:element ref="gross" minOccurs="0"/>
+				<xs:element ref="nett" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="weightUnit">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:pattern value="kgm"/>
+				<xs:pattern value="lbr"/>
+				<xs:enumeration value="kgm"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="width" type="xs:decimal"/>
+	<xs:element name="woodDeclaration" type="xs:boolean"/>
+	<xs:complexType name="serviceOptionsHandlingUnit">
+		<xs:sequence>
+			<xs:element ref="additionalHandling" minOccurs="0"/>
+			<xs:element ref="insuredValue" minOccurs="0"/>
+			<xs:element ref="equipmentTemperature" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="serviceOptionsShipment">
+		<xs:sequence>
+			<xs:element ref="allowDeliveryToNeighbour" minOccurs="0"/>
+			<xs:element ref="appointmentForDelivery" minOccurs="0"/>
+			<xs:element ref="cargoArrangement" minOccurs="0"/>
+			<xs:element ref="cargoClix" minOccurs="0"/>
+			<xs:element ref="cashOnDelivery" minOccurs="0"/>
+			<xs:element ref="constructionSite" minOccurs="0"/>
+			<xs:element ref="containsLithiumBatteries" minOccurs="0"/>
+			<xs:element ref="customsClearance" minOccurs="0"/>
+			<xs:element ref="deliveryInside" minOccurs="0"/>
+			<xs:element ref="documentService" minOccurs="0"/>
+			<xs:element ref="dryIceAudit" minOccurs="0"/>
+			<xs:element ref="equipmentTemperature" minOccurs="0"/>
+			<xs:element ref="fragile" minOccurs="0"/>
+			<xs:element ref="holdForPickup" minOccurs="0"/>
+			<xs:element ref="liftGate" minOccurs="0"/>
+			<xs:element ref="lockerDelivery" minOccurs="0"/>
+			<xs:element ref="neutralDelivery" minOccurs="0"/>
+			<xs:element ref="photoAtDelivery" minOccurs="0"/>
+			<xs:element ref="preAdviceDelivery" minOccurs="0"/>
+			<xs:element ref="residentialDelivery" minOccurs="0"/>
+			<xs:element ref="scannedPodRequested" minOccurs="0"/>
+			<xs:element ref="signatureForDelivery" minOccurs="0"/>
+			<xs:element ref="smallVehicle" minOccurs="0"/>
+			<xs:element ref="splitDutiesFromVat" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="addressWithAccount">
+		<xs:sequence>
+			<xs:element ref="companyName" minOccurs="0"/>
+			<xs:element ref="addressLine1"/>
+			<xs:element ref="addressLine2" minOccurs="0"/>
+			<xs:element ref="addressLine3" minOccurs="0"/>
+			<xs:element ref="streetNumber" minOccurs="0"/>
+			<xs:element ref="city" minOccurs="0"/>
+			<xs:element ref="stateCode" minOccurs="0"/>
+			<xs:element ref="postCode" minOccurs="0"/>
+			<xs:element ref="countryCode" minOccurs="0"/>
+			<xs:element ref="vat" minOccurs="0"/>
+			<xs:element ref="eori" minOccurs="0"/>
+			<xs:element ref="contactName" minOccurs="0"/>
+			<xs:element ref="contactPhone" minOccurs="0"/>
+			<xs:element ref="contactEmail" minOccurs="0"/>
+			<xs:element ref="carrierAccountReference" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="address">
+		<xs:sequence>
+			<xs:element ref="companyName" minOccurs="0"/>
+			<xs:element ref="addressLine1"/>
+			<xs:element ref="addressLine2" minOccurs="0"/>
+			<xs:element ref="addressLine3" minOccurs="0"/>
+			<xs:element ref="streetNumber" minOccurs="0"/>
+			<xs:element ref="city" minOccurs="0"/>
+			<xs:element ref="stateCode" minOccurs="0"/>
+			<xs:element ref="postCode" minOccurs="0"/>
+			<xs:element ref="countryCode" minOccurs="0"/>
+			<xs:element ref="vat" minOccurs="0"/>
+			<xs:element ref="eori" minOccurs="0"/>
+			<xs:element ref="contactName" minOccurs="0"/>
+			<xs:element ref="contactPhone" minOccurs="0"/>
+			<xs:element ref="contactEmail" minOccurs="0"/>
+			<xs:element ref="carrierAccountReference" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="dropOffAddress">
+		<xs:sequence>
+			<xs:element ref="companyName" minOccurs="0"/>
+			<xs:element ref="addressLine1"/>
+			<xs:element ref="addressLine2" minOccurs="0"/>
+			<xs:element ref="addressLine3" minOccurs="0"/>
+			<xs:element ref="streetNumber" minOccurs="0"/>
+			<xs:element ref="city" minOccurs="0"/>
+			<xs:element ref="stateCode" minOccurs="0"/>
+			<xs:element ref="postCode" minOccurs="0"/>
+			<xs:element ref="countryCode" minOccurs="0"/>
+			<xs:element ref="vat" minOccurs="0"/>
+			<xs:element ref="eori" minOccurs="0"/>
+			<xs:element ref="contactName" minOccurs="0"/>
+			<xs:element ref="contactPhone" minOccurs="0"/>
+			<xs:element ref="contactEmail" minOccurs="0"/>
+			<xs:element ref="carrierAssignedAddressId" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="referencesShipment">
+		<xs:sequence>
+			<xs:element ref="billOfLadingNumber" minOccurs="0"/>
+			<xs:element ref="bookingConfirmationNumber" minOccurs="0"/>
+			<xs:element ref="complaintNumber" minOccurs="0"/>
+			<xs:element ref="containerNumber" minOccurs="0"/>
+			<xs:element ref="customsClearanceNumber" minOccurs="0"/>
+			<xs:element ref="customerPurchaseOrder" minOccurs="0"/>
+			<xs:element ref="flightNumber" minOccurs="0"/>
+			<xs:element ref="generalLedgerCode" minOccurs="0"/>
+			<xs:element ref="loadNumber" minOccurs="0"/>
+			<xs:element ref="purchaseOrder" minOccurs="0"/>
+			<xs:element ref="rmaNumber" minOccurs="0"/>
+			<xs:element ref="sapDelivery" minOccurs="0"/>
+			<xs:element ref="sapSalesOrder" minOccurs="0"/>
+			<xs:element ref="shipmentNumber" minOccurs="0"/>
+			<xs:element ref="voyage" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="referencesHandlingUnit">
+		<xs:sequence>
+			<xs:element ref="reference" minOccurs="0"/>
+			<xs:element ref="trackingReference" minOccurs="0"/>
+			<xs:element name="temperatureLoggerReference" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="quantityProduct">
+		<xs:sequence>
+			<xs:element name="value" type="xs:decimal"/>
+			<xs:element name="unitOfMeasure">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="ea"/>
+						<xs:enumeration value="kgm"/>
+						<xs:enumeration value="lbr"/>
+						<xs:enumeration value="ltr"/>
+						<xs:enumeration value="mtr"/>
+						<xs:enumeration value="cmt"/>
+						<xs:enumeration value="bx"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="accounts">
+		<xs:sequence>
+			<xs:element name="sender" type="accountContainer"/>
+			<xs:element name="transport" type="accountContainer"/>
+			<xs:element name="duties" type="accountContainer" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="accountContainer">
+		<xs:sequence>
+			<xs:element name="reference" type="xs:string"/>
+			<xs:element name="relationType">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="sender"/>
+						<xs:enumeration value="receiver"/>
+						<xs:enumeration value="thirdParty"/>
+						<xs:enumeration value="dutiesAndTaxes"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="documents">
+		<xs:sequence>
+			<xs:element name="fileExtension" type="xs:string"/>
+			<xs:element name="fileName" type="xs:string"/>
+			<xs:element name="fileContent" type="xs:string"/>
+			<xs:element name="documentType">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="packingList"/>
+						<xs:enumeration value="commercialInvoice"/>
+						<xs:enumeration value="proformaInvoice"/>
+						<xs:enumeration value="certificateOfOrigin"/>
+						<xs:enumeration value="exportDeclaration"/>
+						<xs:enumeration value="letterOfCredit"/>
+						<xs:enumeration value="cmr"/>
+						<xs:enumeration value="billOfLading"/>
+						<xs:enumeration value="other"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>
