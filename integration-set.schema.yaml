@@ -156,6 +156,14 @@ properties:
         type: array
         items:
           $ref: "#/definitions/integrationPath"
+      trackingFile:
+        title: Tracking File
+        description: A tracking file is provided by the carrier, from which tracking events are read.
+        link: 
+          $ref: "#/definitions/webLink"
+        type: array
+        items:
+          $ref: "#/definitions/integrationPath"
       orderingCancellation:
         title: Cancel order
         description: Cancel a previously ordered shipment.
