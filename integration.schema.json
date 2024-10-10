@@ -154,8 +154,7 @@
       "default": {
         "$type": "Core.Entities.Configs.Steps.QueueConfiguration, Core",
         "Id": "",
-        "Subject": "",
-        "Template": ""
+        "IntegrationPath": ""
       },
       "description": "Queue a message",
       "properties": {
@@ -167,10 +166,7 @@
         "Id": {
           "type": "string"
         },
-        "Template": {
-          "type": "string"
-        },
-        "Subject": {
+        "IntegrationPath": {
           "type": "string"
         },
         "SuccessCondition": {
@@ -183,8 +179,7 @@
       "required": [
         "$type",
         "Id",
-        "Template",
-        "Subject"
+        "IntegrationPath"
       ],
       "additionalProperties": false
     },
