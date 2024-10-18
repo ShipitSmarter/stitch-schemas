@@ -98,7 +98,9 @@
             "FixedWidthReport",
             "TextDelimitedReport",
             "Csv",
-            "JsonWithSchema"
+            "JsonWithSchema",
+            "Edifact",
+            "X12"
           ]
         },
         "ConfigurationFilePath": {
