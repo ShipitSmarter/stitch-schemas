@@ -99,7 +99,8 @@
             "TextDelimitedReport",
             "Csv",
             "JsonWithSchema",
-            "Edifact"
+            "Edifact",
+            "X12"
           ]
         },
         "ConfigurationFilePath": {
