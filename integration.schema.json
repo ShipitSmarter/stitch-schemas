@@ -58,12 +58,8 @@
       },
       "additionalProperties": false,
       "default": {
-        "Method": "POST",
-        "AuthenticationMethods": []
-      },
-      "required": [
-        "AuthenticationMethods"
-      ]
+        "Method": "POST"        
+      }
     },
     "AuthenticationMethod": {
       "type": "object",
@@ -98,7 +94,9 @@
             "FixedWidthReport",
             "TextDelimitedReport",
             "Csv",
-            "JsonWithSchema"
+            "JsonWithSchema",
+            "Edifact",
+            "X12"
           ]
         },
         "ConfigurationFilePath": {
