@@ -7,6 +7,10 @@
         "Delimiter": {
             "type": "string"
         },
+        "AutoDetectDelimiter": {
+            "type": "boolean",
+            "description": "Auto detect delimiter (supports: ',', ';', '|', '\\t') used in file, ignores Delimiter setting!"
+        },
         "RowDefinitions": {
             "type": "array",
             "items": {
