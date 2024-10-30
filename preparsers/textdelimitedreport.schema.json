@@ -37,6 +37,14 @@
                     },
                     "uniqueItems": true
                 },
+                "OptionalColumns": {
+                    "type": "array",
+                    "description": "Optional columns for this row definition, can only be after the normal columns!",
+                    "items": {
+                        "type": "string"
+                    },
+                    "uniqueItems": true
+                },
                 "ModelPropertyName": {
                     "type": "string"
                 },
