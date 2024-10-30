@@ -7,6 +7,10 @@
         "Delimiter": {
             "type": "string"
         },
+        "AutoDetectDelimiter": {
+            "type": "boolean",
+            "description": "Auto detect delimiter (supports: ',', ';', '|', '\\t') used in file, ignores Delimiter setting!"
+        },
         "RowDefinitions": {
             "type": "array",
             "items": {
@@ -28,6 +32,14 @@
                 },
                 "Columns": {
                     "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "uniqueItems": true
+                },
+                "OptionalColumns": {
+                    "type": "array",
+                    "description": "Optional columns for this row definition, can only be after the normal columns!",
                     "items": {
                         "type": "string"
                     },
