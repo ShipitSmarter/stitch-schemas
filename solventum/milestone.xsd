@@ -39,7 +39,7 @@
                             <xs:element name="eventType" minOccurs="1" maxOccurs="1">
                                 <xs:complexType>
                                     <xs:sequence>
-                                        <xs:element name="orignal" minOccurs="1" maxOccurs="1">
+                                        <xs:element name="original" minOccurs="1" maxOccurs="1">
                                             <xs:complexType>
                                                 <xs:sequence>
                                                     <xs:element name="code" type="xs:string" minOccurs="1" maxOccurs="1" />
