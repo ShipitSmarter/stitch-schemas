@@ -188,6 +188,14 @@ properties:
         type: array
         items:
           $ref: "#/definitions/integrationPath"
+      despatchAdvice:
+        title: Despatch Advice
+        description: Batch process that communicates consignment to the carrier.
+        link: 
+          $ref: "#/definitions/webLink"
+        type: array
+        items:
+          $ref: "#/definitions/integrationPath"
       cmr:
         title: Cmr
         description: Generate a CMR document for a single or batch of shipments.
