@@ -45,7 +45,13 @@
                                                     <xs:element name="event" minOccurs="1" maxOccurs="unbounded">
                                                         <xs:complexType>
                                                             <xs:sequence>
-                                                                <xs:element name="eventDatetime" type="xs:dateTime" minOccurs="1" maxOccurs="1"/>
+                                                                <xs:element name="eventDatetime" minOccurs="1" maxOccurs="1">
+                                                                    <xs:simpleType>
+                                                                        <xs:restriction base="xs:dateTime">
+                                                                            <xs:pattern value="\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(Z|[\+\-]\d{2}:\d{2})"/>
+                                                                        </xs:restriction>
+                                                                    </xs:simpleType>
+                                                                </xs:element>
                                                                 <xs:element name="eventDescription" type="xs:string" minOccurs="0" maxOccurs="1" />
                                                                 <xs:element name="scannedBy" type="xs:string" minOccurs="0" maxOccurs="1" />
                                                                 <xs:element name="eventMessage" type="xs:string" minOccurs="1" maxOccurs="1" />
