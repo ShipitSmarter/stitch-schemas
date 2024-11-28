@@ -24,7 +24,7 @@
                                                     <xs:element name="carrier" minOccurs="1" maxOccurs="1">
                                                         <xs:simpleType>
                                                             <xs:restriction base="xs:string">
-                                                                <xs:minLength value="3"/>
+                                                                <xs:minLength value="1"/>
                                                             </xs:restriction>
                                                         </xs:simpleType>
                                                     </xs:element>
