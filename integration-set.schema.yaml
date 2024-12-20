@@ -29,8 +29,6 @@ properties:
     type: object
     additionalProperties: false
     properties:
-      helpTextLocation:
-        type: string
       integrationPath:
         type: string
       custom:
