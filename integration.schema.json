@@ -726,6 +726,7 @@
           "$ref": "#/definitions/OutputType"
         },
         "SchemaUrl": {
+          "description": "The URL to the success schema to validate the response against (in the editor and karate tests). If given, also error responses will be validated correctly automatically.",
           "type": "string"
         }
       },
