@@ -121,7 +121,7 @@ properties:
           $ref: "#/definitions/webLink"
         type: array
         items:
-          $ref: "#/definitions/integrationPathWithTrackingSchedule"
+          $ref: "#/definitions/integrationPathWithGenerateSchedule"
       pickup:
         title: Pickup
         description: Request a pickup by the carrier at a specific location. 
@@ -193,7 +193,7 @@ properties:
           $ref: "#/definitions/webLink"
         type: array
         items:
-          $ref: "#/definitions/integrationPathWithTrackingSchedule"
+          $ref: "#/definitions/integrationPathWithGenerateSchedule"
       cmr:
         title: Cmr
         description: Generate a CMR document for a single or batch of shipments.
@@ -893,7 +893,7 @@ definitions:
         type: string
       description:
         type: string
-  integrationPathWithTrackingSchedule:
+  integrationPathWithGenerateSchedule:
     type: object
     required:
       - path
@@ -932,10 +932,6 @@ definitions:
           expirationDays:
             type: integer
             description: Number of calendar days after which the schedule should stop
-      scheduleExpirationdays:
-        type: integer
-        title: Schedule expiration in days
-        description: Number of days the scheduled tracking task should remain active at the most
   serviceOptions:
     type: array
     items:
