@@ -121,7 +121,7 @@ properties:
           $ref: "#/definitions/webLink"
         type: array
         items:
-          $ref: "#/definitions/integrationPath"
+          $ref: "#/definitions/integrationPathWithTrackingSchedule"
       pickup:
         title: Pickup
         description: Request a pickup by the carrier at a specific location. 
@@ -145,7 +145,7 @@ properties:
           $ref: "#/definitions/webLink"
         type: array
         items:
-          $ref: "#/definitions/integrationPath"
+          $ref: "#/definitions/integrationPathWithSchedule"
       trackingLink:
         title: Tracking link
         description: Request a tracking link which guides the user directly to the tracking website of the carrier with a deeplink to the latest shipment status.
@@ -193,7 +193,7 @@ properties:
           $ref: "#/definitions/webLink"
         type: array
         items:
-          $ref: "#/definitions/integrationPath"
+          $ref: "#/definitions/integrationPathWithTrackingSchedule"
       cmr:
         title: Cmr
         description: Generate a CMR document for a single or batch of shipments.
@@ -893,10 +893,45 @@ definitions:
         type: string
       description:
         type: string
-      enableScheduledTracking:
+  integrationPathWithTrackingSchedule:
+    type: object
+    required:
+      - path
+    additionalProperties: false
+    properties:
+      path:
+        type: string
+      validationPath:
+        type: string
+      label:
+        type: string
+      description:
+        type: string
+      generateTrackingSchedule:
         type: boolean
         title: Enable Scheduled Tracking afterwards
-        description: Enable this property if after executing this ordering or despatchAdvice integration-type the shipment becomes trackable through a trackingCollection integration-type
+        description: Enable this property if after executing this ordering or despatchAdvice integration-type the shipment should become trackable through a trackingCollection endpoint
+  integrationPathWithSchedule:
+    type: object
+    required:
+      - path
+    additionalProperties: false
+    properties:
+      path:
+        type: string
+      validationPath:
+        type: string
+      label:
+        type: string
+      description:
+        type: string
+      schedule:
+        type: object
+        title: Enable Scheduled Tracking afterwards
+        properties:
+          expirationDays:
+            type: integer
+            description: Number of calendar days after which the schedule should stop
       scheduleExpirationdays:
         type: integer
         title: Schedule expiration in days
