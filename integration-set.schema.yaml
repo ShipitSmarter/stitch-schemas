@@ -893,6 +893,14 @@ definitions:
         type: string
       description:
         type: string
+      enableScheduledTracking:
+        type: boolean
+        title: Enable Scheduled Tracking afterwards
+        description: Enable this property if after executing this ordering or despatchAdvice integration-type the shipment becomes trackable through a trackingCollection integration-type
+      scheduleExpirationdays:
+        type: integer
+        title: Schedule expiration in days
+        description: Number of days the scheduled tracking task should remain active at the most
   serviceOptions:
     type: array
     items:
