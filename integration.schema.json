@@ -142,11 +142,48 @@
             "$ref": "#/definitions/QueueStep"
           },
           {
+            "$ref": "#/definitions/WorkflowStep"
+          },
+          {
             "$ref": "#/definitions/Base64EncodeStep"
           }
         ]
       },
       "minItems": 0
+    },
+    "WorkflowStep": {
+      "type": "object",
+      "default": {
+        "$type": "Core.Entities.Configs.Steps.WorkflowConfiguration, Core",
+        "Id": "",
+        "Path": ""
+      },
+      "description": "Schedule a workflow",
+      "properties": {
+        "$type": {
+          "enum": [
+            "Core.Entities.Configs.Steps.WorkflowConfiguration, Core"
+          ]
+        },
+        "Id": {
+          "type": "string"
+        },
+        "Path": {
+          "type": "string"
+        },
+        "SuccessCondition": {
+          "type": "string"
+        },
+        "StartCondition": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "$type",
+        "Id",
+        "Path"
+      ],
+      "additionalProperties": false
     },
     "QueueStep": {
       "type": "object",
