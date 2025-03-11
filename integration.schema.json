@@ -146,6 +146,9 @@
           },
           {
             "$ref": "#/definitions/Base64EncodeStep"
+          },
+          {
+            "$ref": "#/definitions/OutputStep"
           }
         ]
       },
@@ -729,6 +732,40 @@
         },
         "EncodingName": {
           "$ref": "#/definitions/EncodingName"
+        },
+        "SuccessCondition": {
+          "type": "string"
+        },
+        "StartCondition": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "$type",
+        "Id",
+        "Template"
+      ],
+      "additionalProperties": false
+    },
+    "OutputStep": {
+      "type": "object",
+      "default": {
+        "$type": "Core.Entities.Configs.Steps.OutputConfiguration, Core",
+        "Id": "",
+        "Template": ""
+      },
+      "description": "Output a value to this step's result",
+      "properties": {
+        "$type": {
+          "enum": [
+            "Core.Entities.Configs.Steps.OutputConfiguration, Core"
+          ]
+        },
+        "Id": {
+          "type": "string"
+        },
+        "Template": {
+          "type": "string"
         },
         "SuccessCondition": {
           "type": "string"
