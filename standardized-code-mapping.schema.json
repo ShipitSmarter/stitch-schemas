@@ -8,6 +8,11 @@
             "pattern": "^{{eventType.code}}-{{reason.code}}$",
             "description": "This template is used to build the key before the actual lookup is done in the mapping property. This allows you to rely on a flexible amount of fields in your event. NOTE: We have not implemented templating yet, so you can only use: {{eventType.code}}-{{reason.code}}"
         },
+        "allowWildcards": {
+            "type": "boolean",
+            "description": "Allow the use of wildcards (indicated by '*') in your mapping keys, this can be used for default fallback scenarios for situations where the reason.code is not very strictly defined. You don't need to specify this value, the default is false.",
+            "default": false
+        },
         "metadata": {
             "$ref": "#/$defs/metadata"
         },
@@ -36,6 +41,7 @@
             }
         }
     },
+    "required": ["keyTemplate", "metadata", "reference", "mapping"],
     "additionalProperties": false,
     "$defs": {
         "metadata": {
