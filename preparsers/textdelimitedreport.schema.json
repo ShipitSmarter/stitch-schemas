@@ -45,6 +45,9 @@
                     },
                     "uniqueItems": true
                 },
+                "IgnoreAdditionalColumns": {
+                    "type": "boolean"
+                }
                 "ModelPropertyName": {
                     "type": "string"
                 },
