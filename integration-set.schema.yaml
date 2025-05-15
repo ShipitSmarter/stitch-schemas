@@ -194,6 +194,14 @@ properties:
         type: array
         items:
           $ref: "#/definitions/integrationPathWithGenerateSchedule"
+      preAdvice:
+        title: Pre Advice
+        description: Process that communicates consignment to the carrier pre-booking.
+        link: 
+          $ref: "#/definitions/webLink"
+        type: array
+        items:
+          $ref: "#/definitions/integrationPath"
       cmr:
         title: Cmr
         description: Generate a CMR document for a single or batch of shipments.
