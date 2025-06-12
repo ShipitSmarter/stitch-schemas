@@ -50,7 +50,7 @@
           "items": {
             "$ref": "#/definitions/AuthenticationMethod"
           }
-        }, 
+        },
         "PreParser": {
           "type": "object",
           "$ref": "#/definitions/PreParser"
@@ -58,7 +58,7 @@
       },
       "additionalProperties": false,
       "default": {
-        "Method": "POST"        
+        "Method": "POST"
       }
     },
     "AuthenticationMethod": {
@@ -341,26 +341,30 @@
         "Url": {
           "type": "string"
         },
-        "Retries":{
+        "Retries": {
           "type": "object",
           "description": "Retry the request if `SuccessCondition` is not met",
-          "properties":{
-              "MaxRetries": {
-                "type": "number",
-                "description": "The maximum number of retries"
+          "properties": {
+            "MaxRetries": {
+              "type": "number",
+              "description": "The maximum number of retries"
+            },
+            "DelaysMs": {
+              "type": "array",
+              "items": {
+                "type": "number"
               },
-              "DelaysMs": {
-                "type": "array",
-                "items": {
-                  "type": "number"
-                },
-                "description": "The delays in milliseconds between retries. If set, the number of items should be equal to `MaxRetries`."
-              }
+              "description": "The delays in milliseconds between retries. If set, the number of items should be equal to `MaxRetries`."
+            }
           },
           "required": [
             "MaxRetries"
           ],
           "additionalProperties": false
+        },
+        "SchemaUrl": {
+          "type": "string",
+          "description": "The URL to the schema to validate the request body against (in the editor and karate tests)"
         }
       },
       "required": [
@@ -382,7 +386,7 @@
         "Parts": [
           {
             "Template": ""
-          }          
+          }
         ]
       },
       "description": "Make a web-request using multipart/form-data",
@@ -425,7 +429,7 @@
             "$ref": "#/definitions/MultipartContentItem"
           },
           "uniqueItems": true,
-          "minItems": 1          
+          "minItems": 1
         }
       },
       "required": [
@@ -439,7 +443,7 @@
     "MultipartContentItem": {
       "type": "object",
       "default": {
-        "Template": ""        
+        "Template": ""
       },
       "examples": [
         {
@@ -794,7 +798,10 @@
           "$ref": "#/definitions/Headers"
         },
         "StatusCode": {
-          "type": ["number", "string"]
+          "type": [
+            "number",
+            "string"
+          ]
         },
         "OutputType": {
           "$ref": "#/definitions/OutputType"
