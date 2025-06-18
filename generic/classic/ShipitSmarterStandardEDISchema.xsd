@@ -35,7 +35,6 @@
 	<xs:simpleType name="CodeHandlingAgent">
 		<xs:restriction base="xs:integer">
 			<xs:minInclusive value="0"/>
-			<xs:maxInclusive value="99999999999999999999"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="CustomerHandlingAgent">
@@ -46,7 +45,6 @@
 	<xs:simpleType name="MessageId">
 		<xs:restriction base="xs:integer">
 			<xs:minInclusive value="0"/>
-			<xs:maxInclusive value="9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="CodeCarrier">
@@ -110,7 +108,6 @@
 	<xs:simpleType name="CodeShipment">
 		<xs:restriction base="xs:integer">
 			<xs:minInclusive value="0"/>
-			<xs:maxInclusive value="99999999999999999999"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="Reference">
@@ -229,7 +226,6 @@
 	<xs:simpleType name="Sequence">
 		<xs:restriction base="xs:integer">
 			<xs:minInclusive value="0"/>
-			<xs:maxInclusive value="9999999999"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="Package">
