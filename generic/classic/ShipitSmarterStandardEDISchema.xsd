@@ -147,13 +147,13 @@
 			<xs:pattern value="(([0-1][0-9])|([2][0-3])):([0-5][0-9]):([0-5][0-9])"/>
 		</xs:restriction>
 	</xs:simpleType>
-	<xs:element name="TimePickup">
+	<xs:simpleType name="TimePickup">
 		<xs:complexType mixed="true">
 			<xs:choice minOccurs="0" maxOccurs="1">
 				<xs:element name="StartTime" type="xs:time"/>
 			</xs:choice>
 		</xs:complexType>
-	</xs:element>
+	</xs:simpleType>
 	<xs:simpleType name="CodeVAT">
 		<xs:restriction base="xs:string">
 			<xs:maxLength value="30"/>
