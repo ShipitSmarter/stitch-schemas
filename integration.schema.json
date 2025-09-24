@@ -595,6 +595,7 @@
         "Id": "",
         "From": "",
         "To": [],
+        "ReplyToList": [],
         "Subject": "",
         "Template": ""
       },
@@ -612,6 +613,12 @@
           "type": "string"
         },
         "To": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "ReplyToList": {
           "type": "array",
           "items": {
             "type": "string"
