@@ -365,6 +365,11 @@
         "SchemaUrl": {
           "type": "string",
           "description": "The URL to the schema to validate the request body against (in the editor and karate tests)"
+        },
+        "SkipAudit": {
+          "type": "boolean",
+          "default": false,
+          "description": "Option to specify that this HTTP request should NOT be audited"
         }
       },
       "required": [
@@ -430,6 +435,11 @@
           },
           "uniqueItems": true,
           "minItems": 1
+        },
+        "SkipAudit": {
+          "type": "boolean",
+          "default": false,
+          "description": "Option to specify that this HTTP request should NOT be audited"
         }
       },
       "required": [
