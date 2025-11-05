@@ -227,6 +227,22 @@ properties:
         type: array
         items:
           $ref: "#/definitions/integrationPath"
+      invoiceFile:
+        title: Invoice File
+        description: An invoice file is provided by the carrier, from which multiple invoices with each multiple invoice lines are read.
+        link: 
+          $ref: "#/definitions/webLink"
+        type: array
+        items:
+          $ref: "#/definitions/integrationPath"
+      documentFile:
+        title: Document File
+        description: A document file is provided by the carrier, from which a single document is read.
+        link: 
+          $ref: "#/definitions/webLink"
+        type: array
+        items:
+          $ref: "#/definitions/integrationPath"
   serviceLevels:
     type: array    
     items:
