@@ -1,0 +1,54 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "MultiHeaderCsvConfiguration",
+  "type": "object",
+  "properties": {
+    "Delimiter": {
+      "type": "string",
+      "description": "The character used to separate columns in the CSV (e.g., ';' or ',').",
+      "minLength": 1
+    },
+    "Parts": {
+      "type": "array",
+      "description": "A list of definitions for different record types within the CSV.",
+      "items": {
+        "type": "object",
+        "required": [
+          "ModelPropertyName",
+          "HeaderStartsWithText",
+          "Columns"
+        ],
+        "properties": {
+          "ModelPropertyName": {
+            "type": "string",
+            "description": "The key name in the resulting JSON object where these rows will be stored."
+          },
+          "Columns": {
+            "type": "array",
+            "description": "An explicit list of column names. Usually populated automatically by the parser from the header line.",
+            "items": {
+              "type": "string"
+            },
+            "default": []
+          },
+          "HeaderStartsWithText": {
+            "type": "string",
+            "description": "The text pattern used to identify the start of this CSV part (matches the beginning of the raw line)."
+          },
+          "ExpectedDuplicateColumns": {
+            "type": "array",
+            "description": "A list of column headers that are known to appear multiple times. The parser will append a counter to these (e.g., 'RESERVED1', 'RESERVED2').",
+            "items": {
+              "type": "string"
+            },
+            "default": []
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "Delimiter",
+    "Parts"
+  ]
+}
