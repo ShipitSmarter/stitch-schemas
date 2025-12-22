@@ -97,7 +97,8 @@
             "JsonWithSchema",
             "Edifact",
             "X12",
-            "XmlWithSchema"
+            "XmlWithSchema",
+            "MultiHeaderCsv"
           ]
         },
         "ConfigurationFilePath": {
