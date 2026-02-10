@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-16"?>
+<xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="ShipmentPrintResponse" type="ShipmentPrintResponse" />
+  <xs:complexType name="ShipmentPrintResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="Header" type="ShipmentResponseHeader" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Result" type="ShipmentPrintResult" />
+      <xs:element minOccurs="0" maxOccurs="1" name="PrintResult" type="ShipmentPrintExecutionResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ShipmentResponseHeader">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="MessageId" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="MessageDateTime" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ShipmentPrintResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="Status" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Errors" type="ArrayOfError" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Warnings" type="ArrayOfWarning" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfError">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Error" type="Error" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Error">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="Code" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="FieldName" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Message" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ExplanationMessage" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfWarning">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Warning" nillable="true" type="Warning" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Warning">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="WarningCode" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="WarningMessage" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ShipmentPrintExecutionResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="PrintApplication" type="ShipmentPrintApplication" />
+      <xs:element minOccurs="0" maxOccurs="1" name="PrintStation" type="ShipmentPrintStation" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Shipment" type="ShipmentPrint" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Documents" type="ArrayOfShipmentPrintDocument" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ShipmentPrintApplication">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="Name" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ID" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ShipmentPrintStation">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="Name" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ID" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ShipmentPrint">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="CodeShipment" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Reference" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ShipmentPackages" type="ArrayOfShipmentPrintPackage" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfShipmentPrintPackage">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ShipmentPackage" type="ShipmentPrintPackage" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ShipmentPrintPackage">
+    <xs:sequence>
+      <xs:element minOccurs="1" maxOccurs="1" name="Sequence" type="xs:int" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Reference" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfShipmentPrintDocument">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Document" type="ShipmentPrintDocument" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ShipmentPrintDocument">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="DocumentType" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="DocumentId" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Name" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Result" type="ShipmentPrintResult" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
