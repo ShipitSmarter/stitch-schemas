@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<xs:element name="ShipmentPrint" type="ShipmentPrintType"/>
+	<xs:complexType name="HeaderType">
+		<xs:all>
+			<xs:element name="MessageId" type="MessageId" minOccurs="0"/>
+			<xs:element name="MessageDateTime" type="xs:dateTime"/>
+		</xs:all>
+	</xs:complexType>
+	<xs:simpleType name="MessageId">
+		<xs:restriction base="xs:int">
+			<xs:totalDigits value="100"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="PrintStationType">
+		<xs:choice>
+			<xs:element name="Name" type="xs:string"/>
+			<xs:element name="ID" type="ApplicationIdType"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="PrintApplicationType">
+		<xs:sequence>
+			<xs:choice>
+				<xs:element name="Name" type="xs:string"/>
+				<xs:element name="ID" type="ApplicationIdType"/>
+			</xs:choice>
+			<xs:element name="PrintStation" type="PrintStationType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="ApplicationIdType">
+		<xs:union>
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}"/>
+				</xs:restriction>
+			</xs:simpleType>
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:length value="0"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:union>
+	</xs:simpleType>
+	<xs:complexType name="ShipmentPackageType">
+		<xs:choice>
+			<xs:element name="Sequence">
+				<xs:simpleType>
+					<xs:restriction base="xs:int"/>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="Reference" type="xs:string"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="ShipmentPackagesType">
+		<xs:sequence>
+			<xs:element name="ShipmentPackage" type="ShipmentPackageType" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ShipmentType">
+		<xs:sequence>
+			<xs:choice>
+				<xs:element name="CodeShipment" type="xs:string"/>
+				<xs:element name="Reference" type="xs:string"/>
+			</xs:choice>
+			<xs:element name="ShipmentPackages" type="ShipmentPackagesType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="RequestedDocumentTypesType">
+		<xs:sequence>
+			<xs:element name="AllRequiredDocuments" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="RequestedDocument" type="RequestedDocumentType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="RequestedDocumentType">
+		<xs:all>
+			<xs:element name="DocumentType" type="DocumentTypeEnum"/>
+			<xs:element name="Copies" type="CopiesType" minOccurs="0"/>
+		</xs:all>
+	</xs:complexType>
+	<xs:simpleType name="CopiesType">
+		<xs:restriction base="xs:int">
+			<xs:minInclusive value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="DocumentTypeEnum" final="restriction">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="CarrierLabel"/>
+			<xs:enumeration value="ShippersLetterOfInstruction"/>
+			<xs:enumeration value="CertificateOfOrigin"/>
+			<xs:enumeration value="CommercialInvoiceV1"/>
+			<xs:enumeration value="CommercialInvoiceV3"/>
+			<xs:enumeration value="CMR"/>
+			<xs:enumeration value="LithiumBatteries"/>
+			<xs:enumeration value="BillOfLading"/>
+			<xs:enumeration value="InboundCollectionManifest"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="OrientationTypeEnum" final="restriction">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Portrait"/>
+			<xs:enumeration value="Landscape"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="DocumentType">
+		<xs:annotation>
+			<xs:documentation>
+      Use one of the following combinations of fields to identify which document(s) should be printed:
+      Combination 1: DocumentType --> this might result in multiple documents to be printed.
+      Combination 2: DocumentType + Name
+      Combination 3: Name --> this might result in multiple documents to be printed.
+      Combination 4: Id
+    </xs:documentation>
+		</xs:annotation>
+		<xs:all>
+			<xs:element name="DocumentType" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The allowed values are set in INSERT_SHIPMENT_DOCUMENTS_DOCUMENTTYPES parameter.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Name" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The filename of the document that should be printed.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Id" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The Id of the document that should be printed.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Copies" type="CopiesType" minOccurs="0"/>
+			<xs:element name="PrintOrientation" type="OrientationTypeEnum" minOccurs="0"/>
+		</xs:all>
+	</xs:complexType>
+	<xs:simpleType name="ContentTypeEnum" final="restriction">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="PDF"/>
+			<xs:enumeration value="PNG"/>
+			<xs:enumeration value="GIF"/>
+			<xs:enumeration value="JPG"/>
+			<xs:enumeration value="ZPL"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="DocumentsType">
+		<xs:sequence>
+			<xs:element name="Document" type="DocumentType" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="PrintType">
+		<xs:all>
+			<xs:element name="PrintApplication" type="PrintApplicationType" minOccurs="0"/>
+			<xs:element name="Shipment" type="ShipmentType"/>
+			<xs:element name="RequestedDocumentTypes" type="RequestedDocumentTypesType" minOccurs="0"/>
+			<xs:element name="Documents" type="DocumentsType" minOccurs="0"/>
+		</xs:all>
+	</xs:complexType>
+	<xs:complexType name="ShipmentPrintType">
+		<xs:all>
+			<xs:element name="Header" type="HeaderType"/>
+			<xs:element name="Print" type="PrintType"/>
+		</xs:all>
+	</xs:complexType>
+</xs:schema>
