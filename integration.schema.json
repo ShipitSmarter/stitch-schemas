@@ -98,7 +98,8 @@
             "Edifact",
             "X12",
             "XmlWithSchema",
-            "MultiHeaderCsv"
+            "MultiHeaderCsv",
+            "GS1-TI"
           ]
         },
         "ConfigurationFilePath": {
