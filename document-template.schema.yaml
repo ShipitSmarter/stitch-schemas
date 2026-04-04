@@ -1,0 +1,34 @@
+# yaml-language-server: $schema=http://json-schema.org/draft-07/schema
+type: object
+required:
+  - reference
+  - integrationPath
+  - samples
+additionalProperties: false
+properties:
+  reference:
+    type: string
+    description: Unique identifier for this document template.
+  integrationPath:
+    type: string
+    description: The Stitch integration path used to render this document template.
+  samples:
+    type: array
+    description: List of sample models available for previewing this document template.
+    items:
+      type: object
+      required:
+        - title
+        - reference
+        - filename
+      additionalProperties: false
+      properties:
+        title:
+          type: string
+          description: Human-readable display name for the sample.
+        reference:
+          type: string
+          description: Unique identifier for this sample within the template.
+        filename:
+          type: string
+          description: Path to the sample JSON file, relative to the document-template.yaml directory.
