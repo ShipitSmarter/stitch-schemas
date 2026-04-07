@@ -592,6 +592,10 @@
           "items": {
             "type": "string"
           }
+        },
+        "Preview": {
+          "type": "string",
+          "description": "Whether to return a preview HTML. Scriban template will be evaluated."
         }
       },
       "required": [
