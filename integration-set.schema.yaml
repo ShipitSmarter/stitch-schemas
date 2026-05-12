@@ -179,6 +179,14 @@ properties:
         type: array
         items:
           $ref: "#/definitions/integrationPath"
+      podCollection:
+        title: POD Collection
+        description: Proof of Delivery events collected from the carrier, translated to a standard set of event types.
+        link:
+          $ref: "#/definitions/webLink"
+        type: array
+        items:
+          $ref: "#/definitions/integrationPathWithSchedule"
       pricing:
         title: Pricing
         description: Request price and transit-time information from a carrier.
