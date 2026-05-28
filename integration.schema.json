@@ -316,10 +316,6 @@
         "Template": {
           "type": "string"
         },
-        "EncodingName": {
-          "$ref": "#/definitions/EncodingName",
-          "description": "OBSOLETE: Use RequestEncodingName instead to specify encoding for request and response separately. This property will be removed in a future version."
-        },
         "RequestEncodingName": {
           "$ref": "#/definitions/EncodingName"
         },
