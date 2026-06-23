@@ -279,10 +279,16 @@ properties:
       properties:
         reference:
           type: string
+          title: Viya reference for the service level. This reference is used between Shipper and Viya to identify the service level.
         label:
           type: string
+          title: Human readable label for the service level. This label is used in the UI to display the service level.
+        carrierReference:
+          type: string
+          title: Carrier reference for the service level. This reference is used when Viya communicates with the carrier in the carrier specific integration.
         description:
           type: string
+          title: Human readable description for the service level that explains key features of the service level.
         link:
           $ref: "#/definitions/webLink"
         definition: # order in which objects and enums within objects are placed, determine sequence in which they will be displayed in the UI
