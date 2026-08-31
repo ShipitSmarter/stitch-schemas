@@ -649,6 +649,9 @@
         "Template": {
           "type": "string"
         },
+        "PlainTextTemplate": {
+          "type": "string"
+        },
         "SuccessCondition": {
           "type": "string"
         },
