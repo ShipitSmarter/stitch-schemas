@@ -652,6 +652,17 @@
         "PlainTextTemplate": {
           "type": "string"
         },
+        "Attachments": {
+          "type": "array",
+          "description": "Attachments to include in the e-mail. Use either Attachments or AttachmentsTemplate, not both.",
+          "items": {
+            "$ref": "#/definitions/MailAttachment"
+          }
+        },
+        "AttachmentsTemplate": {
+          "type": "string",
+          "description": "Scriban template that must render to a valid JSON array of attachment objects, for example [{\"FileName\":\"invoice.pdf\",\"ContentType\":\"application/pdf\",\"Content\":\"<base64-encoded content>\"}]. Each object requires FileName and Content; Content must be base64. ContentType is optional. Use either AttachmentsTemplate or Attachments, not both."
+        },
         "SuccessCondition": {
           "type": "string"
         },
@@ -666,6 +677,28 @@
         "To",
         "Subject",
         "Template"
+      ]
+    },
+    "MailAttachment": {
+      "type": "object",
+      "description": "An e-mail attachment. Content must be base64-encoded.",
+      "properties": {
+        "FileName": {
+          "type": "string",
+          "description": "File name shown to the recipient, including extension."
+        },
+        "ContentType": {
+          "type": "string",
+          "description": "Optional MIME type, for example application/pdf."
+        },
+        "Content": {
+          "type": "string",
+          "description": "Base64-encoded file content."
+        }
+      },
+      "required": [
+        "FileName",
+        "Content"
       ]
     },
     "CacheStoreStep": {
