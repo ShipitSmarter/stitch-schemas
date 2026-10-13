@@ -661,7 +661,7 @@
         },
         "AttachmentsTemplate": {
           "type": "string",
-          "description": "Scriban template that must render to a valid JSON array of attachment objects, for example [{\"FileName\":\"invoice.pdf\",\"ContentType\":\"application/pdf\",\"Content\":\"<base64-encoded content>\"}]. Each object requires FileName and Content; Content must be base64. ContentType is optional. Use either AttachmentsTemplate or Attachments, not both."
+          "description": "Scriban template that must render to a valid JSON array of attachment objects, for example [{\"FileName\":\"invoice.pdf\",\"ContentType\":\"application/pdf\",\"ContentBase64\":\"<base64-encoded content>\"}]. Each object requires FileName and ContentBase64; ContentBase64 must be base64. ContentType is optional. Use either AttachmentsTemplate or Attachments, not both."
         },
         "SuccessCondition": {
           "type": "string"
@@ -681,7 +681,7 @@
     },
     "MailAttachment": {
       "type": "object",
-      "description": "An e-mail attachment. Content must be base64-encoded.",
+      "description": "An e-mail attachment. ContentBase64 must be base64-encoded.",
       "properties": {
         "FileName": {
           "type": "string",
@@ -691,14 +691,14 @@
           "type": "string",
           "description": "Optional MIME type, for example application/pdf."
         },
-        "Content": {
+        "ContentBase64": {
           "type": "string",
           "description": "Base64-encoded file content."
         }
       },
       "required": [
         "FileName",
-        "Content"
+        "ContentBase64"
       ]
     },
     "CacheStoreStep": {
