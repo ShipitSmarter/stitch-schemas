@@ -956,6 +956,8 @@ definitions:
         type: string
       description:
         type: string
+      hideFromPublicWebsite:
+        type: boolean
   integrationPathWithGenerateSchedule:
     type: object
     required:
@@ -970,6 +972,8 @@ definitions:
         type: string
       description:
         type: string
+      hideFromPublicWebsite:
+        type: boolean
       generateTrackingSchedule:
         type: boolean
         title: Enable Scheduled Tracking afterwards
@@ -988,6 +992,8 @@ definitions:
         type: string
       description:
         type: string
+      hideFromPublicWebsite:
+        type: boolean
       schedule:
         type: object
         title: Enable Scheduled Tracking afterwards
