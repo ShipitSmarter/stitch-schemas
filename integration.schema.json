@@ -643,6 +643,10 @@
             "type": "string"
           }
         },
+        "ShowAllRecipients": {
+          "type": "boolean",
+          "description": "When true, all To recipients see each other in one e-mail. When false, each recipient gets a separate e-mail. Default: false."
+        },
         "Subject": {
           "type": "string"
         },
