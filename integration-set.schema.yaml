@@ -51,6 +51,7 @@ properties:
         type: string
       logo:
         type: object
+        additionalProperties: false
         required:
           - content
           - contentType
@@ -58,7 +59,10 @@ properties:
           content:
             type: string
           contentType:
-            type: string #html content-type of the logo, eg svg+xml, png, jpeg, gif etc..
+            type: string
+            enum:
+            - image/svg+xml
+            - image/png
       integrationProcess:
         type: string
         enum:
