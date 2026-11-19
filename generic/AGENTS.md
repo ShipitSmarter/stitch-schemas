@@ -27,7 +27,6 @@
 | Shipment documents | classic/uploadDocuments.xsd | Request |
 | Shipment documents | classic/ShipmentDocumentUploadResponse.xsd | Generated response |
 | Carrier label | classic/ShipmentCarrierLabelResponse.xsd | Generated response |
-| Shipment delete | classic/ShipmentDeleteResponse.xsd | Generated response |
 | Shipment rules | classic/shipmentRules.xsd | Request |
 | Shipment rules | classic/ShipmentRulesResponse.xsd | Generated response |
 | Shipment tracking | classic/ShipmentTrackingResponse.xsd | Generated response |

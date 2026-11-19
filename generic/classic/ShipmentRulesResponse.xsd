@@ -100,7 +100,7 @@
   </xs:complexType>
   <xs:complexType name="ShipmentRulesResponseRuleDetails">
     <xs:sequence>
-      <xs:element minOccurs="1" maxOccurs="1" name="CodeRule" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" maxOccurs="1" name="CodeRule" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" maxOccurs="1" name="Outcomes" type="ArrayOfShipmentRulesResponseOutcome" />
     </xs:sequence>
   </xs:complexType>
@@ -117,23 +117,11 @@
   </xs:complexType>
   <xs:complexType name="ShipmentRulesResponseDebugInfo">
     <xs:sequence>
-      <xs:element minOccurs="1" maxOccurs="1" name="RequestDateTime" nillable="true" type="xs:dateTime" />
-      <xs:element minOccurs="1" maxOccurs="1" name="ResponseDateTime" nillable="true" type="xs:dateTime" />
-      <xs:element minOccurs="1" maxOccurs="1" name="ProcessingTime" nillable="true" type="xs:decimal" />
-      <xs:element minOccurs="0" maxOccurs="1" name="Input">
-        <xs:complexType mixed="true">
-          <xs:sequence>
-            <xs:any />
-          </xs:sequence>
-        </xs:complexType>
-      </xs:element>
-      <xs:element minOccurs="0" maxOccurs="1" name="Output">
-        <xs:complexType mixed="true">
-          <xs:sequence>
-            <xs:any />
-          </xs:sequence>
-        </xs:complexType>
-      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="RequestDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ResponseDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ProcessingTime" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Input" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Output" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
 </xs:schema>

@@ -20,7 +20,6 @@
 ├── uploadDocuments.xsd
 ├── ShipmentDocumentUploadResponse.xsd
 ├── ShipmentCarrierLabelResponse.xsd
-├── ShipmentDeleteResponse.xsd
 ├── shipmentRules.xsd
 ├── ShipmentRulesResponse.xsd
 └── ShipmentTrackingResponse.xsd
@@ -43,7 +42,6 @@
 | Shipment documents | uploadDocuments.xsd | Request |
 | Document upload response | ShipmentDocumentUploadResponse.xsd | Generated response |
 | Carrier label response | ShipmentCarrierLabelResponse.xsd | Generated response |
-| Shipment delete response | ShipmentDeleteResponse.xsd | Generated response |
 | Shipment rules request | shipmentRules.xsd | Request |
 | Shipment rules response | ShipmentRulesResponse.xsd | Generated response |
 | Shipment tracking response | ShipmentTrackingResponse.xsd | Generated response |
