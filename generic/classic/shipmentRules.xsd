@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="ShipmentRules">
+		<xs:complexType>
+			<xs:all>
+				<xs:element name="Header" minOccurs="1" maxOccurs="1">
+					<xs:complexType>
+						<xs:all>
+							<xs:element name="MessageId" minOccurs="1" maxOccurs="1">
+								<xs:simpleType>
+									<xs:restriction base="xs:int">
+										<xs:totalDigits value="100"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="MessageDateTime" minOccurs="1" maxOccurs="1">
+								<xs:simpleType>
+									<xs:restriction base="xs:dateTime"/>
+								</xs:simpleType>
+							</xs:element>
+						</xs:all>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Rules" minOccurs="1" maxOccurs="1">
+					<xs:complexType>
+						<xs:choice maxOccurs="unbounded">
+							<xs:element name="Rule" minOccurs="1" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:all>
+										<xs:element name="RuleType" minOccurs="1" maxOccurs="1">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="20"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="RuleSubType" minOccurs="0" maxOccurs="1">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="20"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="Debug" minOccurs="0" maxOccurs="1">
+											<xs:complexType>
+												<xs:all>
+													<xs:element name="ShowInput" minOccurs="1" maxOccurs="1">
+														<xs:simpleType>
+															<xs:restriction base="xs:boolean"/>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="ShowOutput" minOccurs="1" maxOccurs="1">
+														<xs:simpleType>
+															<xs:restriction base="xs:boolean"/>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="ShowRequestDateTime" minOccurs="1" maxOccurs="1">
+														<xs:simpleType>
+															<xs:restriction base="xs:boolean"/>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="ShowResponseDateTime" minOccurs="1" maxOccurs="1">
+														<xs:simpleType>
+															<xs:restriction base="xs:boolean"/>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="ShowProcessingTime" minOccurs="1" maxOccurs="1">
+														<xs:simpleType>
+															<xs:restriction base="xs:boolean"/>
+														</xs:simpleType>
+													</xs:element>
+												</xs:all>
+											</xs:complexType>
+										</xs:element>
+									</xs:all>
+									<xs:attribute name="Sequence" type="xs:int" use="required"/>
+								</xs:complexType>
+							</xs:element>
+						</xs:choice>
+					</xs:complexType>
+				</xs:element>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>
