@@ -2,7 +2,7 @@
 
 ## OVERVIEW
 - Container for generic carrier schemas.
-- Current focus is classic EDI/AWB/Print XSDs under classic/.
+- Current focus is classic EDI/AWB/Print/Shipment XSDs under classic/.
 
 ## STRUCTURE
 ```
@@ -18,6 +18,11 @@
 | Airwaybill | classic/ShipmentAirwaybillResponse.xsd | Response | 
 | Print | classic/shipmentPrint_request.xsd | Request | 
 | Print | classic/ShipmentPrintResponse.xsd | Response | 
+| Combined shipment | classic/combined_Request.xsd | Request |
+| Combined shipment | classic/shipmentCombined_response_v1.xsd | Response |
+| Shipment rates | classic/shipmentRates_Request.xsd | Request |
+| Shipment documents | classic/uploadDocuments.xsd | Document upload |
+| Updating Shipment Shipment | classic/shipment.xsd | Request |
 
 ## CONVENTIONS
 - XSD format, classic naming preserved.

@@ -1,0 +1,1173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="ShipmentResponse">
+		<xs:complexType>
+			<xs:all>
+				<xs:element name="Header">
+					<xs:complexType>
+						<xs:all>
+							<xs:element name="MessageId">
+								<xs:simpleType>
+									<xs:restriction base="xs:int">
+										<xs:totalDigits value="100"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="MessageDateTime">
+								<xs:simpleType>
+									<xs:restriction base="xs:dateTime"/>
+								</xs:simpleType>
+							</xs:element>
+						</xs:all>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Result">
+					<xs:complexType>
+						<xs:all>
+							<xs:element name="Status">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:enumeration value="ERROR"/>
+										<xs:enumeration value="OK"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="Errors" minOccurs="0">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Error" maxOccurs="unbounded">
+											<xs:complexType>
+												<xs:all>
+													<xs:element name="Code">
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:maxLength value="40"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="Message">
+														<xs:simpleType>
+															<xs:restriction base="xs:string"/>
+														</xs:simpleType>
+													</xs:element>
+												</xs:all>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:all>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Shipment">
+					<xs:complexType>
+						<xs:all>
+							<xs:element name="CodeShipment">
+								<xs:simpleType>
+									<xs:restriction base="xs:string"/>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="Reference">
+								<xs:simpleType>
+									<xs:restriction base="xs:string"/>
+								</xs:simpleType>
+							</xs:element>
+						</xs:all>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="PostActionResponse">
+					<xs:complexType>
+						<xs:choice maxOccurs="unbounded">
+							<xs:element name="ShipmentRatesResponse" minOccurs="0" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence maxOccurs="unbounded">
+										<xs:element name="Header">
+											<xs:complexType>
+												<xs:all>
+													<xs:element name="MessageId">
+														<xs:simpleType>
+															<xs:restriction base="xs:int">
+																<xs:totalDigits value="100"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="MessageDateTime">
+														<xs:simpleType>
+															<xs:restriction base="xs:dateTime"/>
+														</xs:simpleType>
+													</xs:element>
+												</xs:all>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="Result">
+											<xs:complexType>
+												<xs:all>
+													<xs:element name="Status">
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:enumeration value="ERROR"/>
+																<xs:enumeration value="OK"/>
+																<xs:enumeration value="WARNING"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="Errors" minOccurs="0">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="Error" maxOccurs="unbounded">
+																	<xs:complexType>
+																		<xs:all>
+																			<xs:element name="Code">
+																				<xs:simpleType>
+																					<xs:restriction base="xs:string">
+																						<xs:maxLength value="40"/>
+																					</xs:restriction>
+																				</xs:simpleType>
+																			</xs:element>
+																			<xs:element name="Message">
+																				<xs:simpleType>
+																					<xs:restriction base="xs:string"/>
+																				</xs:simpleType>
+																			</xs:element>
+																		</xs:all>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="Warnings" minOccurs="0">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="Warning" maxOccurs="unbounded">
+																	<xs:complexType>
+																		<xs:all>
+																			<xs:element name="WarningCode">
+																				<xs:simpleType>
+																					<xs:restriction base="xs:string">
+																						<xs:maxLength value="40"/>
+																					</xs:restriction>
+																				</xs:simpleType>
+																			</xs:element>
+																			<xs:element name="WarningMessage">
+																				<xs:simpleType>
+																					<xs:restriction base="xs:string"/>
+																				</xs:simpleType>
+																			</xs:element>
+																		</xs:all>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+												</xs:all>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="Shipment" minOccurs="0">
+											<xs:complexType>
+												<xs:all>
+													<xs:element name="CodeShipment">
+														<xs:simpleType>
+															<xs:restriction base="xs:string"/>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="Reference">
+														<xs:simpleType>
+															<xs:restriction base="xs:string"/>
+														</xs:simpleType>
+													</xs:element>
+												</xs:all>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="Rates">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="Rate" minOccurs="0" maxOccurs="unbounded">
+														<xs:complexType>
+															<xs:all>
+																<xs:element name="ModeOfTransport">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:maxLength value="10"/>
+																			<xs:enumeration value="EXPRESS"/>
+																			<xs:enumeration value="ROAD"/>
+																			<xs:enumeration value="AIR"/>
+																			<xs:enumeration value="SEA"/>
+																			<xs:enumeration value="KM"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="DeliveryCondition" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:maxLength value="9"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name ="DeliveryConditionDetailed" minOccurs="0" maxOccurs="1">
+																	<xs:complexType>
+																		<xs:all>
+																			<xs:element name="Incoterm" minOccurs="1" maxOccurs="1">
+																				<xs:simpleType>
+																					<xs:restriction base="xs:string">
+																						<xs:enumeration value="EXW"/>
+																						<xs:enumeration value="FCA"/>
+																						<xs:enumeration value="CPT"/>
+																						<xs:enumeration value="CIP"/>
+																						<xs:enumeration value="DAT"/>
+																						<xs:enumeration value="DAP"/>
+																						<xs:enumeration value="DDP"/>
+																						<xs:enumeration value="DDU"/>
+																						<xs:enumeration value="CIF"/>
+																						<xs:enumeration value="FOB"/>
+																						<xs:enumeration value="DPU"/>
+																						<xs:enumeration value="FAS"/>
+																						<xs:enumeration value="CFR"/>
+																					</xs:restriction>
+																				</xs:simpleType>
+																			</xs:element>
+																			<xs:element name="Scope" minOccurs="1" maxOccurs="1">
+																				<xs:simpleType>
+																					<xs:restriction base="xs:string">
+																						<xs:enumeration value="DoorToDoor"/>
+																						<xs:enumeration value="DoorToPort"/>
+																						<xs:enumeration value="PortToDoor"/>
+																						<xs:enumeration value="PortToPort"/>
+																					</xs:restriction>
+																				</xs:simpleType>
+																			</xs:element>
+																			<xs:element name="Version" minOccurs="1" maxOccurs="1">
+																				<xs:simpleType>
+																					<xs:restriction base="xs:string">
+																						<xs:enumeration value="2000"/>
+																						<xs:enumeration value="2010"/>
+																						<xs:enumeration value="2020"/>
+																					</xs:restriction>
+																				</xs:simpleType>
+																			</xs:element>
+																			<xs:element name="Place" type="xs:string" minOccurs="0" maxOccurs="1"/>
+																			<xs:element name="Payment" minOccurs="0" maxOccurs="1">
+																				<xs:simpleType>
+																					<xs:restriction base="xs:string">
+																						<xs:enumeration value="Prepaid"/>
+																						<xs:enumeration value="Collect"/>
+																					</xs:restriction>
+																				</xs:simpleType>
+																			</xs:element>
+																		</xs:all>
+																	</xs:complexType>
+																</xs:element>
+																<xs:element name="Prices">
+																	<xs:complexType>
+																		<xs:sequence>
+																			<xs:element name="Price" maxOccurs="unbounded">
+																				<xs:complexType>
+																					<xs:all>
+																						<xs:element name="PriceType">
+																							<xs:simpleType>
+																								<xs:restriction base="xs:string">
+																									<xs:enumeration value="Buy"/>
+																									<xs:enumeration value="Sell"/>
+																									<xs:enumeration value="Uplift"/>
+																									<xs:enumeration value="Published"/>
+																								</xs:restriction>
+																							</xs:simpleType>
+																						</xs:element>
+																						<xs:element name="Amount" type="xs:decimal"/>
+																						<xs:element name="RequestedCodeCurrency">
+																							<xs:simpleType>
+																								<xs:restriction base="xs:string">
+																									<xs:maxLength value="3"/>
+																								</xs:restriction>
+																							</xs:simpleType>
+																						</xs:element>
+																						<xs:element name="ConversionRateToUSD" type="xs:decimal"/>
+																						<xs:element name="DateExchange">
+																							<xs:simpleType>
+																								<xs:restriction base="xs:dateTime"/>
+																							</xs:simpleType>
+																						</xs:element>
+																						<xs:element name="PriceDetails">
+																							<xs:complexType>
+																								<xs:sequence>
+																									<xs:element name="PriceDetail" minOccurs="0" maxOccurs="unbounded">
+																										<xs:complexType>
+																											<xs:all>
+																												<xs:element name="Code">
+																													<xs:simpleType>
+																														<xs:restriction base="xs:string">
+																															<xs:maxLength value="40"/>
+																														</xs:restriction>
+																													</xs:simpleType>
+																												</xs:element>
+																												<xs:element name="Amount" type="xs:decimal"/>
+																												<xs:element name="CodeCurrency">
+																													<xs:simpleType>
+																														<xs:restriction base="xs:string">
+																															<xs:maxLength value="3"/>
+																														</xs:restriction>
+																													</xs:simpleType>
+																												</xs:element>
+																												<xs:element name="Original" minOccurs="0">
+																													<xs:complexType>
+																														<xs:all>
+																															<xs:element name="Amount" type="xs:decimal"/>
+																															<xs:element name="CodeCurrency">
+																																<xs:simpleType>
+																																	<xs:restriction base="xs:string">
+																																		<xs:maxLength value="3"/>
+																																	</xs:restriction>
+																																</xs:simpleType>
+																															</xs:element>
+																															<xs:element name="ConversionRateToRequestedCodeCurrency" type="xs:decimal"/>
+																														</xs:all>
+																													</xs:complexType>
+																												</xs:element>
+																											</xs:all>
+																										</xs:complexType>
+																									</xs:element>
+																								</xs:sequence>
+																							</xs:complexType>
+																						</xs:element>
+																					</xs:all>
+																				</xs:complexType>
+																			</xs:element>
+																		</xs:sequence>
+																	</xs:complexType>
+																</xs:element>
+																<xs:element name="Description">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:maxLength value="250"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="CarrierCode">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:maxLength value="3"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="ServiceLevel">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:maxLength value="10"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="CodeCurrency">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:maxLength value="3"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="ConversionRateToUSD" type="xs:decimal"/>
+																<xs:element name="CodeTariff">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:maxLength value="20"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="TariffType" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:maxLength value="20"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="VolumeFactor" type="xs:decimal" minOccurs="0"/>
+																<xs:element name="DatePickup">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:date"/>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="TimePickup" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:time"/>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="FirstAvailableDatePickup" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:date"/>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="TransitTime">
+																	<xs:complexType>
+																		<xs:all>
+																			<xs:element name="TransitTimeText">
+																				<xs:simpleType>
+																					<xs:restriction base="xs:string">
+																						<xs:maxLength value="200"/>
+																					</xs:restriction>
+																				</xs:simpleType>
+																			</xs:element>
+																			<xs:element name="TransitTimeHours" type="xs:decimal"/>
+																			<xs:element name="TransitTimeDateStart">
+																				<xs:simpleType>
+																					<xs:restriction base="xs:dateTime"/>
+																				</xs:simpleType>
+																			</xs:element>
+																		</xs:all>
+																	</xs:complexType>
+																</xs:element>
+																<xs:element name="DateDeliveryPlan">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:date"/>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="TimeDeliveryPlan" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:time"/>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="Weight">
+																	<xs:complexType>
+																		<xs:all>
+																			<xs:element name="PhysicalWeight" type="xs:decimal"/>
+																			<xs:element name="VolumeWeight" type="xs:decimal"/>
+																			<xs:element name="BillableWeight" type="xs:decimal"/>
+																		</xs:all>
+																	</xs:complexType>
+																</xs:element>
+																<xs:element name="AirFreight" minOccurs="0">
+																	<xs:complexType>
+																		<xs:all>
+																			<xs:element name="PortFrom">
+																				<xs:simpleType>
+																					<xs:restriction base="xs:string">
+																						<xs:maxLength value="50"/>
+																					</xs:restriction>
+																				</xs:simpleType>
+																			</xs:element>
+																			<xs:element name="PortTo">
+																				<xs:simpleType>
+																					<xs:restriction base="xs:string">
+																						<xs:maxLength value="50"/>
+																					</xs:restriction>
+																				</xs:simpleType>
+																			</xs:element>
+																		</xs:all>
+																	</xs:complexType>
+																</xs:element>
+																<xs:element name="SeaFreight" minOccurs="0">
+																	<xs:complexType>
+																		<xs:all minOccurs="0">
+																			<xs:element name="Route" minOccurs="0">
+																				<xs:simpleType>
+																					<xs:restriction base="xs:string">
+																						<xs:maxLength value="20"/>
+																					</xs:restriction>
+																				</xs:simpleType>
+																			</xs:element>
+																			<xs:element name="PortFrom" minOccurs="0">
+																				<xs:simpleType>
+																					<xs:restriction base="xs:string">
+																						<xs:maxLength value="50"/>
+																					</xs:restriction>
+																				</xs:simpleType>
+																			</xs:element>
+																			<xs:element name="PortTo" minOccurs="0">
+																				<xs:simpleType>
+																					<xs:restriction base="xs:string">
+																						<xs:maxLength value="50"/>
+																					</xs:restriction>
+																				</xs:simpleType>
+																			</xs:element>
+																			<xs:element name="CarrierName" minOccurs="0">
+																				<xs:simpleType>
+																					<xs:restriction base="xs:string"/>
+																				</xs:simpleType>
+																			</xs:element>
+																		</xs:all>
+																	</xs:complexType>
+																</xs:element>
+																<xs:element name="Km" minOccurs="0">
+																	<xs:complexType>
+																		<xs:sequence>
+																			<xs:element name="DistanceOneWay" type="xs:decimal"/>
+																		</xs:sequence>
+																	</xs:complexType>
+																</xs:element>
+															</xs:all>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="Debug" minOccurs="0">
+											<xs:complexType>
+												<xs:all minOccurs="0">
+													<xs:element name="RuleEngineDebugInfo" minOccurs="0">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element ref="DebugInfo"/>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="RateEngineDebugInfo" minOccurs="0">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element ref="DebugInfo"/>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+												</xs:all>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="ShipmentDocumentUploadResponse" minOccurs="0">
+								<xs:complexType>
+									<xs:all>
+										<xs:element name="Header">
+											<xs:complexType>
+												<xs:all>
+													<xs:element name="MessageId">
+														<xs:simpleType>
+															<xs:restriction base="xs:int">
+																<xs:totalDigits value="100"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="MessageDateTime">
+														<xs:simpleType>
+															<xs:restriction base="xs:dateTime"/>
+														</xs:simpleType>
+													</xs:element>
+												</xs:all>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="Result">
+											<xs:complexType>
+												<xs:all>
+													<xs:element name="Status">
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:enumeration value="ERROR"/>
+																<xs:enumeration value="OK"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="Errors" minOccurs="0">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="Error" maxOccurs="unbounded">
+																	<xs:complexType>
+																		<xs:all>
+																			<xs:element name="Code">
+																				<xs:simpleType>
+																					<xs:restriction base="xs:string">
+																						<xs:maxLength value="40"/>
+																					</xs:restriction>
+																				</xs:simpleType>
+																			</xs:element>
+																			<xs:element name="Message">
+																				<xs:simpleType>
+																					<xs:restriction base="xs:string"/>
+																				</xs:simpleType>
+																			</xs:element>
+																		</xs:all>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+												</xs:all>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="Shipment">
+											<xs:complexType>
+												<xs:all>
+													<xs:element name="CodeShipment">
+														<xs:simpleType>
+															<xs:restriction base="xs:string"/>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="Reference">
+														<xs:simpleType>
+															<xs:restriction base="xs:string"/>
+														</xs:simpleType>
+													</xs:element>
+												</xs:all>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="Documents">
+											<xs:complexType>
+												<xs:choice maxOccurs="unbounded">
+													<xs:element name="Document" minOccurs="0" maxOccurs="unbounded">
+														<xs:complexType>
+															<xs:all>
+																<xs:element name="Name">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:maxLength value="100"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="Type">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:maxLength value="20"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="Id">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:maxLength value="250"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="Content" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string"/>
+																	</xs:simpleType>
+																</xs:element>
+															</xs:all>
+														</xs:complexType>
+													</xs:element>
+												</xs:choice>
+											</xs:complexType>
+										</xs:element>
+									</xs:all>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="ShipmentRulesResponse" minOccurs="0">
+								<xs:complexType>
+									<xs:choice maxOccurs="unbounded">
+										<xs:element name="Header">
+											<xs:complexType>
+												<xs:all>
+													<xs:element name="MessageId">
+														<xs:simpleType>
+															<xs:restriction base="xs:int">
+																<xs:totalDigits value="100"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="MessageDateTime">
+														<xs:simpleType>
+															<xs:restriction base="xs:dateTime"/>
+														</xs:simpleType>
+													</xs:element>
+												</xs:all>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="Result">
+											<xs:complexType>
+												<xs:all>
+													<xs:element name="Status">
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:enumeration value="ERROR"/>
+																<xs:enumeration value="OK"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="Errors" minOccurs="0">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="Error" maxOccurs="unbounded">
+																	<xs:complexType>
+																		<xs:all>
+																			<xs:element name="Code">
+																				<xs:simpleType>
+																					<xs:restriction base="xs:string">
+																						<xs:maxLength value="40"/>
+																					</xs:restriction>
+																				</xs:simpleType>
+																			</xs:element>
+																			<xs:element name="Message">
+																				<xs:simpleType>
+																					<xs:restriction base="xs:string"/>
+																				</xs:simpleType>
+																			</xs:element>
+																		</xs:all>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+												</xs:all>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="Shipment" minOccurs="0">
+											<xs:complexType>
+												<xs:all>
+													<xs:element name="CodeShipment">
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:maxLength value="20"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="Reference">
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:maxLength value="40"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+												</xs:all>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="RulesApplied" maxOccurs="unbounded">
+											<xs:complexType>
+												<xs:choice maxOccurs="unbounded">
+													<xs:element name="Rule" maxOccurs="unbounded">
+														<xs:complexType>
+															<xs:choice maxOccurs="unbounded">
+																<xs:element name="Request">
+																	<xs:complexType>
+																		<xs:all>
+																			<xs:element name="RuleType">
+																				<xs:simpleType>
+																					<xs:restriction base="xs:string">
+																						<xs:maxLength value="20"/>
+																					</xs:restriction>
+																				</xs:simpleType>
+																			</xs:element>
+																			<xs:element name="RuleSubType" minOccurs="0">
+																				<xs:simpleType>
+																					<xs:restriction base="xs:string">
+																						<xs:maxLength value="20"/>
+																					</xs:restriction>
+																				</xs:simpleType>
+																			</xs:element>
+																		</xs:all>
+																	</xs:complexType>
+																</xs:element>
+																<xs:element name="Result">
+																	<xs:complexType>
+																		<xs:all>
+																			<xs:element name="RuleMatched">
+																				<xs:simpleType>
+																					<xs:restriction base="xs:boolean"/>
+																				</xs:simpleType>
+																			</xs:element>
+																			<xs:element name="RuleDetails" minOccurs="0">
+																				<xs:complexType>
+																					<xs:all>
+																						<xs:element name="CodeRule">
+																							<xs:simpleType>
+																								<xs:restriction base="xs:int"/>
+																							</xs:simpleType>
+																						</xs:element>
+																						<xs:element name="Outcomes">
+																							<xs:complexType>
+																								<xs:choice>
+																									<xs:element name="Outcome" maxOccurs="unbounded">
+																										<xs:complexType>
+																											<xs:all>
+																												<xs:element name="Field">
+																													<xs:simpleType>
+																														<xs:restriction base="xs:string">
+																															<xs:maxLength value="100"/>
+																														</xs:restriction>
+																													</xs:simpleType>
+																												</xs:element>
+																												<xs:element name="Value">
+																													<xs:simpleType>
+																														<xs:restriction base="xs:string">
+																															<xs:maxLength value="50"/>
+																														</xs:restriction>
+																													</xs:simpleType>
+																												</xs:element>
+																											</xs:all>
+																										</xs:complexType>
+																									</xs:element>
+																								</xs:choice>
+																							</xs:complexType>
+																						</xs:element>
+																					</xs:all>
+																				</xs:complexType>
+																			</xs:element>
+																		</xs:all>
+																	</xs:complexType>
+																</xs:element>
+																<xs:element ref="DebugInfo" minOccurs="0"/>
+															</xs:choice>
+															<xs:attribute name="Sequence" type="xs:int" use="required"/>
+														</xs:complexType>
+													</xs:element>
+												</xs:choice>
+											</xs:complexType>
+										</xs:element>
+									</xs:choice>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="ShipmentAirwaybillResponse" minOccurs="0">
+								<xs:complexType>
+									<xs:all>
+										<xs:element name="Header">
+											<xs:complexType>
+												<xs:all>
+													<xs:element name="MessageId">
+														<xs:simpleType>
+															<xs:restriction base="xs:int">
+																<xs:totalDigits value="100"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="MessageDateTime">
+														<xs:simpleType>
+															<xs:restriction base="xs:dateTime"/>
+														</xs:simpleType>
+													</xs:element>
+												</xs:all>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="Result">
+											<xs:complexType>
+												<xs:all>
+													<xs:element name="Status">
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:enumeration value="ERROR"/>
+																<xs:enumeration value="OK"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="Errors" minOccurs="0">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="Error" maxOccurs="unbounded">
+																	<xs:complexType>
+																		<xs:all>
+																			<xs:element name="Code">
+																				<xs:simpleType>
+																					<xs:restriction base="xs:string">
+																						<xs:maxLength value="40"/>
+																					</xs:restriction>
+																				</xs:simpleType>
+																			</xs:element>
+																			<xs:element name="Message">
+																				<xs:simpleType>
+																					<xs:restriction base="xs:string"/>
+																				</xs:simpleType>
+																			</xs:element>
+																		</xs:all>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+												</xs:all>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="Shipment">
+											<xs:complexType>
+												<xs:all>
+													<xs:element name="CodeShipment">
+														<xs:simpleType>
+															<xs:restriction base="xs:string"/>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="Reference">
+														<xs:simpleType>
+															<xs:restriction base="xs:string"/>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="CarrierCode">
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:minLength value="3"/>
+																<xs:maxLength value="3"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="ServiceLevel" minOccurs="0">
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:maxLength value="10"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="Awb" minOccurs="0">
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:maxLength value="30"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="Accounts" minOccurs="0">
+														<xs:complexType>
+															<xs:all>
+																<xs:element name="SenderAccount">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:maxLength value="20"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="TransportAccount">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:maxLength value="20"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="DutiesAccount" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:maxLength value="20"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+															</xs:all>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="PackageDetails" minOccurs="0">
+														<xs:complexType>
+															<xs:all>
+																<xs:element name="Package">
+																	<xs:complexType>
+																		<xs:all>
+																			<xs:element name="PackageSequence">
+																				<xs:simpleType>
+																					<xs:restriction base="xs:int"/>
+																				</xs:simpleType>
+																			</xs:element>
+																			<xs:element name="Reference" minOccurs="0">
+																				<xs:simpleType>
+																					<xs:restriction base="xs:string">
+																						<xs:maxLength value="40"/>
+																					</xs:restriction>
+																				</xs:simpleType>
+																			</xs:element>
+																			<xs:element name="Awb" minOccurs="0">
+																				<xs:simpleType>
+																					<xs:restriction base="xs:string">
+																						<xs:maxLength value="30"/>
+																					</xs:restriction>
+																				</xs:simpleType>
+																			</xs:element>
+																		</xs:all>
+																	</xs:complexType>
+																</xs:element>
+															</xs:all>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="CarrierEDIResult" minOccurs="0">
+														<xs:complexType>
+															<xs:all>
+																<xs:element name="ResultMessages" minOccurs="0">
+																	<xs:complexType>
+																		<xs:sequence>
+																			<xs:element name="Message" maxOccurs="unbounded"/>
+																		</xs:sequence>
+																	</xs:complexType>
+																</xs:element>
+																<xs:element name="ResultErrors" minOccurs="0">
+																	<xs:complexType>
+																		<xs:choice maxOccurs="unbounded">
+																			<xs:element name="Error" maxOccurs="unbounded">
+																				<xs:complexType>
+																					<xs:all>
+																						<xs:element name="Code">
+																							<xs:simpleType>
+																								<xs:restriction base="xs:string"/>
+																							</xs:simpleType>
+																						</xs:element>
+																						<xs:element name="Message">
+																							<xs:simpleType>
+																								<xs:restriction base="xs:string"/>
+																							</xs:simpleType>
+																						</xs:element>
+																					</xs:all>
+																				</xs:complexType>
+																			</xs:element>
+																		</xs:choice>
+																	</xs:complexType>
+																</xs:element>
+															</xs:all>
+														</xs:complexType>
+													</xs:element>
+												</xs:all>
+											</xs:complexType>
+										</xs:element>
+									</xs:all>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="ShipmentCarrierLabelResponse" minOccurs="0">
+								<xs:complexType>
+									<xs:all>
+										<xs:element name="Header">
+											<xs:complexType>
+												<xs:all>
+													<xs:element name="MessageId">
+														<xs:simpleType>
+															<xs:restriction base="xs:int">
+																<xs:totalDigits value="100"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="MessageDateTime">
+														<xs:simpleType>
+															<xs:restriction base="xs:dateTime"/>
+														</xs:simpleType>
+													</xs:element>
+												</xs:all>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="Result">
+											<xs:complexType>
+												<xs:all>
+													<xs:element name="Status">
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:enumeration value="ERROR"/>
+																<xs:enumeration value="OK"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="Errors" minOccurs="0">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="Error" maxOccurs="unbounded">
+																	<xs:complexType>
+																		<xs:all>
+																			<xs:element name="Code">
+																				<xs:simpleType>
+																					<xs:restriction base="xs:string">
+																						<xs:maxLength value="40"/>
+																					</xs:restriction>
+																				</xs:simpleType>
+																			</xs:element>
+																			<xs:element name="Message">
+																				<xs:simpleType>
+																					<xs:restriction base="xs:string"/>
+																				</xs:simpleType>
+																			</xs:element>
+																		</xs:all>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+												</xs:all>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="Shipment">
+											<xs:complexType>
+												<xs:all>
+													<xs:element name="CodeShipment">
+														<xs:simpleType>
+															<xs:restriction base="xs:string"/>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="Reference">
+														<xs:simpleType>
+															<xs:restriction base="xs:string"/>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="Labels" minOccurs="0">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="Label" maxOccurs="unbounded"/>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="Packages" minOccurs="0">
+														<xs:complexType>
+															<xs:all>
+																<xs:element name="Package">
+																	<xs:complexType>
+																		<xs:all>
+																			<xs:element name="PackageSequence">
+																				<xs:simpleType>
+																					<xs:restriction base="xs:int"/>
+																				</xs:simpleType>
+																			</xs:element>
+																			<xs:element name="Reference" minOccurs="0">
+																				<xs:simpleType>
+																					<xs:restriction base="xs:string">
+																						<xs:maxLength value="40"/>
+																					</xs:restriction>
+																				</xs:simpleType>
+																			</xs:element>
+																			<xs:element name="Awb" minOccurs="0">
+																				<xs:simpleType>
+																					<xs:restriction base="xs:string">
+																						<xs:maxLength value="30"/>
+																					</xs:restriction>
+																				</xs:simpleType>
+																			</xs:element>
+																			<xs:element name="Labels" minOccurs="0">
+																				<xs:complexType>
+																					<xs:sequence>
+																						<xs:element name="Label" maxOccurs="unbounded">
+																							<xs:complexType>
+																								<xs:all>
+																									<xs:element name="LabelFormat">
+																										<xs:simpleType>
+																											<xs:restriction base="xs:string">
+																												<xs:enumeration value="PDF"/>
+																												<xs:enumeration value="PICTURE"/>
+																												<xs:enumeration value="ZPL"/>
+																											</xs:restriction>
+																										</xs:simpleType>
+																									</xs:element>
+																									<xs:element name="LabelData">
+																										<xs:simpleType>
+																											<xs:restriction base="xs:string"/>
+																										</xs:simpleType>
+																									</xs:element>
+																									<xs:element name="LabelType">
+																										<xs:simpleType>
+																											<xs:restriction base="xs:string">
+																												<xs:enumeration value="CARRIER_LABEL"/>
+																												<xs:enumeration value="OP900"/>
+																												<xs:enumeration value="UPS_WORLD_EASE"/>
+																												<xs:enumeration value="TNT_CONNOTE"/>
+																												<xs:enumeration value="OTHER"/>
+																											</xs:restriction>
+																										</xs:simpleType>
+																									</xs:element>
+																								</xs:all>
+																							</xs:complexType>
+																						</xs:element>
+																					</xs:sequence>
+																				</xs:complexType>
+																			</xs:element>
+																		</xs:all>
+																	</xs:complexType>
+																</xs:element>
+															</xs:all>
+														</xs:complexType>
+													</xs:element>
+												</xs:all>
+											</xs:complexType>
+										</xs:element>
+									</xs:all>
+								</xs:complexType>
+							</xs:element>
+						</xs:choice>
+					</xs:complexType>
+				</xs:element>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="DebugInfo">
+		<xs:complexType>
+			<xs:all>
+				<xs:element name="Input" type="xs:string" minOccurs="0"/>
+				<xs:element name="Output" type="xs:string" minOccurs="0"/>
+				<xs:element name="RequestDateTime" minOccurs="0">
+					<xs:simpleType>
+						<xs:restriction base="xs:dateTime"/>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="ResponseDateTime" minOccurs="0">
+					<xs:simpleType>
+						<xs:restriction base="xs:dateTime"/>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="ProcessingTime" type="xs:decimal" minOccurs="0"/>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>
