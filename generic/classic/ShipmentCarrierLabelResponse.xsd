@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="ShipmentCarrierLabelResponse" nillable="true" type="ShipmentCarrierLabelResponse" />
+  <xs:complexType name="ShipmentCarrierLabelResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="Header" type="ShipmentResponseHeader" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Result" type="ShipmentResponseResult" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Shipment" type="ShipmentCarrierLabelResponseData" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ShipmentResponseHeader">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="MessageId" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="MessageDateTime" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ShipmentResponseResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="Status" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Errors" type="ArrayOfError" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Warnings" type="ArrayOfWarning" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Messages" type="ArrayOfShipmentMessage" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfError">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Error" nillable="true" type="Error" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Error">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="Code" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="FieldName" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Message" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ExplanationMessage" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfWarning">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Warning" nillable="true" type="Warning" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Warning">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="WarningCode" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="WarningMessage" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfShipmentMessage">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Message" nillable="true" type="ShipmentMessage" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ShipmentMessage">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="MessageText" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ShipmentCarrierLabelResponseData">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="CodeShipment" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Reference" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Labels" type="ArrayOfShipmentCarrierLabelResponseLabel" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Packages" type="ArrayOfShipmentCarrierLabelResponsePackageDetail" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfShipmentCarrierLabelResponseLabel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Label" nillable="true" type="ShipmentCarrierLabelResponseLabel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ShipmentCarrierLabelResponseLabel">
+    <xs:sequence>
+      <xs:element minOccurs="1" maxOccurs="1" name="LabelFormat" type="CarrierLabelFormat" />
+      <xs:element minOccurs="0" maxOccurs="1" name="LabelData" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="LabelType" type="CarrierLabelType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="CarrierLabelFormat">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ZPL" />
+      <xs:enumeration value="PICTURE" />
+      <xs:enumeration value="PDF" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="CarrierLabelType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="CARRIER_LABEL" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="ArrayOfShipmentCarrierLabelResponsePackageDetail">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Package" nillable="true" type="ShipmentCarrierLabelResponsePackageDetail" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ShipmentCarrierLabelResponsePackageDetail">
+    <xs:sequence>
+      <xs:element minOccurs="1" maxOccurs="1" name="PackageSequence" type="xs:int" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Reference" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Awb" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Labels" type="ArrayOfShipmentCarrierLabelResponseLabel" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

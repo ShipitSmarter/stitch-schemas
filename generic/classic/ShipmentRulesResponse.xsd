@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="ShipmentRulesResponse" nillable="true" type="ShipmentRulesResponse" />
+  <xs:complexType name="ShipmentRulesResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="ShipmentResponseBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="RulesApplied" type="ArrayOfShipmentRulesResponseRule" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ShipmentResponseBase" abstract="true">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="Header" type="ShipmentResponseHeader" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Result" type="ShipmentResponseResult" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Shipment" type="ShipmentResponseData" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ShipmentResponseHeader">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="MessageId" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="MessageDateTime" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ShipmentResponseResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="Status" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Errors" type="ArrayOfError" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Warnings" type="ArrayOfWarning" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Messages" type="ArrayOfShipmentMessage" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfError">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Error" nillable="true" type="Error" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Error">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="Code" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="FieldName" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Message" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ExplanationMessage" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfWarning">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Warning" nillable="true" type="Warning" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Warning">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="WarningCode" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="WarningMessage" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfShipmentMessage">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Message" nillable="true" type="ShipmentMessage" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ShipmentMessage">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="MessageText" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ShipmentResponseData">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="CodeShipment" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Reference" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Status" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="CarrierCode" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfShipmentRulesResponseRule">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Rule" nillable="true" type="ShipmentRulesResponseRule" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ShipmentRulesResponseRule">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="Request" type="ShipmentRulesResponseRequest" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Result" type="ShipmentRulesResponseResult" />
+      <xs:element minOccurs="0" maxOccurs="1" name="DebugInfo" type="ShipmentRulesResponseDebugInfo" />
+    </xs:sequence>
+    <xs:attribute name="Sequence" type="xs:int" use="required" />
+  </xs:complexType>
+  <xs:complexType name="ShipmentRulesResponseRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="RuleType" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="RuleSubType" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ShipmentRulesResponseResult">
+    <xs:sequence>
+      <xs:element minOccurs="1" maxOccurs="1" name="RuleMatched" type="xs:boolean" />
+      <xs:element minOccurs="0" maxOccurs="1" name="RuleDetails" type="ShipmentRulesResponseRuleDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ShipmentRulesResponseRuleDetails">
+    <xs:sequence>
+      <xs:element minOccurs="1" maxOccurs="1" name="CodeRule" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Outcomes" type="ArrayOfShipmentRulesResponseOutcome" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfShipmentRulesResponseOutcome">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Outcome" nillable="true" type="ShipmentRulesResponseOutcome" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ShipmentRulesResponseOutcome">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="Field" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Value" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ShipmentRulesResponseDebugInfo">
+    <xs:sequence>
+      <xs:element minOccurs="1" maxOccurs="1" name="RequestDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="1" maxOccurs="1" name="ResponseDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="1" maxOccurs="1" name="ProcessingTime" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Input">
+        <xs:complexType mixed="true">
+          <xs:sequence>
+            <xs:any />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="Output">
+        <xs:complexType mixed="true">
+          <xs:sequence>
+            <xs:any />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
