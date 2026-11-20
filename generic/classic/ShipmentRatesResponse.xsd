@@ -84,20 +84,14 @@
       <xs:element minOccurs="0" maxOccurs="1" name="ModeOfTransport" type="xs:string" />
       <xs:element minOccurs="0" maxOccurs="1" name="DeliveryCondition" type="xs:string" />
       <xs:element minOccurs="0" maxOccurs="1" name="Prices" type="ArrayOfShipmentRatesResponsePrice" />
-      <xs:element minOccurs="0" maxOccurs="1" name="Description">
-        <xs:complexType mixed="true">
-          <xs:sequence>
-            <xs:any />
-          </xs:sequence>
-        </xs:complexType>
-      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="Description" type="xs:string" />
       <xs:element minOccurs="0" maxOccurs="1" name="CarrierCode" type="xs:string" />
       <xs:element minOccurs="0" maxOccurs="1" name="ServiceLevel" type="xs:string" />
       <xs:element minOccurs="0" maxOccurs="1" name="CodeCurrency" type="xs:string" />
       <xs:element minOccurs="1" maxOccurs="1" name="ConversionRateToUSD" type="xs:decimal" />
       <xs:element minOccurs="0" maxOccurs="1" name="CodeTariff" type="xs:string" />
       <xs:element minOccurs="0" maxOccurs="1" name="TariffType" type="xs:string" />
-      <xs:element minOccurs="1" maxOccurs="1" name="VolumeFactor" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" maxOccurs="1" name="VolumeFactor" nillable="true" type="xs:decimal" />
       <xs:element minOccurs="0" maxOccurs="1" name="DatePickup" type="xs:string" />
       <xs:element minOccurs="0" maxOccurs="1" name="TimePickup" type="xs:string" />
       <xs:element minOccurs="0" maxOccurs="1" name="FirstAvailableDatePickup" type="xs:string" />
@@ -191,23 +185,11 @@
   </xs:complexType>
   <xs:complexType name="ShipmentRulesResponseDebugInfo">
     <xs:sequence>
-      <xs:element minOccurs="1" maxOccurs="1" name="RequestDateTime" nillable="true" type="xs:dateTime" />
-      <xs:element minOccurs="1" maxOccurs="1" name="ResponseDateTime" nillable="true" type="xs:dateTime" />
-      <xs:element minOccurs="1" maxOccurs="1" name="ProcessingTime" nillable="true" type="xs:decimal" />
-      <xs:element minOccurs="0" maxOccurs="1" name="Input">
-        <xs:complexType mixed="true">
-          <xs:sequence>
-            <xs:any />
-          </xs:sequence>
-        </xs:complexType>
-      </xs:element>
-      <xs:element minOccurs="0" maxOccurs="1" name="Output">
-        <xs:complexType mixed="true">
-          <xs:sequence>
-            <xs:any />
-          </xs:sequence>
-        </xs:complexType>
-      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="RequestDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ResponseDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ProcessingTime" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Input" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Output" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="ShipmentRatesResponseRateEngineDebugInfo">

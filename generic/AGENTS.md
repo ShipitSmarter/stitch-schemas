@@ -20,14 +20,14 @@
 | Print | classic/ShipmentPrintResponse.xsd | Generated response |
 | Combined shipment | classic/combined_Request.xsd | Request |
 | Combined shipment | classic/shipmentCombined_response_v1.xsd | Response |
-| Shipment | classic/Shipment.xsd | Generated request |
+| Shipment | classic/shipment.xsd | Request |
 | Shipment | classic/ShipmentResponse.xsd | Generated response |
 | Shipment rates | classic/shipmentRates_Request.xsd | Request |
 | Shipment rates | classic/ShipmentRatesResponse.xsd | Generated response |
-| Shipment documents | classic/ShipmentDocuments.xsd | Generated document upload |
+| Shipment documents | classic/uploadDocuments.xsd | Request |
 | Shipment documents | classic/ShipmentDocumentUploadResponse.xsd | Generated response |
 | Carrier label | classic/ShipmentCarrierLabelResponse.xsd | Generated response |
-| Shipment delete | classic/ShipmentDeleteResponse.xsd | Generated response |
+| Shipment rules | classic/shipmentRules.xsd | Request |
 | Shipment rules | classic/ShipmentRulesResponse.xsd | Generated response |
 | Shipment tracking | classic/ShipmentTrackingResponse.xsd | Generated response |
 
