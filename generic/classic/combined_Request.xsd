@@ -188,7 +188,7 @@
               <xs:element name="CarrierCode" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
-                    <xs:maxLength value="10"/>
+                    <xs:maxLength value="30"/>
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
@@ -924,7 +924,7 @@
                                               <xs:simpleType>
                                                 <xs:restriction base="xs:string">
                                                   <xs:minLength value="3"/>
-                                                  <xs:maxLength value="3"/>
+                                                  <xs:maxLength value="30"/>
                                                 </xs:restriction>
                                               </xs:simpleType>
                                             </xs:element>
