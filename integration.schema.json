@@ -54,6 +54,9 @@
         "PreParser": {
           "type": "object",
           "$ref": "#/definitions/PreParser"
+        },
+        "LogScope": {
+          "$ref": "#/definitions/LogScope"
         }
       },
       "additionalProperties": false,
@@ -181,6 +184,9 @@
         },
         "StartCondition": {
           "type": "string"
+        },
+        "LogScope": {
+          "$ref": "#/definitions/LogScope"
         }
       },
       "required": [
@@ -215,6 +221,9 @@
         },
         "StartCondition": {
           "type": "string"
+        },
+        "LogScope": {
+          "$ref": "#/definitions/LogScope"
         }
       },
       "required": [
@@ -285,6 +294,9 @@
         },
         "StartCondition": {
           "type": "string"
+        },
+        "LogScope": {
+          "$ref": "#/definitions/LogScope"
         }
       },
       "required": [
@@ -375,6 +387,9 @@
           "type": "boolean",
           "default": false,
           "description": "Option to specify that this HTTP request should NOT be audited"
+        },
+        "LogScope": {
+          "$ref": "#/definitions/LogScope"
         }
       },
       "required": [
@@ -445,6 +460,9 @@
           "type": "boolean",
           "default": false,
           "description": "Option to specify that this HTTP request should NOT be audited"
+        },
+        "LogScope": {
+          "$ref": "#/definitions/LogScope"
         }
       },
       "required": [
@@ -547,6 +565,9 @@
         },
         "Filename": {
           "type": "string"
+        },
+        "LogScope": {
+          "$ref": "#/definitions/LogScope"
         }
       },
       "required": [
@@ -599,6 +620,9 @@
         "Preview": {
           "type": "string",
           "description": "Whether to return a preview HTML. Scriban template will be evaluated."
+        },
+        "LogScope": {
+          "$ref": "#/definitions/LogScope"
         }
       },
       "required": [
@@ -672,6 +696,9 @@
         },
         "StartCondition": {
           "type": "string"
+        },
+        "LogScope": {
+          "$ref": "#/definitions/LogScope"
         }
       },
       "required": [
@@ -738,6 +765,9 @@
         },
         "StartCondition": {
           "type": "string"
+        },
+        "LogScope": {
+          "$ref": "#/definitions/LogScope"
         }
       },
       "required": [
@@ -772,6 +802,9 @@
         },
         "StartCondition": {
           "type": "string"
+        },
+        "LogScope": {
+          "$ref": "#/definitions/LogScope"
         }
       },
       "required": [
@@ -808,6 +841,9 @@
         },
         "StartCondition": {
           "type": "string"
+        },
+        "LogScope": {
+          "$ref": "#/definitions/LogScope"
         }
       },
       "required": [
@@ -842,6 +878,9 @@
         },
         "StartCondition": {
           "type": "string"
+        },
+        "LogScope": {
+          "$ref": "#/definitions/LogScope"
         }
       },
       "required": [
@@ -875,6 +914,9 @@
         "SchemaUrl": {
           "type": "string",
           "description": "The URL to the success schema to validate the response against (in the editor and karate tests). If given, also error responses will be validated correctly automatically."
+        },
+        "LogScope": {
+          "$ref": "#/definitions/LogScope"
         }
       },
       "required": [
@@ -887,6 +929,13 @@
       "default": {
         "HEADER_NAME": "VALUE"
       },
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "LogScope": {
+      "type": "object",
+      "description": "Key-value pairs (Scriban templates) added to the log scope and trace tags when non-empty. Prefer dot-notation keys such as 'integration.tracking_reference'.",
       "additionalProperties": {
         "type": "string"
       }
